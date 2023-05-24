@@ -1,0 +1,49 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="over" #sidenav>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h1>Menu</h1>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon>home</mat-icon>
+        <a matListItemTitle routerLink="dashboard"> Tablero </a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>pie_chart</mat-icon>
+        <a matListItemTitle> Publicar </a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>insert_drive_file</mat-icon>
+        <a matListItemTitle> Archivos </a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>people</mat-icon>
+        <a matListItemTitle routerLink="users"> Usuarios </a>
+      </mat-list-item>
+
+      <mat-list-item>
+        <mat-icon>settings</mat-icon>
+        <a matListItemTitle> Configuración </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Studentvisor</span>
+    </mat-toolbar>
+
+
+    <router-outlet></router-outlet>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
