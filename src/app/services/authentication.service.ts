@@ -1,23 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LoginSuccessResponse } from '../interfaces/login-success-response';
+import { environment } from 'src/environments/environment';
+import { UserCredentials } from '../interfaces/user-credentials';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService implements OnInit{
+export class AuthenticationService{
 
-  constructor(private http: HttpClient) { 
-    this.login().subscribe(value => console.log(value));
-
+  constructor(private http: HttpClient) {
 
   }
 
-  login() : Observable<any> {
-    return this.http.post<any>('http://localhost:5000/api/v1/auth/login',{email:"admin",password:"admin"})
+  login(userCredentials: UserCredentials) : Observable<LoginSuccessResponse> {
+    return this.http.post<LoginSuccessResponse>(`${environment.apiUrl}/api/v1/auth/login`,userCredentials)
   }
 
-  ngOnInit() {
-
+  setToken(token:string) {
+    localStorage.setItem('authToken',token)
   }
+
+  getToken() {
+    return localStorage.getItem('authToken')
+  }
+
+  isLoggendIn() {
+    if (localStorage.getItem('authToken')) return true;
+    return false;
+  }
+  
 }

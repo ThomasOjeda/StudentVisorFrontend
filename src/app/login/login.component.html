@@ -1,20 +1,29 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Ingresar</mat-card-title>
-    <mat-card-subtitle>Proporcione su usuario y contraseña</mat-card-subtitle>
+    <mat-card-subtitle>Proporcione su email y contraseña</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-actions>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input type="email" matInput placeholder="Ex. pat@example.com" />
+        <mat-label>email</mat-label>
+        <input formControlName="email" type="email" matInput placeholder="Ej. usuario@ejemplo.com" />
+        <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+          Ingrese un email valido
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+          Campo <strong>requerido</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput placeholder="Ex. pat@example.com" />
+        <mat-label>contraseña</mat-label>
+        <input formControlName="password" type="password" matInput placeholder="***********************" />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Campo <strong>requerido</strong>
+        </mat-error>
       </mat-form-field>
+      <button mat-button [disabled]="loginForm.invalid" type="submit">Continuar</button>
     </form>
-    <button mat-button routerLink="/home">LOGIN</button>
   </mat-card-actions>
 </mat-card>

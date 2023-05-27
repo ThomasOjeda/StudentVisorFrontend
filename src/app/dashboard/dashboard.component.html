@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+
+<ul *ngFor="let chart of charts?.result;">
+    <li>
+        {{ chart | json}}
+    </li>
+</ul>
