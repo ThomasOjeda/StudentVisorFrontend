@@ -9,6 +9,7 @@ export interface Result {
     name:      string;
     tags:      string[];
     structure: any;
+    type: string;
     createdAt: Date;
     updatedAt: Date;
     __v:       number;
