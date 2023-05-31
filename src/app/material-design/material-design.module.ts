@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button'
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -18,10 +23,15 @@ const MaterialComponents = [
   MatCardModule,
   MatInputModule,
   MatGridListModule,
-  MatSnackBarModule
-]
+  MatSnackBarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatChipsModule,
+];
 
 @NgModule({
-  exports: [MaterialComponents]
+  exports: [MaterialComponents],
 })
-export class MaterialDesignModule { }
+export class MaterialDesignModule {}
