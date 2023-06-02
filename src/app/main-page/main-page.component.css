@@ -11,3 +11,7 @@ mat-sidenav {
     color: white;
     background-color: grey;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}

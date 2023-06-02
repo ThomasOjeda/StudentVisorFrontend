@@ -1,0 +1,94 @@
+<form [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>email</mat-label>
+    <input
+      formControlName="email"
+      type="email"
+      matInput
+      placeholder="Ej. usuario@ejemplo.com"
+    />
+    <mat-error
+      *ngIf="
+        newUserForm.get('email')?.hasError('email') &&
+        !newUserForm.get('email')?.hasError('required')
+      "
+    >
+      Ingrese un email valido
+    </mat-error>
+    <mat-error *ngIf="newUserForm.get('email')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>contraseña</mat-label>
+    <input
+      formControlName="password"
+      type="password"
+      matInput
+      placeholder="***********************"
+    />
+    <mat-error *ngIf="newUserForm.get('password')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>nombre de usuario</mat-label>
+    <input
+      formControlName="username"
+      type="text"
+      matInput
+      placeholder="usuario ejemplo"
+    />
+    <mat-error *ngIf="newUserForm.get('username')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Etiquetas</mat-label>
+    <mat-chip-list #chipList aria-label="Seleccion de etiqueta">
+      <mat-chip *ngFor="let tag of tags; index as i" (removed)="remove(i)">
+        {{ tag }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Nueva etiqueta"
+        #tagInput
+        formControlName="tags"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+        {{ tag }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <label id="example-radio-group-label">Rol</label>
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    formControlName="role"
+    >
+    <mat-radio-button
+      class="example-radio-button"
+      *ngFor="let role of allRoles"
+      [value]="role"
+    >
+      {{ role }}
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <button mat-button [disabled]="newUserForm.invalid" type="submit">
+    Registrar
+  </button>
+</form>

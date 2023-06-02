@@ -5,6 +5,7 @@ import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
+import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'users/:id', component: UserDetailsComponent },
       { path: '**', redirectTo:'dashboard' },
     ],
   },

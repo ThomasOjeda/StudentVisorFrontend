@@ -9,7 +9,7 @@ export const studentMovementsHandler = (renderer: Renderer2, chartTemplate: Elem
     renderer.removeChild(chartTemplate.nativeElement.parentNode, chartTemplate.nativeElement);
 
     new Chart(canvas as ChartItem, {
-        type: 'pie',
+        type: 'doughnut',
         data: {
           labels: ['Reinscriptos', 'Movimientos', 'Sin Datos'],
           datasets: [

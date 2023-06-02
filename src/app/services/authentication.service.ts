@@ -4,11 +4,13 @@ import { Observable } from 'rxjs';
 import { LoginSuccessResponse } from '../interfaces/login-success-response';
 import { environment } from 'src/environments/environment';
 import { UserCredentials } from '../interfaces/user-credentials';
+import { User } from '../interfaces/users-request-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService{
+
 
   constructor(private http: HttpClient) {
 
@@ -29,6 +31,14 @@ export class AuthenticationService{
   isLoggendIn() {
     if (localStorage.getItem('authToken')) return true;
     return false;
+  }
+
+  registerUser(data:User) {
+    return this.http.post(`${environment.apiUrl}/api/v1/auth/register`,data)
+  }
+
+  logout() {
+    localStorage.removeItem('authToken');
   }
   
 }

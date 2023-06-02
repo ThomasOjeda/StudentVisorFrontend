@@ -13,6 +13,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatRadioModule} from '@angular/material/radio';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -29,6 +32,9 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatChipsModule,
+  MatTabsModule,
+  MatAutocompleteModule,
+  MatRadioModule
 ];
 
 @NgModule({
