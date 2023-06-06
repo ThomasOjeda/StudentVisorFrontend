@@ -18,6 +18,7 @@ import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { NewUserComponent } from './users/new-user/new-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
+import { PublishComponent } from './chart/publish/publish.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -31,6 +32,7 @@ registerLocaleData(localeEs, 'es');
     UserDetailsComponent,
     NewUserComponent,
     UserListComponent,
+    PublishComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,10 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true},{provide: LOCALE_ID, useValue: 'es'}],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'es' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

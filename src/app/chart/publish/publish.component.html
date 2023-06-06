@@ -1,0 +1,58 @@
+<form [formGroup]="publishHeader">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input formControlName="name" type="text" matInput />
+    <mat-error *ngIf="publishHeader.get('name')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo de grafico</mat-label>
+    <mat-select formControlName="type" #type (valueChange)="typeChanged($event)">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{ type.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="publishStructure">
+  <div [ngSwitch]="type.value">
+    <div *ngSwitchCase="'STMV'">
+      <mat-form-field>
+        <mat-label>Año inicio</mat-label>
+        <input formControlName="startYear" type="number" matInput />
+        <mat-error
+          *ngIf="publishStructure.get('startYear')?.hasError('required')"
+        >
+          Campo <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Año fin</mat-label>
+        <input formControlName="endYear" type="number" matInput />
+        <mat-error
+          *ngIf="publishStructure.get('endYear')?.hasError('required')"
+        >
+          Campo <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div *ngSwitchCase="'INSC'">
+      <mat-form-field>
+        <mat-label>Año</mat-label>
+        <input formControlName="year" type="number" matInput />
+        <mat-error *ngIf="publishStructure.get('year')?.hasError('required')">
+          Campo <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
+<button
+  mat-button
+  [disabled]="publishHeader.invalid || publishStructure.invalid"
+  (click)="onSubmit()"
+>
+  Publicar
+</button>

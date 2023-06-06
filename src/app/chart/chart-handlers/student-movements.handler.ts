@@ -14,7 +14,6 @@ export const studentMovementsHandler = (renderer: Renderer2, chartTemplate: Elem
           labels: ['Reinscriptos', 'Movimientos', 'Sin Datos'],
           datasets: [
             {
-              label: 'My First Dataset',
               data: [chartStructure.structure.Reenrolled, chartStructure.structure.Movements, chartStructure.structure.NoData],
               backgroundColor: [
                 'rgb(255, 99, 132)',

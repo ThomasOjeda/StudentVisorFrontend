@@ -15,7 +15,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class NewUserComponent implements OnInit {
   newUserForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl<string | null>('', [Validators.required, Validators.email]),
     password: new FormControl<string | null>('', [Validators.required]),
     username: new FormControl<string | null>('', [Validators.required]),
     tags: new FormControl<string | null>(''),
