@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChartType } from '../chart-type.model';
+import { TransformationRequest } from 'src/app/interfaces/transformation-request';
+import { ChartsService } from 'src/app/services/charts.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-publish',
@@ -18,24 +21,42 @@ export class PublishComponent implements OnInit {
 
   types = [{label:"Movimientos de estudiantes",value:ChartType.STUDENT_MOVEMENTS},{label:"Inscripciones",value:ChartType.STUDENT_INSCRIPTIONS}]
 
-  constructor() { }
+  loading:boolean = false;
+
+  constructor(private chartService:ChartsService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.publishHeader.value)
-    console.log(this.publishStructure.value)
 
-    console.log(this.publishHeader.invalid)
-    console.log(this.publishStructure.invalid)
+    this.loading = true;
+
+    const transformationRequest: TransformationRequest = {
+      transformationHeader:this.publishHeader.value,
+      transformationBody:this.publishStructure.value
+    }
+
+    console.log(transformationRequest);
+    
+    this.chartService.requestTransformation(transformationRequest).subscribe({
+      next: ()=>{},
+      error: (err:HttpErrorResponse) => {
+        this.loading = false;
+      },
+      complete: () => {
+        console.log("transformation request completed")
+        this.loading=false;
+      }
+    })
+
   }
 
   typeChanged($event:string) {
     if ($event==='STMV')
     this.publishStructure = new FormGroup({
-      startYear: new FormControl(null, [Validators.required]),
-      endYear: new FormControl(null, [Validators.required]),
+      yearA: new FormControl(null, [Validators.required]),
+      yearB: new FormControl(null, [Validators.required]),
     });
     if ($event==='INSC')
     this.publishStructure = new FormGroup({

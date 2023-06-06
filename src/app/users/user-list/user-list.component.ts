@@ -62,7 +62,6 @@ export class UserListComponent implements OnInit,AfterViewInit {
 
   openDetails(user: User) {
 
-    console.log(user._id)
     this.router.navigate(['home','users',user._id])
 
   }

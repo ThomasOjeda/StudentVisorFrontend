@@ -1,3 +1,9 @@
+
+<div class="loading-shade-parent">
+  <div class="loading-shade" *ngIf="loading">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  </div>
+
 <form [formGroup]="publishHeader">
   <mat-form-field>
     <mat-label>Nombre</mat-label>
@@ -21,18 +27,18 @@
     <div *ngSwitchCase="'STMV'">
       <mat-form-field>
         <mat-label>Año inicio</mat-label>
-        <input formControlName="startYear" type="number" matInput />
+        <input formControlName="yearA" type="number" matInput />
         <mat-error
-          *ngIf="publishStructure.get('startYear')?.hasError('required')"
+          *ngIf="publishStructure.get('yearA')?.hasError('required')"
         >
           Campo <strong>requerido</strong>
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Año fin</mat-label>
-        <input formControlName="endYear" type="number" matInput />
+        <input formControlName="yearB" type="number" matInput />
         <mat-error
-          *ngIf="publishStructure.get('endYear')?.hasError('required')"
+          *ngIf="publishStructure.get('yearB')?.hasError('required')"
         >
           Campo <strong>requerido</strong>
         </mat-error>
@@ -56,3 +62,5 @@
 >
   Publicar
 </button>
+
+</div>
