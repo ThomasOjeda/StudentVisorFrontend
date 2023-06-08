@@ -19,6 +19,9 @@ import { registerLocaleData } from '@angular/common';
 import { NewUserComponent } from './users/new-user/new-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { PublishComponent } from './chart/publish/publish.component';
+import { NewFileComponent } from './files/new-file/new-file.component';
+import { FilesComponent } from './files/files.component';
+import { FileListComponent } from './files/file-list/file-list.component';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -33,6 +36,9 @@ registerLocaleData(localeEs, 'es');
     NewUserComponent,
     UserListComponent,
     PublishComponent,
+    NewFileComponent,
+    FilesComponent,
+    FileListComponent
   ],
   imports: [
     BrowserModule,

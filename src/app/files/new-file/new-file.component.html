@@ -1,0 +1,43 @@
+<form [formGroup]="newFileForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>año</mat-label>
+    <input formControlName="year" type="number" matInput placeholder="20xx" />
+    <mat-error *ngIf="newFileForm.get('year')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo de archivo</mat-label>
+    <mat-select formControlName="fileType">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{ type.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    class="chooseFileButton"
+    type="button"
+    mat-raised-button
+    (click)="fileInput.click()"
+  >
+    Elegir archivo *
+  </button>
+  <input hidden (change)="onFileSelected($event)" #fileInput type="file" />
+  <mat-error *ngIf="fileTouched && selectedFile == null">
+    Campo <strong>requerido</strong>
+  </mat-error>
+
+  <span class="file-name">{{ selectedFile?.name }}</span>
+
+  <mat-divider></mat-divider>
+
+  <button
+    class="submitButton"
+    mat-button
+    [disabled]="newFileForm.invalid || !aFileWasSelected()"
+    type="submit"
+  >
+    Subir
+  </button>
+</form>

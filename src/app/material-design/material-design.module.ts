@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -37,6 +38,7 @@ const MaterialComponents = [
   MatAutocompleteModule,
   MatRadioModule,
   MatSelectModule,
+  MatDividerModule
 ];
 
 @NgModule({

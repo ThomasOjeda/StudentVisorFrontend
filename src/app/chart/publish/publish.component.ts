@@ -42,6 +42,7 @@ export class PublishComponent implements OnInit {
     this.chartService.requestTransformation(transformationRequest).subscribe({
       next: ()=>{},
       error: (err:HttpErrorResponse) => {
+        console.log(err);
         this.loading = false;
       },
       complete: () => {

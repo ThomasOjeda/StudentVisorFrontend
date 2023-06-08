@@ -7,6 +7,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 import { PublishComponent } from './chart/publish/publish.component';
+import { FilesComponent } from './files/files.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'publish', component: PublishComponent },
+      { path: 'files', component: FilesComponent },
       { path: 'users', component: UsersComponent },
       { path: 'users/:id', component: UserDetailsComponent },
       { path: '**', redirectTo:'dashboard' },
