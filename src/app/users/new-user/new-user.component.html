@@ -73,14 +73,13 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <label id="example-radio-group-label">Rol</label>
-  <mat-radio-group
-    aria-labelledby="example-radio-group-label"
-    class="example-radio-group"
+  <label>Rol</label>
+  <mat-radio-group color="primary"
+    class="radio-group"
     formControlName="role"
     >
     <mat-radio-button
-      class="example-radio-button"
+      class="radio-button"
       *ngFor="let role of allRoles"
       [value]="role"
     >

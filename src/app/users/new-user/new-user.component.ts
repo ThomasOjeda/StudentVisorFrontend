@@ -47,7 +47,6 @@ export class NewUserComponent implements OnInit {
       this.newUserForm.value.email &&
       this.newUserForm.value.password &&
       this.newUserForm.value.username &&
-      this.newUserForm.value.role &&
       this.newUserForm.value.role
     ) {
       let newUser: User = {
@@ -55,9 +54,8 @@ export class NewUserComponent implements OnInit {
         password: this.newUserForm.value.password,
         username: this.newUserForm.value.username,
         role: this.newUserForm.value.role,
-        tags: [''],
+        tags:this.tags,
       };
-      newUser.tags = this.tags;
       console.log(newUser);
       this.authServ.registerUser(newUser).subscribe({
         next: (registerResponse: any) => {},
