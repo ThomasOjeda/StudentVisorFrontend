@@ -14,10 +14,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -35,10 +34,9 @@ const MaterialComponents = [
   MatProgressSpinnerModule,
   MatChipsModule,
   MatTabsModule,
-  MatAutocompleteModule,
   MatRadioModule,
   MatSelectModule,
-  MatDividerModule
+  MatDividerModule,
 ];
 
 @NgModule({

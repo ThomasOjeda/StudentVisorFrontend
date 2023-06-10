@@ -46,38 +46,13 @@
 
   <mat-form-field>
     <mat-label>Etiquetas</mat-label>
-    <mat-chip-list #chipList aria-label="Seleccion de etiqueta">
-      <mat-chip *ngFor="let tag of tags; index as i" (removed)="remove(i)">
-        {{ tag }}
-        <button matChipRemove>
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </mat-chip>
-      <input
-        placeholder="Nueva etiqueta"
-        #tagInput
-        formControlName="tags"
-        [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
-      />
-    </mat-chip-list>
-    <mat-autocomplete
-      #auto="matAutocomplete"
-      (optionSelected)="selected($event)"
-    >
-      <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
-        {{ tag }}
-      </mat-option>
-    </mat-autocomplete>
+    <mat-select formControlName="tags" multiple>
+      <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{tag._id}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <label>Rol</label>
-  <mat-radio-group color="primary"
-    class="radio-group"
-    formControlName="role"
-    >
+  <mat-radio-group color="primary" class="radio-group" formControlName="role">
     <mat-radio-button
       class="radio-button"
       *ngFor="let role of allRoles"
