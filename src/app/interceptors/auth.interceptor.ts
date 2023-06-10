@@ -24,16 +24,18 @@ export class AuthInterceptor implements HttpInterceptor {
     const newRequest = request.clone({
       setHeaders: { Authorization: `Bearer ${this.authServ.getToken()}` },
     });
-    return next
-      .handle(newRequest)
-      .pipe(tap({
-      error: (error:HttpErrorResponse) => { 
-        if (error.status==401){
-          console.log('Error unauthorized, redirecting to login and deleting the auth token')
-          this.authServ.logout()
-          this.router.navigate([''])
-        }
-
-      } }));
+    return next.handle(newRequest).pipe(
+      tap({
+        error: (error: HttpErrorResponse) => {
+          if (error.status == 401) {
+            console.log(
+              'Error unauthorized, redirecting to login and deleting the auth token'
+            );
+            this.authServ.logout();
+            this.router.navigate(['']);
+          }
+        },
+      })
+    );
   }
 }

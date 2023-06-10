@@ -38,7 +38,7 @@ registerLocaleData(localeEs, 'es');
     PublishComponent,
     NewFileComponent,
     FilesComponent,
-    FileListComponent
+    FileListComponent,
   ],
   imports: [
     BrowserModule,

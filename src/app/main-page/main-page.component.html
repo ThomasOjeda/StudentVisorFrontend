@@ -7,37 +7,37 @@
       <h1>Menu</h1>
     </mat-toolbar>
     <mat-nav-list>
-      <mat-list-item  routerLink="home">
-        <mat-icon>home</mat-icon>
-        <a matListItemTitle> Tablero </a>
-      </mat-list-item>
+      <div *ngIf="userIsAdmin()">
+        <mat-list-item routerLink="home">
+          <mat-icon>home</mat-icon>
+          <a matListItemTitle> Tablero </a>
+        </mat-list-item>
 
-      <mat-list-item routerLink="publish">
-        <mat-icon>pie_chart</mat-icon>
-        <a matListItemTitle> Publicar </a>
-      </mat-list-item>
+        <mat-list-item routerLink="publish">
+          <mat-icon>pie_chart</mat-icon>
+          <a matListItemTitle> Publicar </a>
+        </mat-list-item>
 
-      <mat-list-item routerLink="files">
-        <mat-icon>insert_drive_file</mat-icon>
-        <a matListItemTitle> Archivos </a>
-      </mat-list-item>
+        <mat-list-item routerLink="files">
+          <mat-icon>insert_drive_file</mat-icon>
+          <a matListItemTitle> Archivos </a>
+        </mat-list-item>
 
-      <mat-list-item  routerLink="users">
-        <mat-icon>people</mat-icon>
-        <a matListItemTitle> Usuarios </a>
-      </mat-list-item>
+        <mat-list-item routerLink="users">
+          <mat-icon>people</mat-icon>
+          <a matListItemTitle> Usuarios </a>
+        </mat-list-item>
 
-      <mat-list-item>
-        <mat-icon>settings</mat-icon>
-        <a matListItemTitle> Configuración </a>
-      </mat-list-item>
+        <mat-list-item>
+          <mat-icon>settings</mat-icon>
+          <a matListItemTitle> Configuración </a>
+        </mat-list-item>
+      </div>
 
       <mat-list-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <a matListItemTitle> Salir </a>
       </mat-list-item>
-
-
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -48,16 +48,15 @@
       <span>Studentvisor</span>
 
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon"
+        aria-label="Example icon-button with heart icon"
+      >
         <mat-icon>person</mat-icon>
       </button>
-
-
     </mat-toolbar>
 
-
     <router-outlet></router-outlet>
-
-
   </mat-sidenav-content>
 </mat-sidenav-container>
