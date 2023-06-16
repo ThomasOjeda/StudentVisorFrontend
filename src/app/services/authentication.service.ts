@@ -6,13 +6,12 @@ import { UserCredentials } from '../interfaces/user-credentials';
 import { User } from '../interfaces/users-request-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-
-  role:string = "none";
 
   constructor(
     private http: HttpClient,
@@ -29,7 +28,6 @@ export class AuthenticationService {
       .subscribe({
         next: (loginResponse: LoginSuccessResponse) => {
           this.setToken(loginResponse.token);
-          this.role = loginResponse.role;
         },
         error: (error: HttpErrorResponse) => {
           this.snackBar.open('Email o contraseña invalidos', 'cerrar', {
@@ -61,7 +59,6 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('authToken');
-    this.role = "none"
   }
 
   handleLoginCompletion() {
@@ -69,10 +66,15 @@ export class AuthenticationService {
   }
 
   getRole() {
-    return this.role
+    if (this.getToken()) {
+      let decoded = jwt_decode(this.getToken() as string) as any
+        return decoded.role as string
+    }
+    return 'none'
   }
 
   isAdmin() {
-    return this.role == "admin"
+    console.log(this.getRole())
+    return this.getRole() === 'admin'
   }
 }

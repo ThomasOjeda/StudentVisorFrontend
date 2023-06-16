@@ -26,7 +26,7 @@ export class NewUserComponent implements OnInit {
     role: new FormControl<string | null>('reader', [Validators.required]),
   });
 
-  allTags!: Tag[];
+  allTags: Tag[] = [];
 
   allRoles: string[] = ['reader', 'admin'];
 
@@ -38,12 +38,14 @@ export class NewUserComponent implements OnInit {
   ) {
     tagsServ.getTags().subscribe({
       next: (response: TagsRequestResponse) => {
-        this.allTags = response.result;
-        //Reposition the public tag in case it is not in the first position
-        let i = this.allTags.findIndex((tag: Tag) => tag._id == 'PUBLIC');
-        let publicTag = this.allTags[i];
-        this.allTags.splice(i, 1);
-        this.allTags.unshift(publicTag);
+        if (response.result.length > 0) {
+          this.allTags = response.result;
+          //Reposition the public tag in case it is not in the first position
+          let i = this.allTags.findIndex((tag: Tag) => tag._id == 'PUBLIC');
+          let publicTag = this.allTags[i];
+          this.allTags.splice(i, 1);
+          this.allTags.unshift(publicTag);
+        } else this.allTags = [];
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);

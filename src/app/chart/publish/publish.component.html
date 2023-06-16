@@ -9,7 +9,11 @@
         <mat-label>Nombre</mat-label>
         <input formControlName="name" type="text" matInput />
         <mat-error
-          *ngIf="transformationForm.get('transformationHeader.name')?.hasError('required')"
+          *ngIf="
+            transformationForm
+              .get('transformationHeader.name')
+              ?.hasError('required')
+          "
         >
           Campo <strong>requerido</strong>
         </mat-error>
@@ -30,9 +34,9 @@
       <mat-form-field>
         <mat-label>Etiquetas</mat-label>
         <mat-select formControlName="tags" multiple>
-          <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
-            tag._id
-          }}</mat-option>
+            <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
+              tag._id
+            }}</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
@@ -45,7 +49,9 @@
             <input formControlName="yearA" type="number" matInput />
             <mat-error
               *ngIf="
-                transformationForm.get('transformationBody.yearA')?.hasError('required')
+                transformationForm
+                  .get('transformationBody.yearA')
+                  ?.hasError('required')
               "
             >
               Campo <strong>requerido</strong>
@@ -56,7 +62,9 @@
             <input formControlName="yearB" type="number" matInput />
             <mat-error
               *ngIf="
-              transformationForm.get('transformationBody.yearB')?.hasError('required')
+                transformationForm
+                  .get('transformationBody.yearB')
+                  ?.hasError('required')
               "
             >
               Campo <strong>requerido</strong>
@@ -69,7 +77,9 @@
             <input formControlName="year" type="number" matInput />
             <mat-error
               *ngIf="
-                transformationForm.get('transformationBody.year')?.hasError('required')
+                transformationForm
+                  .get('transformationBody.year')
+                  ?.hasError('required')
               "
             >
               Campo <strong>requerido</strong>
@@ -80,13 +90,12 @@
     </form>
     <mat-divider></mat-divider>
 
-    <button mat-button [disabled]="transformationForm.invalid" (click)="onSubmit()">
+    <button
+      mat-button
+      [disabled]="transformationForm.invalid"
+      (click)="onSubmit()"
+    >
       Publicar
     </button>
-
   </form>
-
-
-
-
 </div>

@@ -8,19 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
+  userIsAdmin: boolean = false;
+
   constructor(
     private authService: AuthenticationService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userIsAdmin = this.authService.isAdmin();
+  }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['']);
-  }
-
-  userIsAdmin() {
-    return this.authService.isAdmin();
   }
 }
