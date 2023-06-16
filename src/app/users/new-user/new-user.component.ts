@@ -42,9 +42,12 @@ export class NewUserComponent implements OnInit {
           this.allTags = response.result;
           //Reposition the public tag in case it is not in the first position
           let i = this.allTags.findIndex((tag: Tag) => tag._id == 'PUBLIC');
-          let publicTag = this.allTags[i];
-          this.allTags.splice(i, 1);
-          this.allTags.unshift(publicTag);
+          //Check if public tag is present
+          if (i != -1) {
+            let publicTag = this.allTags[i];
+            this.allTags.splice(i, 1);
+            this.allTags.unshift(publicTag);
+          }
         } else this.allTags = [];
       },
       error: (err: HttpErrorResponse) => {
