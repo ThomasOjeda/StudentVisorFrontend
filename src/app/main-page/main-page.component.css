@@ -1,3 +1,8 @@
+mat-sidenav-content mat-toolbar {
+  position: fixed;
+  z-index: 100;
+}
+
 mat-sidenav-container {
   height: 100%;
 }
@@ -5,11 +10,17 @@ mat-sidenav-container {
 mat-sidenav {
   background-color: white;
   width: 200px;
+  position: fixed;
+  z-index: 200;
+}
+
+.content {
+  padding-top: 70px;
 }
 
 .black-icon {
-    color: white;
-    background-color: grey;
+  color: white;
+  background-color: grey;
 }
 
 .example-spacer {
