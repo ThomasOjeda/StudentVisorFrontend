@@ -34,9 +34,9 @@
       <mat-form-field>
         <mat-label>Etiquetas</mat-label>
         <mat-select formControlName="tags" multiple>
-            <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
-              tag._id
-            }}</mat-option>
+          <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
+            tag._id
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </form>
@@ -95,7 +95,9 @@
       [disabled]="transformationForm.invalid"
       (click)="onSubmit()"
     >
-      Publicar
+      Previsualizar
     </button>
   </form>
 </div>
+
+<app-chart *ngIf="testStructure" [chartStructure]="testStructure"></app-chart>

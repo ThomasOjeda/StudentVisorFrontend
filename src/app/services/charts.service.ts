@@ -31,4 +31,11 @@ export class ChartsService {
       transformation
     );
   }
+
+  requestPrevisualization(transformation: TransformationRequest) {
+    return this.http.post(
+      `${environment.apiUrl}/api/v1/transformations/pre`,
+      transformation
+    );
+  }
 }
