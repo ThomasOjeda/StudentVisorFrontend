@@ -1,12 +1,19 @@
 import { ElementRef, Renderer2 } from '@angular/core';
-import { Result } from 'src/app/interfaces/charts-request-response';
+import { ChartData } from 'src/app/interfaces/charts-request-response';
 
-export const studentInscriptionsHandler = (renderer: Renderer2, chartTemplate: ElementRef, chartStructure:Result)=> {
-
-    const h1 = renderer.createElement('h1');
-    const text = renderer.createText(`${JSON.stringify(chartStructure.structure)}`)
-    renderer.appendChild(h1, text);
-    renderer.appendChild(chartTemplate.nativeElement.parentNode, h1);
-    renderer.removeChild(chartTemplate.nativeElement.parentNode, chartTemplate.nativeElement);
-
-}
+export const studentInscriptionsHandler = (
+  renderer: Renderer2,
+  chartTemplate: ElementRef,
+  chartStructure: ChartData
+) => {
+  const h1 = renderer.createElement('h1');
+  const text = renderer.createText(
+    `${JSON.stringify(chartStructure.structure)}`
+  );
+  renderer.appendChild(h1, text);
+  renderer.appendChild(chartTemplate.nativeElement.parentNode, h1);
+  renderer.removeChild(
+    chartTemplate.nativeElement.parentNode,
+    chartTemplate.nativeElement
+  );
+};

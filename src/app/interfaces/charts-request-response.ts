@@ -1,17 +1,16 @@
 export interface ChartsRequestResponse {
-    success: boolean;
-    result:  Result[];
-    nHits:   number;
+  success: boolean;
+  result: ChartData[];
+  nHits: number;
 }
 
-export interface Result {
-    _id:       string;
-    name:      string;
-    tags:      string[];
-    structure: any;
-    type: string;
-    createdAt: Date;
-    updatedAt: Date;
-    __v:       number;
+export interface ChartData {
+  _id: string;
+  name: string;
+  tags: string[];
+  structure: any;
+  type: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
 }
-

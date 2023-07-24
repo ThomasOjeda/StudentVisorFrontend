@@ -9,7 +9,7 @@ import {
   Tag,
   TagsRequestResponse,
 } from 'src/app/interfaces/tags-request-response';
-import { Result } from 'src/app/interfaces/charts-request-response';
+import { ChartData } from 'src/app/interfaces/charts-request-response';
 
 @Component({
   selector: 'app-publish',
@@ -26,7 +26,7 @@ export class PublishComponent implements OnInit {
     transformationBody: new FormGroup<any>({}),
   });
 
-  testStructure!: Result;
+  testStructure!: ChartData;
 
   types = [
     { label: 'Movimientos de estudiantes', value: ChartType.STUDENT_MOVEMENTS },
