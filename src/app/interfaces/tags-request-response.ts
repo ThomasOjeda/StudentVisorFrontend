@@ -1,13 +1,13 @@
 export interface TagsRequestResponse {
-    success:boolean,
-    result:Tag[],
-    nHits:number
+  success: boolean;
+  result: TagData[];
+  nHits: number;
 }
 
-export interface Tag{
-    _id:string,
-    description:string,
-    createdAt:Date,
-    updatedAt:Date,
-    __v:number
+export interface TagData {
+  _id: string;
+  description: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  __v?: number;
 }

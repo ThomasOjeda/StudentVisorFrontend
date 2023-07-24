@@ -3,16 +3,15 @@ import { Injectable } from '@angular/core';
 import { LoginSuccessResponse } from '../interfaces/login-success-response';
 import { environment } from 'src/environments/environment';
 import { UserCredentials } from '../interfaces/user-credentials';
-import { User } from '../interfaces/users-request-response';
+import { UserData } from '../interfaces/users-request-response';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode'
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-
   constructor(
     private http: HttpClient,
     private snackBar: MatSnackBar,
@@ -53,7 +52,7 @@ export class AuthenticationService {
     return false;
   }
 
-  registerUser(data: User) {
+  registerUser(data: UserData) {
     return this.http.post(`${environment.apiUrl}/api/v1/auth/register`, data);
   }
 
@@ -67,14 +66,14 @@ export class AuthenticationService {
 
   getRole() {
     if (this.getToken()) {
-      let decoded = jwt_decode(this.getToken() as string) as any
-        return decoded.role as string
+      let decoded = jwt_decode(this.getToken() as string) as any;
+      return decoded.role as string;
     }
-    return 'none'
+    return 'none';
   }
 
   isAdmin() {
-    console.log(this.getRole())
-    return this.getRole() === 'admin'
+    console.log(this.getRole());
+    return this.getRole() === 'admin';
   }
 }

@@ -1,21 +1,21 @@
 export interface UsersResquestResponse {
   success: boolean;
-  result: User[];
+  result: UserData[];
   nHits: number;
 }
 
 export interface UserRequestResponse {
   success: boolean;
-  result: User;
+  result: UserData;
 }
 
-export interface User {
+export interface UserData {
   _id?: string;
-  password?:string;
   username: string;
   email: string;
   role: string;
   tags: string[];
   createdAt?: Date;
   updatedAt?: Date;
+  __v?: number;
 }

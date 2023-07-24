@@ -2,10 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  Tag,
+  TagData,
   TagsRequestResponse,
 } from 'src/app/interfaces/tags-request-response';
-import { User } from 'src/app/interfaces/users-request-response';
+import { UserData } from 'src/app/interfaces/users-request-response';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TagsService } from 'src/app/services/tags.service';
 
@@ -26,7 +26,7 @@ export class NewUserComponent implements OnInit {
     role: new FormControl<string | null>('reader', [Validators.required]),
   });
 
-  allTags: Tag[] = [];
+  allTags: TagData[] = [];
 
   allRoles: string[] = ['reader', 'admin'];
 
@@ -41,7 +41,7 @@ export class NewUserComponent implements OnInit {
         if (response.result.length > 0) {
           this.allTags = response.result;
           //Reposition the public tag in case it is not in the first position
-          let i = this.allTags.findIndex((tag: Tag) => tag._id == 'PUBLIC');
+          let i = this.allTags.findIndex((tag: TagData) => tag._id == 'PUBLIC');
           //Check if public tag is present
           if (i != -1) {
             let publicTag = this.allTags[i];
@@ -60,7 +60,7 @@ export class NewUserComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.authServ.registerUser(this.newUserForm.value as User).subscribe({
+    this.authServ.registerUser(this.newUserForm.value as UserData).subscribe({
       next: (registerResponse: any) => {},
       error: (error: HttpErrorResponse) => {
         window.alert(

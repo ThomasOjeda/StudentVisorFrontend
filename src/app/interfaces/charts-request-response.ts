@@ -10,7 +10,7 @@ export interface ChartData {
   tags: string[];
   structure: any;
   type: string;
-  createdAt: Date;
-  updatedAt: Date;
-  __v: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  __v?: number;
 }

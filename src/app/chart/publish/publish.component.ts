@@ -6,7 +6,7 @@ import { ChartsService } from 'src/app/services/charts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TagsService } from 'src/app/services/tags.service';
 import {
-  Tag,
+  TagData,
   TagsRequestResponse,
 } from 'src/app/interfaces/tags-request-response';
 import { ChartData } from 'src/app/interfaces/charts-request-response';
@@ -35,7 +35,7 @@ export class PublishComponent implements OnInit {
 
   loading: boolean = false;
 
-  allTags: Tag[] = [];
+  allTags: TagData[] = [];
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
 
@@ -48,7 +48,7 @@ export class PublishComponent implements OnInit {
         if (response.result.length > 0) {
           this.allTags = response.result;
           //Reposition the public tag in case it is not in the first position
-          let i = this.allTags.findIndex((tag: Tag) => tag._id == 'PUBLIC');
+          let i = this.allTags.findIndex((tag: TagData) => tag._id == 'PUBLIC');
           //Check if public tag is present
           if (i != -1) {
             let publicTag = this.allTags[i];
