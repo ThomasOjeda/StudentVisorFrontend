@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import {
   UserData,
   UsersResquestResponse,
-} from 'src/app/interfaces/users-request-response';
+} from 'src/app/model/users-request-response';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({

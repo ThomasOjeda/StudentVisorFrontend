@@ -1,15 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChartType } from '../chart-type.model';
-import { TransformationRequest } from 'src/app/interfaces/transformation-request';
+import { ChartType } from '../chart/chart-type.model';
+import { TransformationRequest } from 'src/app/model/transformation-request';
 import { ChartsService } from 'src/app/services/charts.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TagsService } from 'src/app/services/tags.service';
 import {
   TagData,
   TagsRequestResponse,
-} from 'src/app/interfaces/tags-request-response';
-import { ChartData } from 'src/app/interfaces/charts-request-response';
+} from 'src/app/model/tags-request-response';
+import { ChartData } from 'src/app/model/charts-request-response';
 
 @Component({
   selector: 'app-publish',

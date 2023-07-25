@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import {
   UserData,
   UserRequestResponse,
-} from 'src/app/interfaces/users-request-response';
+} from 'src/app/model/users-request-response';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({

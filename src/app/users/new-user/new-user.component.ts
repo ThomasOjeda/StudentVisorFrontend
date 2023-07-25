@@ -4,8 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   TagData,
   TagsRequestResponse,
-} from 'src/app/interfaces/tags-request-response';
-import { UserData } from 'src/app/interfaces/users-request-response';
+} from 'src/app/model/tags-request-response';
+import { UserData } from 'src/app/model/users-request-response';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TagsService } from 'src/app/services/tags.service';
 

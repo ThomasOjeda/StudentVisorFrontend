@@ -8,8 +8,18 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>email</mat-label>
-        <input formControlName="email" type="email" matInput placeholder="Ej. usuario@ejemplo.com" />
-        <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+        <input
+          formControlName="email"
+          type="email"
+          matInput
+          placeholder="Ej. usuario@ejemplo.com"
+        />
+        <mat-error
+          *ngIf="
+            loginForm.get('email')?.hasError('email') &&
+            !loginForm.get('email')?.hasError('required')
+          "
+        >
           Ingrese un email valido
         </mat-error>
         <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
@@ -18,12 +28,19 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>contraseña</mat-label>
-        <input formControlName="password" type="password" matInput placeholder="***********************" />
+        <input
+          formControlName="password"
+          type="password"
+          matInput
+          placeholder="***********************"
+        />
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
           Campo <strong>requerido</strong>
         </mat-error>
       </mat-form-field>
-      <button mat-button [disabled]="loginForm.invalid" type="submit">Continuar</button>
+      <button mat-button [disabled]="loginForm.invalid" type="submit">
+        Continuar
+      </button>
     </form>
   </mat-card-actions>
 </mat-card>

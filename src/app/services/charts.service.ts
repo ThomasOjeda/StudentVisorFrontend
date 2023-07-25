@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ChartsRequestResponse } from '../interfaces/charts-request-response';
-import { TransformationRequest } from '../interfaces/transformation-request';
+import { ChartsRequestResponse } from '../model/charts-request-response';
+import { TransformationRequest } from '../model/transformation-request';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({

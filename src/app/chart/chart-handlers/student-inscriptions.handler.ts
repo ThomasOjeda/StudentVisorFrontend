@@ -1,5 +1,5 @@
 import { ElementRef, Renderer2 } from '@angular/core';
-import { ChartData } from 'src/app/interfaces/charts-request-response';
+import { ChartData } from 'src/app/model/charts-request-response';
 
 export const studentInscriptionsHandler = (
   renderer: Renderer2,

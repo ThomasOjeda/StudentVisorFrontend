@@ -7,38 +7,35 @@ import { MaterialDesignModule } from './material-design/material-design.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { ChartComponent } from './chart/chart.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
 
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { NewUserComponent } from './users/new-user/new-user.component';
 import { UserListComponent } from './users/user-list/user-list.component';
-import { PublishComponent } from './chart/publish/publish.component';
+import { PublishComponent } from './publish/publish.component';
 import { NewFileComponent } from './files/new-file/new-file.component';
 import { FilesComponent } from './files/files.component';
 import { FileListComponent } from './files/file-list/file-list.component';
+import { LoginModule } from './login/login.module';
+import { ChartModule } from './chart/chart.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    LoginComponent,
     UsersComponent,
-    DashboardComponent,
-    ChartComponent,
     UserDetailsComponent,
     NewUserComponent,
     UserListComponent,
-    PublishComponent,
     NewFileComponent,
     FilesComponent,
     FileListComponent,
+    PublishComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +45,9 @@ registerLocaleData(localeEs, 'es');
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    LoginModule,
+    ChartModule,
+    DashboardModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -7,10 +7,10 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { ChartData } from '../interfaces/charts-request-response';
-import { studentMovementsHandler } from './chart-handlers/student-movements.handler';
-import { studentInscriptionsHandler } from './chart-handlers/student-inscriptions.handler';
-import { ChartType } from './chart-type.model';
+import { ChartData } from '../../model/charts-request-response';
+import { studentMovementsHandler } from '../chart-handlers/student-movements.handler';
+import { studentInscriptionsHandler } from '../chart-handlers/student-inscriptions.handler';
+import { ChartType } from '../chart-type.model';
 
 @Component({
   selector: 'app-chart',
