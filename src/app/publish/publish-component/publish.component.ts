@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChartType } from '../chart/chart-type.model';
 import { TransformationRequest } from 'src/app/model/transformation-request';
 import { ChartsService } from 'src/app/services/charts.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,6 +9,7 @@ import {
   TagsRequestResponse,
 } from 'src/app/model/tags-request-response';
 import { ChartData } from 'src/app/model/charts-request-response';
+import { ChartType } from 'src/app/model/chart-type.model';
 
 @Component({
   selector: 'app-publish',
@@ -81,7 +81,7 @@ export class PublishComponent implements OnInit {
             name: 'A',
             tags: [],
             structure: response.structure,
-            type: 'INSC',
+            type: response.type,
             createdAt: new Date(),
             updatedAt: new Date(),
             __v: 0,

@@ -10,7 +10,7 @@ import {
 import { ChartData } from '../../model/charts-request-response';
 import { studentMovementsHandler } from '../chart-handlers/student-movements.handler';
 import { studentInscriptionsHandler } from '../chart-handlers/student-inscriptions.handler';
-import { ChartType } from '../chart-type.model';
+import { ChartType } from '../../model/chart-type.model';
 
 @Component({
   selector: 'app-chart',
@@ -26,6 +26,7 @@ export class ChartComponent implements OnInit, AfterViewInit {
 
   constructor(private renderer: Renderer2) {}
   ngAfterViewInit(): void {
+    console.log(this.chartStructure);
     if (this.chartStructure.type == ChartType.STUDENT_INSCRIPTIONS)
       studentInscriptionsHandler(
         this.renderer,
