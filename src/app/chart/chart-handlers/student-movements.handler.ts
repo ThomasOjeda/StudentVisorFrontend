@@ -8,11 +8,7 @@ export const studentMovementsHandler = (
   chartStructure: ChartData
 ) => {
   const canvas = renderer.createElement('canvas');
-  renderer.appendChild(chartTemplate.nativeElement.parentNode, canvas);
-  renderer.removeChild(
-    chartTemplate.nativeElement.parentNode,
-    chartTemplate.nativeElement
-  );
+  renderer.appendChild(chartTemplate.nativeElement, canvas);
 
   new Chart(canvas as ChartItem, {
     type: 'doughnut',

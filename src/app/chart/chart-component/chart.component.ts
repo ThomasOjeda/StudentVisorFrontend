@@ -3,8 +3,10 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
   OnInit,
   Renderer2,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { ChartData } from '../../model/charts-request-response';
@@ -17,34 +19,37 @@ import { ChartType } from '../../model/chart-type.model';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css'],
 })
-export class ChartComponent implements OnInit, AfterViewInit {
-  @Input() chartStructure!: ChartData;
+export class ChartComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() chart!: ChartData;
 
-  @ViewChild('chartTemplate', { read: ElementRef }) chartTemplate!: ElementRef;
+  @ViewChild('chartContainer', { read: ElementRef })
+  chartContainer!: ElementRef;
 
   tags!: string[];
 
   constructor(private renderer: Renderer2) {}
   ngAfterViewInit(): void {
-    console.log(this.chartStructure);
-    if (this.chartStructure.type == ChartType.STUDENT_INSCRIPTIONS)
+    if (this.chart && this.chartContainer) this.refreshContent();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.chart && this.chartContainer) this.refreshContent();
+  }
+  refreshContent() {
+    const childElements = this.chartContainer.nativeElement.childNodes;
+    for (let child of childElements) {
+      this.renderer.removeChild(this.chartContainer.nativeElement, child);
+    }
+    if (this.chart.type == ChartType.STUDENT_INSCRIPTIONS)
       studentInscriptionsHandler(
         this.renderer,
-        this.chartTemplate,
-        this.chartStructure
+        this.chartContainer,
+        this.chart
       );
-    if (this.chartStructure.type == ChartType.STUDENT_MOVEMENTS)
-      studentMovementsHandler(
-        this.renderer,
-        this.chartTemplate,
-        this.chartStructure
-      );
+    if (this.chart.type == ChartType.STUDENT_MOVEMENTS)
+      studentMovementsHandler(this.renderer, this.chartContainer, this.chart);
 
-    this.displayTags();
+    this.tags = this.chart.tags;
   }
 
-  displayTags() {
-    this.tags = this.chartStructure.tags;
-  }
   ngOnInit(): void {}
 }

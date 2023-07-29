@@ -5,7 +5,7 @@ export interface ChartsRequestResponse {
 }
 
 export interface ChartData {
-  _id: string;
+  _id?: string;
   name: string;
   tags: string[];
   structure: any;

@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { ChartsRequestResponse } from '../model/charts-request-response';
+import {
+  ChartData,
+  ChartsRequestResponse,
+} from '../model/charts-request-response';
 import { TransformationRequest } from '../model/transformation-request';
 import { AuthenticationService } from './authentication.service';
 
@@ -26,14 +29,14 @@ export class ChartsService {
   }
 
   requestTransformation(transformation: TransformationRequest) {
-    return this.http.post(
+    return this.http.post<ChartData>(
       `${environment.apiUrl}/api/v1/transformations`,
       transformation
     );
   }
 
   requestPrevisualization(transformation: TransformationRequest) {
-    return this.http.post(
+    return this.http.post<ChartData>(
       `${environment.apiUrl}/api/v1/transformations/pre`,
       transformation
     );

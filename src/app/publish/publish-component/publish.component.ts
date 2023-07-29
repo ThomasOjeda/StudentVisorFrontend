@@ -10,6 +10,7 @@ import {
 } from 'src/app/model/tags-request-response';
 import { ChartData } from 'src/app/model/charts-request-response';
 import { ChartType } from 'src/app/model/chart-type.model';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-publish',
@@ -26,13 +27,14 @@ export class PublishComponent implements OnInit {
     transformationBody: new FormGroup<any>({}),
   });
 
-  testStructure!: ChartData;
+  previsualizedChart!: ChartData | null;
 
   types = [
     { label: 'Movimientos de estudiantes', value: ChartType.STUDENT_MOVEMENTS },
     { label: 'Inscripciones', value: ChartType.STUDENT_INSCRIPTIONS },
   ];
 
+  toggle: boolean = false;
   loading: boolean = false;
 
   allTags: TagData[] = [];
@@ -66,26 +68,15 @@ export class PublishComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  previsualize() {
     this.loading = true;
     this.chartService
       .requestPrevisualization(
         this.transformationForm.value as TransformationRequest
       )
       .subscribe({
-        next: (response: any) => {
-          ///MEJORAR tipo
-          console.log(response.structure);
-          this.testStructure = {
-            _id: 'AA',
-            name: 'A',
-            tags: [],
-            structure: response.structure,
-            type: response.type,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-            __v: 0,
-          };
+        next: (response: ChartData) => {
+          this.previsualizedChart = response;
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
@@ -93,6 +84,27 @@ export class PublishComponent implements OnInit {
         },
         complete: () => {
           console.log('previsualization request completed');
+          this.loading = false;
+        },
+      });
+  }
+
+  publish() {
+    this.loading = true;
+    this.chartService
+      .requestTransformation(
+        this.transformationForm.value as TransformationRequest
+      )
+      .subscribe({
+        next: (response: ChartData) => {
+          this.previsualizedChart = response;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+          this.loading = false;
+        },
+        complete: () => {
+          console.log('publish request completed');
           this.loading = false;
         },
       });

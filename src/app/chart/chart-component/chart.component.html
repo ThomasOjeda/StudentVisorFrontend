@@ -1,12 +1,10 @@
 <mat-card>
-    <h2>
-        {{chartStructure.name}}
-    </h2>
-  <div>
-    <ng-template #chartTemplate></ng-template>
-  </div>
+  <h2>
+    {{ chart.name }}
+  </h2>
+  <div #chartContainer></div>
   <mat-chip-list>
-    <mat-chip *ngFor="let tag of tags" disabled>{{tag}}</mat-chip>
+    <mat-chip *ngFor="let tag of tags" disabled>{{ tag }}</mat-chip>
   </mat-chip-list>
   <button mat-button>Detalles</button>
 </mat-card>

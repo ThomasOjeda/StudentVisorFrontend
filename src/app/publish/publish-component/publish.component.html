@@ -93,11 +93,14 @@
     <button
       mat-button
       [disabled]="transformationForm.invalid"
-      (click)="onSubmit()"
+      (click)="previsualize()"
     >
       Previsualizar
     </button>
   </form>
 </div>
 
-<app-chart *ngIf="testStructure" [chartStructure]="testStructure"></app-chart>
+<section *ngIf="previsualizedChart">
+  <app-chart [chart]="previsualizedChart"></app-chart>
+  <button mat-button (click)="publish()">Publicar</button>
+</section>

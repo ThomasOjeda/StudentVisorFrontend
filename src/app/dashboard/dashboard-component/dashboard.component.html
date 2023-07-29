@@ -1,10 +1,5 @@
-
-
 <div id="charts-container">
-
-    <div *ngFor="let chart of charts?.result;">
-        <app-chart [chartStructure]="chart"></app-chart>
-    </div>
-
+  <div *ngFor="let chart of charts?.result">
+    <app-chart [chart]="chart"></app-chart>
+  </div>
 </div>
-
