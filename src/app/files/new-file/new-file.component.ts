@@ -17,7 +17,9 @@ export class NewFileComponent implements OnInit {
   selectedFile: Blob | null = null;
   fileTouched: boolean = false;
 
-  types = [{label:"Inscripciones de alumnos",value:"student-inscriptions"}]
+  types = [
+    { label: 'Inscripciones de alumnos', value: 'student-inscriptions' },
+  ];
 
   constructor(private filesServ: FilesService) {}
 
@@ -30,10 +32,9 @@ export class NewFileComponent implements OnInit {
 
   onSubmit() {
     let form = new FormData();
-    form.append('fileType', this.newFileForm.value.fileType ?? '');
+    form.append('type', this.newFileForm.value.fileType ?? '');
     form.append('year', this.newFileForm.value.year ?? '');
     form.append('uploaded_file', this.selectedFile as Blob);
-    console.log(this.newFileForm.value);
     this.filesServ.uploadFile(form).subscribe({
       next: () => {},
       error: (err: HttpErrorResponse) => {
