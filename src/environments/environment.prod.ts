@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:5000', //CHANGE for PRODUCTION BUILD
+  apiUrl: '', //Will default to the current url of the server that served the frontend
 };
