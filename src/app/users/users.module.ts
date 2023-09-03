@@ -7,6 +7,7 @@ import { UsersComponent } from './users-component/users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { UsersRoutingModule } from './users-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersRoutingModule,
     ReactiveFormsModule,
     MaterialDesignModule,
+    SharedModule,
   ],
 })
 export class UsersModule {}

@@ -1,7 +1,18 @@
+:host {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
 table {
   width: 100%;
 }
 
 mat-paginator {
   width: 100%;
+}
+
+.filter {
+  display: block;
+  width: 200px;
 }

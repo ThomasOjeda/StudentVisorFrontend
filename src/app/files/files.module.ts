@@ -6,6 +6,7 @@ import { NewFileComponent } from './new-file/new-file.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { FilesRoutingModule } from './files-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [FileListComponent, FilesComponent, NewFileComponent],
@@ -14,6 +15,7 @@ import { FilesRoutingModule } from './files-routing.module';
     FilesRoutingModule,
     ReactiveFormsModule,
     MaterialDesignModule,
+    SharedModule,
   ],
 })
 export class FilesModule {}

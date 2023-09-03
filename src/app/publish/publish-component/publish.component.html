@@ -1,106 +1,102 @@
-<div class="loading-shade-parent">
-  <div class="loading-shade" *ngIf="loading">
-    <mat-spinner *ngIf="loading"></mat-spinner>
-  </div>
+<form class="main-form" [formGroup]="transformationForm">
+  <form formGroupName="transformationHeader">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input formControlName="name" type="text" matInput />
+      <mat-error
+        *ngIf="
+          transformationForm
+            .get('transformationHeader.name')
+            ?.hasError('required')
+        "
+      >
+        Campo <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo de grafico</mat-label>
+      <mat-select
+        formControlName="type"
+        #type
+        (valueChange)="typeChanged($event)"
+      >
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{ type.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <form class="main-form" [formGroup]="transformationForm">
-    <form formGroupName="transformationHeader">
-      <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input formControlName="name" type="text" matInput />
-        <mat-error
-          *ngIf="
-            transformationForm
-              .get('transformationHeader.name')
-              ?.hasError('required')
-          "
-        >
-          Campo <strong>requerido</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Tipo de grafico</mat-label>
-        <mat-select
-          formControlName="type"
-          #type
-          (valueChange)="typeChanged($event)"
-        >
-          <mat-option *ngFor="let type of types" [value]="type.value">
-            {{ type.label }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Etiquetas</mat-label>
-        <mat-select formControlName="tags" multiple>
-          <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
-            tag._id
-          }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
-
-    <form formGroupName="transformationBody">
-      <div [ngSwitch]="type.value">
-        <div *ngSwitchCase="'STMV'">
-          <mat-form-field>
-            <mat-label>Año inicio</mat-label>
-            <input formControlName="yearA" type="number" matInput />
-            <mat-error
-              *ngIf="
-                transformationForm
-                  .get('transformationBody.yearA')
-                  ?.hasError('required')
-              "
-            >
-              Campo <strong>requerido</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Año fin</mat-label>
-            <input formControlName="yearB" type="number" matInput />
-            <mat-error
-              *ngIf="
-                transformationForm
-                  .get('transformationBody.yearB')
-                  ?.hasError('required')
-              "
-            >
-              Campo <strong>requerido</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div *ngSwitchCase="'INSC'">
-          <mat-form-field>
-            <mat-label>Año</mat-label>
-            <input formControlName="year" type="number" matInput />
-            <mat-error
-              *ngIf="
-                transformationForm
-                  .get('transformationBody.year')
-                  ?.hasError('required')
-              "
-            >
-              Campo <strong>requerido</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-    </form>
-    <mat-divider></mat-divider>
-
-    <button
-      mat-button
-      [disabled]="transformationForm.invalid"
-      (click)="previsualize()"
-    >
-      Previsualizar
-    </button>
+    <mat-form-field>
+      <mat-label>Etiquetas</mat-label>
+      <mat-select formControlName="tags" multiple>
+        <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
+          tag._id
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </form>
-</div>
+
+  <form formGroupName="transformationBody">
+    <div [ngSwitch]="type.value">
+      <div *ngSwitchCase="'STMV'">
+        <mat-form-field>
+          <mat-label>Año inicio</mat-label>
+          <input formControlName="yearA" type="number" matInput />
+          <mat-error
+            *ngIf="
+              transformationForm
+                .get('transformationBody.yearA')
+                ?.hasError('required')
+            "
+          >
+            Campo <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Año fin</mat-label>
+          <input formControlName="yearB" type="number" matInput />
+          <mat-error
+            *ngIf="
+              transformationForm
+                .get('transformationBody.yearB')
+                ?.hasError('required')
+            "
+          >
+            Campo <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="'INSC'">
+        <mat-form-field>
+          <mat-label>Año</mat-label>
+          <input formControlName="year" type="number" matInput />
+          <mat-error
+            *ngIf="
+              transformationForm
+                .get('transformationBody.year')
+                ?.hasError('required')
+            "
+          >
+            Campo <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <mat-divider></mat-divider>
+
+  <button
+    mat-button
+    [disabled]="transformationForm.invalid"
+    (click)="previsualize()"
+  >
+    Previsualizar
+  </button>
+</form>
 
 <section *ngIf="previsualizedChart">
   <app-chart [chart]="previsualizedChart"></app-chart>
   <button mat-button (click)="publish()">Publicar</button>
 </section>
+
+<app-shade-loading-spinner *ngIf="loading"></app-shade-loading-spinner>
