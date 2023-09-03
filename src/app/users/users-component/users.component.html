@@ -5,7 +5,9 @@
       Lista de usuarios
     </ng-template>
 
-    <app-user-list></app-user-list>
+    <app-user-list
+      [newUserEvent]="this.newUserCommand.asObservable()"
+    ></app-user-list>
   </mat-tab>
 
   <mat-tab>
@@ -14,6 +16,6 @@
       Crear nuevo
     </ng-template>
 
-    <app-new-user></app-new-user>
+    <app-new-user [newUserCommand]="this.newUserCommand"></app-new-user>
   </mat-tab>
 </mat-tab-group>

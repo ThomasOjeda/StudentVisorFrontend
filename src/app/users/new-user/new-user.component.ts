@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import {
   TagData,
   TagsRequestResponse,
@@ -31,6 +32,8 @@ export class NewUserComponent implements OnInit {
   allRoles: string[] = ['reader', 'admin'];
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
+
+  @Input() newUserCommand!: Subject<string>;
 
   constructor(
     private authServ: AuthenticationService,
@@ -63,12 +66,14 @@ export class NewUserComponent implements OnInit {
     this.authServ.registerUser(this.newUserForm.value as UserData).subscribe({
       next: (registerResponse: any) => {},
       error: (error: HttpErrorResponse) => {
-        window.alert(
-          'No se ha podido registrar el usuario. Verifique no existe un usuario registrado con la misma dirección de correo.'
-        );
+        if (error.status == 409)
+          window.alert(
+            'No se ha podido registrar el usuario. Existe un usuario registrado con la misma dirección de correo.'
+          );
       },
       complete: () => {
         window.alert('Registrado');
+        this.newUserCommand.next('new');
       },
     });
   }
