@@ -13,7 +13,7 @@ import { FilesService } from '../../services/files.service';
 export class FileListComponent implements OnInit {
   dataSource!: MatTableDataSource<FileData>;
 
-  columnsToDisplay = ['filename', 'year'];
+  columnsToDisplay = ['name', 'type', 'year'];
 
   isLoadingResults = true;
 

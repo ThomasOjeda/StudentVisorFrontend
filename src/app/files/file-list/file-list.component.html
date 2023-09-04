@@ -3,13 +3,17 @@
   <input matInput (keyup)="applyFilter($event)" #input />
 </mat-form-field>
 <table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="filename">
+  <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Nombre</th>
-    <td mat-cell *matCellDef="let file">{{ file.filename }}</td>
+    <td mat-cell *matCellDef="let file">{{ file.name }}</td>
   </ng-container>
   <ng-container matColumnDef="year">
-    <th mat-header-cell *matHeaderCellDef>año</th>
+    <th mat-header-cell *matHeaderCellDef>Año</th>
     <td mat-cell *matCellDef="let file">{{ file.year }}</td>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Tipo</th>
+    <td mat-cell *matCellDef="let file">{{ file.type }}</td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
