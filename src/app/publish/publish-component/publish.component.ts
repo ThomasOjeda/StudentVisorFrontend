@@ -10,7 +10,6 @@ import {
 } from 'src/app/model/tags-request-response';
 import { ChartData } from 'src/app/model/charts-request-response';
 import { ChartType } from 'src/app/model/chart-type.model';
-import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-publish',
@@ -20,7 +19,11 @@ import { Chart } from 'chart.js';
 export class PublishComponent implements OnInit {
   transformationForm = new FormGroup({
     transformationHeader: new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(256),
+      ]),
+      description: new FormControl('', [Validators.maxLength(512)]),
       type: new FormControl('', [Validators.required]),
       tags: new FormControl([]),
     }),

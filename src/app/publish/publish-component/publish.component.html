@@ -12,6 +12,28 @@
       >
         Campo <strong>requerido</strong>
       </mat-error>
+      <mat-error
+        *ngIf="
+          transformationForm
+            .get('transformationHeader.name')
+            ?.hasError('maxlength')
+        "
+      >
+        Limite de 256 caracteres alcanzado
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripcion</mat-label>
+      <input formControlName="description" type="text" matInput />
+      <mat-error
+        *ngIf="
+          transformationForm
+            .get('transformationHeader.description')
+            ?.hasError('maxlength')
+        "
+      >
+        Limite de 512 caracteres alcanzado
+      </mat-error>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Tipo de grafico</mat-label>

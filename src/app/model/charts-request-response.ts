@@ -7,6 +7,7 @@ export interface ChartsRequestResponse {
 export interface ChartData {
   _id?: string;
   name: string;
+  description?: string;
   tags: string[];
   structure: any;
   type: string;
