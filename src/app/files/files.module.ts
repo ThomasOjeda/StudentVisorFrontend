@@ -7,9 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialDesignModule } from '../material-design/material-design.module';
 import { FilesRoutingModule } from './files-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { FileDetailsComponent } from './file-details/file-details.component';
 
 @NgModule({
-  declarations: [FileListComponent, FilesComponent, NewFileComponent],
+  declarations: [FileListComponent, FilesComponent, NewFileComponent, FileDetailsComponent],
   imports: [
     CommonModule,
     FilesRoutingModule,

@@ -4,6 +4,11 @@ export interface FilesRequestResponse {
   nHits: number;
 }
 
+export interface FileRequestResponse {
+  success: boolean;
+  result: FileData;
+}
+
 export interface FileData {
   _id: string;
   name: string;

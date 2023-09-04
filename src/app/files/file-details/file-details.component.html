@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Detalles del archivo</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <h3 mat-line>Nombre</h3>
+        <p mat-line>{{ file.name }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Descripcion</h3>
+        <p mat-line>{{ file.description ?? "Sin descripcion" }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Tipo</h3>
+        <p mat-line>{{ file.type }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Fecha de creación</h3>
+        <p mat-line>{{ file.createdAt | date }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Ultima actualización</h3>
+        <p mat-line>{{ file.updatedAt | date }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

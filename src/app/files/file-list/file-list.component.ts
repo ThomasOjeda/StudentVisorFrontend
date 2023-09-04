@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { FileData, FilesRequestResponse } from '../../model/file-data';
 import { FilesService } from '../../services/files.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-file-list',
@@ -13,14 +14,14 @@ import { FilesService } from '../../services/files.service';
 export class FileListComponent implements OnInit {
   dataSource!: MatTableDataSource<FileData>;
 
-  columnsToDisplay = ['name', 'type', 'year'];
+  columnsToDisplay = ['name', 'type', 'year', 'detailsButton'];
 
   isLoadingResults = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private filesServ: FilesService) {}
+  constructor(private router: Router, private filesServ: FilesService) {}
 
   ngOnInit(): void {}
 
@@ -52,5 +53,9 @@ export class FileListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openDetails(file: FileData) {
+    this.router.navigate(['home', 'files', file._id]);
   }
 }
