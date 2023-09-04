@@ -21,6 +21,8 @@ export class NewFileComponent implements OnInit {
     { label: 'Inscripciones de alumnos', value: 'student-inscriptions' },
   ];
 
+  uploading = false;
+
   constructor(private filesServ: FilesService) {}
 
   ngOnInit(): void {}
@@ -31,6 +33,7 @@ export class NewFileComponent implements OnInit {
   }
 
   onSubmit() {
+    this.uploading = true;
     let form = new FormData();
     form.append('type', this.newFileForm.value.fileType ?? '');
     form.append('year', this.newFileForm.value.year ?? '');
@@ -38,10 +41,12 @@ export class NewFileComponent implements OnInit {
     this.filesServ.uploadFile(form).subscribe({
       next: () => {},
       error: (err: HttpErrorResponse) => {
+        this.uploading = true;
+
         console.log(err);
       },
       complete: () => {
-        console.log('uploaded');
+        this.uploading = false;
       },
     });
   }

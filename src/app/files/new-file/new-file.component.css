@@ -1,7 +1,10 @@
+:host {
+  position: relative;
+}
+
 form {
   width: 80%;
   margin: auto;
-
 }
 
 mat-form-field {
