@@ -10,8 +10,10 @@ import { FilesService } from 'src/app/services/files.service';
 })
 export class NewFileComponent implements OnInit {
   newFileForm = new FormGroup({
-    year: new FormControl<string | null>('', [Validators.required]),
-    fileType: new FormControl<string | null>('', [Validators.required]),
+    name: new FormControl('', [Validators.required, Validators.maxLength(256)]),
+    description: new FormControl('', [Validators.maxLength(512)]),
+    year: new FormControl('', [Validators.required]),
+    fileType: new FormControl('', [Validators.required]),
   });
 
   selectedFile: Blob | null = null;
@@ -35,6 +37,9 @@ export class NewFileComponent implements OnInit {
   onSubmit() {
     this.uploading = true;
     let form = new FormData();
+    form.append('name', this.newFileForm.value.name ?? '');
+    if (this.newFileForm.value.description)
+      form.append('description', this.newFileForm.value.description);
     form.append('type', this.newFileForm.value.fileType ?? '');
     form.append('year', this.newFileForm.value.year ?? '');
     form.append('uploaded_file', this.selectedFile as Blob);
@@ -42,7 +47,6 @@ export class NewFileComponent implements OnInit {
       next: () => {},
       error: (err: HttpErrorResponse) => {
         this.uploading = true;
-
         console.log(err);
       },
       complete: () => {

@@ -1,5 +1,32 @@
 <form [formGroup]="newFileForm" (ngSubmit)="onSubmit()">
   <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input
+      formControlName="name"
+      type="text"
+      matInput
+      placeholder="Nombre del archivo"
+    />
+    <mat-error *ngIf="newFileForm.get('name')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+    <mat-error *ngIf="newFileForm.get('name')?.hasError('maxlength')">
+      Se supero el limite de 256 caracteres
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripcion</mat-label>
+    <input
+      formControlName="description"
+      type="text"
+      matInput
+      placeholder="Descripcion del archivo (opcional)"
+    />
+    <mat-error *ngIf="newFileForm.get('description')?.hasError('maxlength')">
+      Se supero el limite de 512 caracteres
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
     <mat-label>año</mat-label>
     <input formControlName="year" type="number" matInput placeholder="20xx" />
     <mat-error *ngIf="newFileForm.get('year')?.hasError('required')">
