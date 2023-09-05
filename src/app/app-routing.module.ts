@@ -29,6 +29,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
+      {
+        path: 'tags',
+        loadChildren: () =>
+          import('./tags/tags.module').then((m) => m.TagsModule),
+      },
       { path: '**', redirectTo: 'dashboard' },
     ],
   },

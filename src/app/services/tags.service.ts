@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { TagsRequestResponse } from '../model/tags-request-response';
+import { TagData, TagsRequestResponse } from '../model/tags-request-response';
 
 @Injectable({
   providedIn: 'root',
@@ -13,5 +13,9 @@ export class TagsService {
     return this.http.get<TagsRequestResponse>(
       `${environment.apiUrl}/api/v1/tags`
     );
+  }
+
+  addTag(tag: TagData) {
+    return this.http.post(`${environment.apiUrl}/api/v1/tags`, tag);
   }
 }

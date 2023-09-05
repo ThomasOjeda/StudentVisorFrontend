@@ -1,0 +1,22 @@
+<form [formGroup]="newTagForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Etiqueta</mat-label>
+    <input formControlName="_id" type="text" matInput />
+
+    <mat-error *ngIf="newTagForm.get('_id')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripcion</mat-label>
+    <input formControlName="description" type="text" matInput />
+    <mat-error *ngIf="newTagForm.get('description')?.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+  <button mat-button [disabled]="newTagForm.invalid" type="submit">
+    Agregar
+  </button>
+</form>
