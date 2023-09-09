@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -37,6 +38,7 @@ const MaterialComponents = [
   MatRadioModule,
   MatSelectModule,
   MatDividerModule,
+  MatDialogModule,
 ];
 
 @NgModule({

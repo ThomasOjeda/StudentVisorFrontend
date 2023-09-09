@@ -10,7 +10,7 @@ export interface UserRequestResponse {
 }
 
 export interface UserData {
-  _id?: string;
+  _id: string;
   username: string;
   email: string;
   role: string;

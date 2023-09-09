@@ -23,4 +23,8 @@ export class UsersService {
       `${environment.apiUrl}/api/v1/users/${userId}`
     );
   }
+
+  deleteUser(userId: string) {
+    return this.http.delete(`${environment.apiUrl}/api/v1/users/${userId}`);
+  }
 }

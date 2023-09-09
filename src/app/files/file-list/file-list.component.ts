@@ -16,7 +16,7 @@ import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/conf
 export class FileListComponent implements OnInit {
   dataSource!: MatTableDataSource<FileData>;
 
-  columnsToDisplay = ['name', 'type', 'year', 'detailsButton'];
+  columnsToDisplay = ['name', 'type', 'year', 'actions'];
 
   isLoadingResults = true;
 
