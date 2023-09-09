@@ -1,1 +1,28 @@
-<p>tag-details works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Detalles de la etiqueta</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item>
+        <h3 mat-line>Identificador</h3>
+        <p mat-line>{{ tag._id }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Descripcion</h3>
+        <p mat-line>{{ tag.description }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Fecha de creación</h3>
+        <p mat-line>{{ tag.createdAt | date }}</p>
+      </mat-list-item>
+
+      <mat-list-item>
+        <h3 mat-line>Ultima actualización</h3>
+        <p mat-line>{{ tag.updatedAt | date }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

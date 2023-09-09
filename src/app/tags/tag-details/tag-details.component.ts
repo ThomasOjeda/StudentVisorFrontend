@@ -1,15 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import {
+  TagData,
+  TagRequestResponse,
+} from 'src/app/model/tags-request-response';
+import { TagsService } from 'src/app/services/tags.service';
 
 @Component({
   selector: 'app-tag-details',
   templateUrl: './tag-details.component.html',
-  styleUrls: ['./tag-details.component.css']
+  styleUrls: ['./tag-details.component.css'],
 })
 export class TagDetailsComponent implements OnInit {
+  tag!: TagData;
 
-  constructor() { }
+  constructor(
+    private actRoute: ActivatedRoute,
+    private tagsServ: TagsService
+  ) {}
 
   ngOnInit(): void {
+    this.actRoute.params.subscribe({
+      next: (params: Params) => {
+        this.requestTagData(params);
+      },
+      error: () => {},
+      complete: () => {},
+    });
   }
 
+  requestTagData(params: Params) {
+    this.tagsServ.getTag(params['id']).subscribe({
+      next: (tag: TagRequestResponse) => {
+        this.tag = tag.result;
+      },
+      error: () => {},
+      complete: () => {},
+    });
+  }
 }

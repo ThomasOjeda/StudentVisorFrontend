@@ -19,24 +19,20 @@ export class FileDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.actRoute.params.subscribe({
       next: (params: Params) => {
-        this.requestUserData(params);
+        this.requestFileData(params);
       },
       error: () => {},
       complete: () => {},
     });
   }
 
-  requestUserData(params: Params) {
+  requestFileData(params: Params) {
     this.filesServ.getFile(params['id']).subscribe({
       next: (file: FileRequestResponse) => {
-        this.handleUserData(file);
+        this.file = file.result;
       },
       error: () => {},
       complete: () => {},
     });
-  }
-
-  handleUserData(file: FileRequestResponse) {
-    this.file = file.result;
   }
 }

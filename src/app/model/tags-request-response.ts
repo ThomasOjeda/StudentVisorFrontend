@@ -4,6 +4,12 @@ export interface TagsRequestResponse {
   nHits: number;
 }
 
+export interface TagRequestResponse {
+  success: boolean;
+  result: TagData;
+  nHits: number;
+}
+
 export interface TagData {
   _id: string;
   description: string;
