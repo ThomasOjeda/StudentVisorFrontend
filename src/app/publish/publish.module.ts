@@ -8,9 +8,10 @@ import { PublishRoutingModule } from './publish-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PublicationsComponent } from './publications/publications.component';
 import { PublicationListComponent } from './publication-list/publication-list.component';
+import { PublicationDetailsComponent } from './publication-details/publication-details.component';
 
 @NgModule({
-  declarations: [PublishComponent, PublicationsComponent, PublicationListComponent],
+  declarations: [PublishComponent, PublicationsComponent, PublicationListComponent, PublicationDetailsComponent],
   imports: [
     CommonModule,
     PublishRoutingModule,

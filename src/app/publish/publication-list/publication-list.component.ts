@@ -65,7 +65,7 @@ export class PublicationListComponent implements OnInit {
   }
 
   openDetails(chart: ChartData) {
-    this.router.navigate(['home', 'charts', chart._id]);
+    this.router.navigate(['home', 'publish', chart._id]);
   }
 
   openDeleteDialog(chart: ChartData) {

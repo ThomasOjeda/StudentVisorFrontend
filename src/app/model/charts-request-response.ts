@@ -4,6 +4,12 @@ export interface ChartsRequestResponse {
   nHits: number;
 }
 
+export interface ChartRequestResponse {
+  success: boolean;
+  result: ChartData;
+  nHits: number;
+}
+
 export interface ChartData {
   _id: string;
   name: string;

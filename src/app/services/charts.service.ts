@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {
   ChartData,
+  ChartRequestResponse,
   ChartsRequestResponse,
 } from '../model/charts-request-response';
 import { TransformationRequest } from '../model/transformation-request';
@@ -25,6 +26,17 @@ export class ChartsService {
     else
       return this.http.get<ChartsRequestResponse>(
         `${environment.apiUrl}/api/v1/charts/reader`
+      );
+  }
+
+  getChart(chartId: string) {
+    if (this.authServ.isAdmin())
+      return this.http.get<ChartRequestResponse>(
+        `${environment.apiUrl}/api/v1/charts/admin/${chartId}`
+      );
+    else
+      return this.http.get<ChartRequestResponse>(
+        `${environment.apiUrl}/api/v1/charts/reader/${chartId}`
       );
   }
 
