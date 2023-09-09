@@ -8,15 +8,22 @@ import { MaterialDesignModule } from '../material-design/material-design.module'
 import { FilesRoutingModule } from './files-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FileDetailsComponent } from './file-details/file-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [FileListComponent, FilesComponent, NewFileComponent, FileDetailsComponent],
+  declarations: [
+    FileListComponent,
+    FilesComponent,
+    NewFileComponent,
+    FileDetailsComponent,
+  ],
   imports: [
     CommonModule,
     FilesRoutingModule,
     ReactiveFormsModule,
     MaterialDesignModule,
     SharedModule,
+    MatDialogModule,
   ],
 })
 export class FilesModule {}

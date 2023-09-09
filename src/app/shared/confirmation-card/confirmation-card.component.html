@@ -1,0 +1,12 @@
+<mat-card-header>
+  <mat-card-title>{{ title }}</mat-card-title>
+</mat-card-header>
+<mat-card-content class="buttons">
+  <button mat-raised-button color="warn" (click)="option1()">
+    {{ op1 }}
+  </button>
+  <button mat-raised-button color="primary" (click)="option2()">
+    {{ op2 }}
+  </button>
+</mat-card-content>
+<app-shade-loading-spinner *ngIf="waiting"></app-shade-loading-spinner>

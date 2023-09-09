@@ -24,4 +24,8 @@ export class FilesService {
   uploadFile(form: FormData) {
     return this.http.post(`${environment.apiUrl}/api/v1/uploads`, form);
   }
+
+  deleteFile(fileId: string) {
+    return this.http.delete(`${environment.apiUrl}/api/v1/uploads/${fileId}`);
+  }
 }

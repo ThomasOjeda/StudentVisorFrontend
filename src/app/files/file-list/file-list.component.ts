@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FileData, FilesRequestResponse } from '../../model/file-data';
 import { FilesService } from '../../services/files.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 
 @Component({
   selector: 'app-file-list',
@@ -21,7 +23,11 @@ export class FileListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private router: Router, private filesServ: FilesService) {}
+  constructor(
+    private router: Router,
+    private filesServ: FilesService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
 
@@ -57,5 +63,27 @@ export class FileListComponent implements OnInit {
 
   openDetails(file: FileData) {
     this.router.navigate(['home', 'files', file._id]);
+  }
+
+  openDeleteDialog(file: FileData) {
+    let dialogRef = this.dialog.open(ConfirmationCardComponent);
+    dialogRef.componentInstance.title = `¿Borrar el archivo ${file.name}?`;
+
+    dialogRef.componentInstance.op1 = 'Borrar';
+    dialogRef.componentInstance.op2 = 'Cancelar';
+    dialogRef.componentInstance.result.subscribe((result) => {
+      if (result == 'Borrar') {
+        this.filesServ.deleteFile(file._id).subscribe({
+          next: () => {},
+          error: () => {},
+          complete: () => {
+            dialogRef.close();
+            this.refresh();
+          },
+        });
+      } else {
+        dialogRef.close();
+      }
+    });
   }
 }

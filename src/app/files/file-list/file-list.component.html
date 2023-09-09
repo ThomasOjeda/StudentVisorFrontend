@@ -19,9 +19,10 @@
   <ng-container matColumnDef="detailsButton">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let file">
-      <button mat-raised-button color="primary" (click)="openDetails(file)">
-        Detalles
-      </button>
+      <app-list-commands
+        (detailsSignal)="this.openDetails(file)"
+        (deleteSignal)="this.openDeleteDialog(file)"
+      ></app-list-commands>
     </td>
   </ng-container>
 
