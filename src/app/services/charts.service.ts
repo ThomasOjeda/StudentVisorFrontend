@@ -41,4 +41,9 @@ export class ChartsService {
       transformation
     );
   }
+  deleteChart(chartId: string) {
+    return this.http.delete(
+      `${environment.apiUrl}/api/v1/charts/admin/${chartId}`
+    );
+  }
 }

@@ -6,9 +6,11 @@ import { MaterialDesignModule } from '../material-design/material-design.module'
 import { ChartModule } from '../chart/chart.module';
 import { PublishRoutingModule } from './publish-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { PublicationsComponent } from './publications/publications.component';
+import { PublicationListComponent } from './publication-list/publication-list.component';
 
 @NgModule({
-  declarations: [PublishComponent],
+  declarations: [PublishComponent, PublicationsComponent, PublicationListComponent],
   imports: [
     CommonModule,
     PublishRoutingModule,

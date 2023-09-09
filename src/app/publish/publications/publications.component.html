@@ -1,0 +1,19 @@
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>query_stats</mat-icon>
+      Lista de graficos
+    </ng-template>
+
+    <app-publication-list></app-publication-list>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>add_chart</mat-icon>
+      Generar nuevo
+    </ng-template>
+
+    <app-publish></app-publish>
+  </mat-tab>
+</mat-tab-group>
