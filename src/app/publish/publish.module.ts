@@ -9,9 +9,11 @@ import { SharedModule } from '../shared/shared.module';
 import { PublicationsComponent } from './publications/publications.component';
 import { PublicationListComponent } from './publication-list/publication-list.component';
 import { PublicationDetailsComponent } from './publication-details/publication-details.component';
+import { StudentMovementsComponent } from './forms/student-movements/student-movements.component';
+import { StudentInscriptionsComponent } from './forms/student-inscriptions/student-inscriptions.component';
 
 @NgModule({
-  declarations: [PublishComponent, PublicationsComponent, PublicationListComponent, PublicationDetailsComponent],
+  declarations: [PublishComponent, PublicationsComponent, PublicationListComponent, PublicationDetailsComponent, StudentMovementsComponent, StudentInscriptionsComponent],
   imports: [
     CommonModule,
     PublishRoutingModule,

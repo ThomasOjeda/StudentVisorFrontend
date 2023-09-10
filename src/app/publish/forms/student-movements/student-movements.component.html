@@ -1,0 +1,15 @@
+<mat-form-field>
+  <mat-label>Año inicio</mat-label>
+  <input [formControl]="yearAInputControl" type="number" matInput />
+
+  <mat-error *ngIf="yearAInputControl.hasError('required')">
+    Campo <strong>requerido</strong>
+  </mat-error>
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Año fin</mat-label>
+  <input [formControl]="yearBInputControl" type="number" matInput />
+  <mat-error *ngIf="yearBInputControl.hasError('required')">
+    Campo <strong>requerido</strong>
+  </mat-error>
+</mat-form-field>

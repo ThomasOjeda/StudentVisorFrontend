@@ -61,47 +61,15 @@
   <form formGroupName="transformationBody">
     <div [ngSwitch]="type.value">
       <div *ngSwitchCase="'STMV'">
-        <mat-form-field>
-          <mat-label>Año inicio</mat-label>
-          <input formControlName="yearA" type="number" matInput />
-          <mat-error
-            *ngIf="
-              transformationForm
-                .get('transformationBody.yearA')
-                ?.hasError('required')
-            "
-          >
-            Campo <strong>requerido</strong>
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Año fin</mat-label>
-          <input formControlName="yearB" type="number" matInput />
-          <mat-error
-            *ngIf="
-              transformationForm
-                .get('transformationBody.yearB')
-                ?.hasError('required')
-            "
-          >
-            Campo <strong>requerido</strong>
-          </mat-error>
-        </mat-form-field>
+        <app-student-movements
+          [transformationBody]="this.transformationBodyGroup"
+        ></app-student-movements>
       </div>
+
       <div *ngSwitchCase="'INSC'">
-        <mat-form-field>
-          <mat-label>Año</mat-label>
-          <input formControlName="year" type="number" matInput />
-          <mat-error
-            *ngIf="
-              transformationForm
-                .get('transformationBody.year')
-                ?.hasError('required')
-            "
-          >
-            Campo <strong>requerido</strong>
-          </mat-error>
-        </mat-form-field>
+        <app-student-inscriptions
+          [transformationBody]="this.transformationBodyGroup"
+        ></app-student-inscriptions>
       </div>
     </div>
   </form>

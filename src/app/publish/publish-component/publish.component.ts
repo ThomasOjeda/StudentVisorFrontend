@@ -17,6 +17,8 @@ import { ChartType } from 'src/app/model/chart-type.model';
   styleUrls: ['./publish.component.css'],
 })
 export class PublishComponent implements OnInit {
+  transformationBodyGroup = new FormGroup<any>({});
+
   transformationForm = new FormGroup({
     transformationHeader: new FormGroup({
       name: new FormControl('', [
@@ -27,7 +29,7 @@ export class PublishComponent implements OnInit {
       type: new FormControl('', [Validators.required]),
       tags: new FormControl([]),
     }),
-    transformationBody: new FormGroup<any>({}),
+    transformationBody: this.transformationBodyGroup,
   });
 
   previsualizedChart!: ChartData | null;
@@ -72,6 +74,7 @@ export class PublishComponent implements OnInit {
   ngOnInit(): void {}
 
   previsualize() {
+    console.log(this.transformationForm.value);
     this.loading = true;
     this.chartService
       .requestPrevisualization(
@@ -114,7 +117,12 @@ export class PublishComponent implements OnInit {
   }
 
   typeChanged($event: string) {
-    if ($event === 'STMV')
+    this.transformationBodyGroup = new FormGroup<any>({});
+    this.transformationForm.setControl(
+      'transformationBody',
+      this.transformationBodyGroup
+    );
+    /*     if ($event === 'STMV')
       this.transformationForm.setControl(
         'transformationBody',
         new FormGroup({
@@ -128,6 +136,6 @@ export class PublishComponent implements OnInit {
         new FormGroup({
           year: new FormControl(null, [Validators.required]),
         })
-      );
+      ); */
   }
 }
