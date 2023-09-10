@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  Type,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TransformationRequest } from 'src/app/model/transformation-request';
 import { ChartsService } from 'src/app/services/charts.service';
@@ -10,6 +17,10 @@ import {
 } from 'src/app/model/tags-request-response';
 import { ChartData } from 'src/app/model/charts-request-response';
 import { ChartType } from 'src/app/model/chart-type.model';
+import { PublishFormAnchorDirective } from '../forms/publish-form-anchor.directive';
+import { TransformationForm } from '../forms/transformation-form';
+import { StudentMovementsFormComponent } from '../forms/student-movements-form/student-movements-form.component';
+import { StudentInscriptionsFormComponent } from '../forms/student-inscriptions-form/student-inscriptions-form.component';
 
 @Component({
   selector: 'app-publish',
@@ -39,12 +50,19 @@ export class PublishComponent implements OnInit {
     { label: 'Inscripciones', value: ChartType.STUDENT_INSCRIPTIONS },
   ];
 
+  formChangeHandlers = {
+    [ChartType.STUDENT_MOVEMENTS]: StudentMovementsFormComponent,
+    [ChartType.STUDENT_INSCRIPTIONS]: StudentInscriptionsFormComponent,
+  };
+
   toggle: boolean = false;
   loading: boolean = false;
 
   allTags: TagData[] = [];
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
+  @ViewChild(PublishFormAnchorDirective, { static: true })
+  formAnchor!: PublishFormAnchorDirective;
 
   constructor(
     private chartService: ChartsService,
@@ -64,9 +82,7 @@ export class PublishComponent implements OnInit {
           }
         } else this.allTags = [];
       },
-      error: (err: HttpErrorResponse) => {
-        console.log(err);
-      },
+      error: (err: HttpErrorResponse) => {},
       complete: () => {},
     });
   }
@@ -74,7 +90,6 @@ export class PublishComponent implements OnInit {
   ngOnInit(): void {}
 
   previsualize() {
-    console.log(this.transformationForm.value);
     this.loading = true;
     this.chartService
       .requestPrevisualization(
@@ -85,11 +100,9 @@ export class PublishComponent implements OnInit {
           this.previsualizedChart = response;
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err);
           this.loading = false;
         },
         complete: () => {
-          console.log('previsualization request completed');
           this.loading = false;
         },
       });
@@ -106,36 +119,32 @@ export class PublishComponent implements OnInit {
           this.previsualizedChart = response;
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err);
           this.loading = false;
         },
         complete: () => {
-          console.log('publish request completed');
           this.loading = false;
         },
       });
   }
 
-  typeChanged($event: string) {
+  typeChanged($event: ChartType) {
     this.transformationBodyGroup = new FormGroup<any>({});
     this.transformationForm.setControl(
       'transformationBody',
       this.transformationBodyGroup
     );
-    /*     if ($event === 'STMV')
-      this.transformationForm.setControl(
-        'transformationBody',
-        new FormGroup({
-          yearA: new FormControl(null, [Validators.required]),
-          yearB: new FormControl(null, [Validators.required]),
-        })
-      );
-    if ($event === 'INSC')
-      this.transformationForm.setControl(
-        'transformationBody',
-        new FormGroup({
-          year: new FormControl(null, [Validators.required]),
-        })
-      ); */
+    const viewContainerRef = this.formAnchor.viewContainerRef;
+    viewContainerRef.clear();
+
+    this.setFormComponent(viewContainerRef, this.formChangeHandlers[$event]);
+  }
+
+  setFormComponent(
+    viewContainerRef: ViewContainerRef,
+    newComponent: Type<TransformationForm>
+  ) {
+    const componentRef =
+      viewContainerRef.createComponent<TransformationForm>(newComponent);
+    componentRef.setInput('transformationBody', this.transformationBodyGroup);
   }
 }

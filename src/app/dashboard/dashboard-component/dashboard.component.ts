@@ -16,7 +16,6 @@ export class DashboardComponent implements OnInit {
     this.chartsServ.getCharts().subscribe({
       next: (response: ChartsRequestResponse) => {
         this.charts = response;
-        console.log(this.charts);
       },
       error: () => {},
       complete: () => {},

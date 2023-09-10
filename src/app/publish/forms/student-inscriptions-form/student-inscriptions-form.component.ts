@@ -1,12 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TransformationForm } from '../transformation-form';
 
 @Component({
-  selector: 'app-student-inscriptions',
-  templateUrl: './student-inscriptions.component.html',
-  styleUrls: ['./student-inscriptions.component.css'],
+  selector: 'app-student-inscriptions-form',
+  templateUrl: './student-inscriptions-form.component.html',
+  styleUrls: ['./student-inscriptions-form.component.css'],
 })
-export class StudentInscriptionsComponent implements OnInit {
+export class StudentInscriptionsFormComponent
+  implements OnInit, TransformationForm
+{
   yearInputControl = new FormControl(null, [Validators.required]);
 
   @Input() transformationBody!: FormGroup;

@@ -31,9 +31,7 @@ export const studentMovementsHandler = (
       ],
     },
     options: {
-      onClick(event, elements, chart) {
-        console.log(elements);
-      },
+      onClick(event, elements, chart) {},
     },
   });
 };

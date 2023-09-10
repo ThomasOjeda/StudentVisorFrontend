@@ -59,19 +59,7 @@
   </form>
 
   <form formGroupName="transformationBody">
-    <div [ngSwitch]="type.value">
-      <div *ngSwitchCase="'STMV'">
-        <app-student-movements
-          [transformationBody]="this.transformationBodyGroup"
-        ></app-student-movements>
-      </div>
-
-      <div *ngSwitchCase="'INSC'">
-        <app-student-inscriptions
-          [transformationBody]="this.transformationBodyGroup"
-        ></app-student-inscriptions>
-      </div>
-    </div>
+    <ng-template appPublishFormAnchor></ng-template>
   </form>
   <mat-divider></mat-divider>
 

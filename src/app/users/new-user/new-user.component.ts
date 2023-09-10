@@ -53,9 +53,7 @@ export class NewUserComponent implements OnInit {
           }
         } else this.allTags = [];
       },
-      error: (err: HttpErrorResponse) => {
-        console.log(err);
-      },
+      error: (err: HttpErrorResponse) => {},
       complete: () => {},
     });
   }

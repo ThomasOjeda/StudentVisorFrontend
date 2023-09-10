@@ -73,7 +73,6 @@ export class AuthenticationService {
   }
 
   isAdmin() {
-    console.log(this.getRole());
     return this.getRole() === 'admin';
   }
 }

@@ -26,7 +26,6 @@ export class NewTagComponent implements OnInit {
     this.tagsServ.addTag(this.newTagForm.value as TagData).subscribe({
       next: (registerResponse: any) => {},
       error: (error: HttpErrorResponse) => {
-        console.log(error);
         window.alert('No se ha podido registrar la etiqueta.');
       },
       complete: () => {
