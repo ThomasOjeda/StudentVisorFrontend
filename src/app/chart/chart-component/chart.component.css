@@ -1,4 +1,8 @@
-mat-card {
-    max-width: 500px;
-    max-height: 500px;
+.canvas-container {
+  margin: 0 auto;
+}
+
+.student-movements {
+  color: red;
+  width: 15rem;
 }

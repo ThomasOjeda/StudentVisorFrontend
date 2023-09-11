@@ -8,6 +8,7 @@ export const studentMovementsHandler = (
   chartStructure: ChartData
 ) => {
   const canvas = renderer.createElement('canvas');
+  renderer.addClass(chartTemplate.nativeElement, 'student-movements');
   renderer.appendChild(chartTemplate.nativeElement, canvas);
 
   new Chart(canvas as ChartItem, {
@@ -32,6 +33,7 @@ export const studentMovementsHandler = (
     },
     options: {
       onClick(event, elements, chart) {},
+      maintainAspectRatio: false,
     },
   });
 };
