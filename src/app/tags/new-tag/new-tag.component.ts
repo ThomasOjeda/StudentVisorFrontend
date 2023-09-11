@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { TagData } from 'src/app/model/tag-data';
-import { TagsService } from 'src/app/services/tags.service';
+import { TagsService } from '../services/tags.service';
 
 @Component({
   selector: 'app-new-tag',

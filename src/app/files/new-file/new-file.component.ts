@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FilesService } from 'src/app/services/files.service';
+import { FilesService } from '../services/files.service';
 
 @Component({
   selector: 'app-new-file',

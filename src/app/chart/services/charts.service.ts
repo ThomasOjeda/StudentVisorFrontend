@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthenticationService } from 'src/app/login/services/authentication.service';
+import { TransformationRequest } from 'src/app/publish/model/transformation-request';
 import { environment } from 'src/environments/environment';
-import { ChartData } from '../model/chart-data';
-import { TransformationRequest } from '../publish/model/transformation-request';
-import { AuthenticationService } from './authentication.service';
-import { ChartRequestResponse } from '../chart/model/chart-request-response';
-import { ChartsRequestResponse } from '../chart/model/charts-request-response';
+import { ChartRequestResponse } from '../model/chart-request-response';
+import { ChartsRequestResponse } from '../model/charts-request-response';
+import { ChartData } from 'src/app/model/chart-data';
 
 @Injectable({
   providedIn: 'root',

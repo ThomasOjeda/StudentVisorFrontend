@@ -2,11 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { AuthenticationService } from 'src/app/login/services/authentication.service';
 import { TagData } from 'src/app/model/tag-data';
 import { UserData } from 'src/app/model/user-data';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { TagsService } from 'src/app/services/tags.service';
 import { TagsRequestResponse } from 'src/app/tags/models/tags-request-response';
+import { TagsService } from 'src/app/tags/services/tags.service';
 
 @Component({
   selector: 'app-new-user',

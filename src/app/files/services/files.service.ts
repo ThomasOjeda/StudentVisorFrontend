@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { FilesRequestResponse } from '../files/model/files-request-response';
-import { FileRequestResponse } from '../files/model/file-request-response';
+import { FileRequestResponse } from '../model/file-request-response';
+import { FilesRequestResponse } from '../model/files-request-response';
 
 @Injectable({
   providedIn: 'root',

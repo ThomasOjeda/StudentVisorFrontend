@@ -7,9 +7,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChartsService } from 'src/app/services/charts.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { TagsService } from 'src/app/services/tags.service';
 import { TagData } from 'src/app/model/tag-data';
 import { ChartData } from 'src/app/model/chart-data';
 import { ChartType } from 'src/app/chart/model/chart-type';
@@ -19,6 +17,8 @@ import { StudentMovementsFormComponent } from '../forms/student-movements-form/s
 import { StudentInscriptionsFormComponent } from '../forms/student-inscriptions-form/student-inscriptions-form.component';
 import { TagsRequestResponse } from 'src/app/tags/models/tags-request-response';
 import { TransformationRequest } from '../model/transformation-request';
+import { TagsService } from 'src/app/tags/services/tags.service';
+import { ChartsService } from 'src/app/chart/services/charts.service';
 
 @Component({
   selector: 'app-publish',

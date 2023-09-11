@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FileData } from 'src/app/model/file-data';
-import { FilesService } from 'src/app/services/files.service';
 import { FileRequestResponse } from '../model/file-request-response';
+import { FilesService } from '../services/files.service';
 
 @Component({
   selector: 'app-file-details',

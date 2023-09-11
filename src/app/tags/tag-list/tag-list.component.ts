@@ -6,9 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { TagData } from 'src/app/model/tag-data';
-import { TagsService } from 'src/app/services/tags.service';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 import { TagsRequestResponse } from '../models/tags-request-response';
+import { TagsService } from '../services/tags.service';
 
 @Component({
   selector: 'app-tag-list',

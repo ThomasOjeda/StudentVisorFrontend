@@ -13,9 +13,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { UserData } from 'src/app/model/user-data';
-import { UsersService } from 'src/app/services/users.service';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 import { UsersResquestResponse } from '../model/users-request-response';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-user-list',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ChartRequestResponse } from 'src/app/chart/model/chart-request-response';
+import { ChartsService } from 'src/app/chart/services/charts.service';
 import { ChartData } from 'src/app/model/chart-data';
-import { ChartsService } from 'src/app/services/charts.service';
 
 @Component({
   selector: 'app-publication-details',

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { TagData } from 'src/app/model/tag-data';
 import { environment } from 'src/environments/environment';
-import { TagData } from '../model/tag-data';
-import { TagsRequestResponse } from '../tags/models/tags-request-response';
-import { TagRequestResponse } from '../tags/models/tag-request-response';
+import { TagRequestResponse } from '../models/tag-request-response';
+import { TagsRequestResponse } from '../models/tags-request-response';
 
 @Injectable({
   providedIn: 'root',
