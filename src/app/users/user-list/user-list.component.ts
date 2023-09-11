@@ -12,12 +12,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import {
-  UserData,
-  UsersResquestResponse,
-} from 'src/app/model/users-request-response';
+import { UserData } from 'src/app/model/user-data';
 import { UsersService } from 'src/app/services/users.service';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
+import { UsersResquestResponse } from '../model/users-request-response';
 
 @Component({
   selector: 'app-user-list',

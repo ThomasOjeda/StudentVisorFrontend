@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  UserRequestResponse,
-  UsersResquestResponse,
-} from '../model/users-request-response';
 import { environment } from 'src/environments/environment';
+import { UserRequestResponse } from '../users/model/user-request-response';
+import { UsersResquestResponse } from '../users/model/users-request-response';
 
 @Injectable({
   providedIn: 'root',

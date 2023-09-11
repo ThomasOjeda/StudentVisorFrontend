@@ -4,10 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import {
-  ChartData,
-  ChartsRequestResponse,
-} from 'src/app/model/charts-request-response';
+import { ChartsRequestResponse } from 'src/app/chart/model/charts-request-response';
+import { ChartData } from 'src/app/model/chart-data';
 import { ChartsService } from 'src/app/services/charts.service';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 

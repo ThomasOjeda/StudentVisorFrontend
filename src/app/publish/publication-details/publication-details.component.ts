@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import {
-  ChartData,
-  ChartRequestResponse,
-} from 'src/app/model/charts-request-response';
+import { ChartRequestResponse } from 'src/app/chart/model/chart-request-response';
+import { ChartData } from 'src/app/model/chart-data';
 import { ChartsService } from 'src/app/services/charts.service';
 
 @Component({

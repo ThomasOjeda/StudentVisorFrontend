@@ -5,12 +5,10 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import {
-  TagData,
-  TagsRequestResponse,
-} from 'src/app/model/tags-request-response';
+import { TagData } from 'src/app/model/tag-data';
 import { TagsService } from 'src/app/services/tags.service';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
+import { TagsRequestResponse } from '../models/tags-request-response';
 
 @Component({
   selector: 'app-tag-list',

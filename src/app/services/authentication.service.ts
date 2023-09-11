@@ -1,11 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginSuccessResponse } from '../model/login-success-response';
 import { environment } from 'src/environments/environment';
-import { UserCredentials } from '../model/user-credentials';
-import { UserData } from '../model/users-request-response';
+import { UserCredentials } from '../login/model/user-credentials';
+import { UserData } from '../model/user-data';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LoginSuccessResponse } from '../login/model/login-success-response';
+
 import jwt_decode from 'jwt-decode';
 
 @Injectable({

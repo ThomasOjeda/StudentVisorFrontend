@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { TagData } from 'src/app/model/tags-request-response';
+import { TagData } from 'src/app/model/tag-data';
 import { TagsService } from 'src/app/services/tags.service';
 
 @Component({

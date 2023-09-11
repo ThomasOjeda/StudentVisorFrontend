@@ -9,10 +9,10 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { ChartData } from '../../model/charts-request-response';
+import { ChartData } from '../../model/chart-data';
 import { studentMovementsHandler } from '../chart-handlers/student-movements.handler';
 import { studentInscriptionsHandler } from '../chart-handlers/student-inscriptions.handler';
-import { ChartType } from '../../model/chart-type.model';
+import { ChartType } from '../model/chart-type';
 
 @Component({
   selector: 'app-chart',

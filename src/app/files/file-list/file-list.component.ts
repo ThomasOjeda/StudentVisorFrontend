@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FileData, FilesRequestResponse } from '../../model/file-data';
+import { FileData } from '../../model/file-data';
 import { FilesService } from '../../services/files.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
+import { FilesRequestResponse } from '../model/files-request-response';
 
 @Component({
   selector: 'app-file-list',

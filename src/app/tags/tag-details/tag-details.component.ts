@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import {
-  TagData,
-  TagRequestResponse,
-} from 'src/app/model/tags-request-response';
+import { TagData } from 'src/app/model/tag-data';
 import { TagsService } from 'src/app/services/tags.service';
+import { TagRequestResponse } from '../models/tag-request-response';
 
 @Component({
   selector: 'app-tag-details',

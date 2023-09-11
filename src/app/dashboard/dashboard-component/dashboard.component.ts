@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartsRequestResponse } from '../../model/charts-request-response';
 import { ChartsService } from '../../services/charts.service';
+import { ChartsRequestResponse } from 'src/app/chart/model/charts-request-response';
 
 @Component({
   selector: 'app-dashboard',

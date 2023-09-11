@@ -1,6 +1,6 @@
 import { ElementRef, Renderer2 } from '@angular/core';
 import { Chart, ChartItem } from 'chart.js/auto';
-import { ChartData } from 'src/app/model/charts-request-response';
+import { ChartData } from 'src/app/model/chart-data';
 
 export const studentMovementsHandler = (
   renderer: Renderer2,
