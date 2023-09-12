@@ -11,7 +11,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TagData } from 'src/app/model/tag-data';
 import { ChartData } from 'src/app/model/chart-data';
 import { ChartType } from 'src/app/chart/model/chart-type';
-import { PublishFormAnchorDirective } from '../forms/publish-form-anchor.directive';
 import { TransformationForm } from '../forms/transformation-form';
 import { StudentMovementsFormComponent } from '../forms/student-movements-form/student-movements-form.component';
 import { StudentInscriptionsFormComponent } from '../forms/student-inscriptions-form/student-inscriptions-form.component';
@@ -19,6 +18,7 @@ import { TagsRequestResponse } from 'src/app/tags/models/tags-request-response';
 import { TransformationRequest } from '../model/transformation-request';
 import { TagsService } from 'src/app/tags/services/tags.service';
 import { ChartsService } from 'src/app/chart/services/charts.service';
+import { ElementAnchorDirective } from 'src/app/shared/element-anchor/element-anchor.directive';
 
 @Component({
   selector: 'app-publish',
@@ -59,8 +59,8 @@ export class PublishComponent implements OnInit {
   allTags: TagData[] = [];
 
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
-  @ViewChild(PublishFormAnchorDirective, { static: true })
-  formAnchor!: PublishFormAnchorDirective;
+  @ViewChild(ElementAnchorDirective, { static: true })
+  formAnchor!: ElementAnchorDirective;
 
   constructor(
     private chartService: ChartsService,

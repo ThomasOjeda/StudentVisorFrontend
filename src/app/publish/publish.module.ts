@@ -11,7 +11,6 @@ import { PublicationListComponent } from './publication-list/publication-list.co
 import { PublicationDetailsComponent } from './publication-details/publication-details.component';
 import { StudentMovementsFormComponent } from './forms/student-movements-form/student-movements-form.component';
 import { StudentInscriptionsFormComponent } from './forms/student-inscriptions-form/student-inscriptions-form.component';
-import { PublishFormAnchorDirective } from './forms/publish-form-anchor.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { PublishFormAnchorDirective } from './forms/publish-form-anchor.directiv
     PublicationDetailsComponent,
     StudentMovementsFormComponent,
     StudentInscriptionsFormComponent,
-    PublishFormAnchorDirective,
   ],
   imports: [
     CommonModule,

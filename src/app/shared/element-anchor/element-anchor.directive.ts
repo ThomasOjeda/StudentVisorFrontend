@@ -1,8 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appPublishFormAnchor]',
+  selector: '[appElementAnchor]',
 })
-export class PublishFormAnchorDirective {
+export class ElementAnchorDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }

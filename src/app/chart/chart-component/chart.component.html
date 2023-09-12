@@ -2,7 +2,9 @@
   <h2>
     {{ chart.name }}
   </h2>
-  <div class="canvas-container" #chartContainer></div>
+  <div class="canvas-container">
+    <ng-template appElementAnchor></ng-template>
+  </div>
   <mat-chip-list>
     <mat-chip *ngFor="let tag of tags" disabled>{{ tag }}</mat-chip>
   </mat-chip-list>
