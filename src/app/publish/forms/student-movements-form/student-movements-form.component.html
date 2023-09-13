@@ -1,15 +1,28 @@
-<mat-form-field>
-  <mat-label>Año inicio</mat-label>
-  <input [formControl]="yearAInputControl" type="number" matInput />
+<div class="yearInputs">
+  <mat-form-field>
+    <mat-label>Año inicio</mat-label>
+    <mat-select
+      [formControl]="yearAInputControl"
+      (valueChange)="yearAValueChanged($event)"
+    >
+      <mat-option *ngFor="let year of availableStartYears" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="yearAInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
 
-  <mat-error *ngIf="yearAInputControl.hasError('required')">
-    Campo <strong>requerido</strong>
-  </mat-error>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>Año fin</mat-label>
-  <input [formControl]="yearBInputControl" type="number" matInput />
-  <mat-error *ngIf="yearBInputControl.hasError('required')">
-    Campo <strong>requerido</strong>
-  </mat-error>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Año fin</mat-label>
+    <mat-select [formControl]="yearBInputControl">
+      <mat-option *ngFor="let year of availableEndYears" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="yearBInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+</div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { FileRequestResponse } from '../model/file-request-response';
@@ -13,6 +13,17 @@ export class FilesService {
   getFiles() {
     return this.http.get<FilesRequestResponse>(
       `${environment.apiUrl}/api/v1/studentfiles`
+    );
+  }
+
+  filesQuery(year?: number, type?: string) {
+    let queryParams = new HttpParams();
+
+    if (year !== undefined) queryParams.append('year', year);
+    if (type !== undefined) queryParams.append('type', type);
+    return this.http.get<FilesRequestResponse>(
+      `${environment.apiUrl}/api/v1/studentfiles`,
+      { params: queryParams }
     );
   }
 
