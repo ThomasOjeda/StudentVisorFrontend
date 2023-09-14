@@ -1,0 +1,33 @@
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>Perfil de usuario</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h2>Nombre de usuario</h2>
+    <p style="white-space: pre-wrap">
+      {{ user.username }}
+    </p>
+
+    <h2>Email</h2>
+    <p>{{ user.email }}</p>
+
+    <h2>Fecha de creación</h2>
+    <p>{{ user.createdAt | date }}</p>
+
+    <h2>Ultima actualización</h2>
+    <p>{{ user.updatedAt | date }}</p>
+
+    <h2>Privilegios</h2>
+    <p>{{ user.role }}</p>
+
+    <h2>Etiquetas</h2>
+    <p *ngIf="user.tags.length <= 0">Sin etiquetas asociadas</p>
+    <p *ngIf="user.tags.length > 0">
+      <mat-chip-list aria-label="Etiquetas" disabled="true">
+        <div *ngFor="let tag of user.tags">
+          <mat-chip>{{ tag }}</mat-chip>
+        </div>
+      </mat-chip-list>
+    </p>
+  </mat-card-content>
+</mat-card>
