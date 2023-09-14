@@ -14,6 +14,7 @@ import { registerLocaleData } from '@angular/common';
 import { LoginModule } from './login/login.module';
 import { ChartModule } from './chart/chart.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { SharedModule } from './shared/shared.module';
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -29,6 +30,7 @@ registerLocaleData(localeEs, 'es');
     LoginModule,
     ChartModule,
     DashboardModule,
+    SharedModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

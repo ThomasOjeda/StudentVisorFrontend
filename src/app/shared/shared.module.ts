@@ -5,6 +5,7 @@ import { MaterialDesignModule } from '../material-design/material-design.module'
 import { ListCommandsComponent } from './list-commands/list-commands.component';
 import { ConfirmationCardComponent } from './confirmation-card/confirmation-card.component';
 import { ElementAnchorDirective } from './element-anchor/element-anchor.directive';
+import { UserButtonComponent } from './user-button/user-button.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { ElementAnchorDirective } from './element-anchor/element-anchor.directiv
     ListCommandsComponent,
     ConfirmationCardComponent,
     ElementAnchorDirective,
+    UserButtonComponent,
   ],
   imports: [CommonModule, MaterialDesignModule],
   exports: [
@@ -19,6 +21,7 @@ import { ElementAnchorDirective } from './element-anchor/element-anchor.directiv
     ListCommandsComponent,
     ConfirmationCardComponent,
     ElementAnchorDirective,
+    UserButtonComponent,
   ],
 })
 export class SharedModule {}
