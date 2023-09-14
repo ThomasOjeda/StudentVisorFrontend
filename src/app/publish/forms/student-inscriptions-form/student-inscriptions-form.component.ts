@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TransformationForm } from '../transformation-form';
+import { FilesService } from 'src/app/files/services/files.service';
+import { FileType } from 'src/app/files/model/file-type';
 
 @Component({
   selector: 'app-student-inscriptions-form',
@@ -14,9 +16,17 @@ export class StudentInscriptionsFormComponent
 
   @Input() transformationBody!: FormGroup;
 
-  constructor() {}
+  availableYears: number[] = [];
+
+  constructor(private filesServ: FilesService) {}
 
   ngOnInit(): void {
     this.transformationBody.addControl('year', this.yearInputControl);
+
+    this.filesServ
+      .filesQuery(undefined, FileType.STUDENT_INSCRIPTIONS)
+      .subscribe((data) => {
+        this.availableYears = data.result.map((file) => file.year).sort();
+      });
   }
 }
