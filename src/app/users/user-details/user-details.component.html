@@ -1,39 +1,24 @@
-<mat-card>
+<mat-card *ngIf="user">
   <mat-card-header>
-    <mat-card-title>Detalles del usuario</mat-card-title>
+    <mat-card-title>Detalles del usuario "{{ user.username }}"</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list>
-      <mat-list-item>
-        <h3 mat-line>Usuario</h3>
-        <p mat-line>{{ user.username }}</p>
-      </mat-list-item>
+    <h2>Email</h2>
+    <p>{{ user.email }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Email</h3>
-        <p mat-line>{{ user.email }}</p>
-      </mat-list-item>
+    <h2>Fecha de creación</h2>
+    <p>{{ user.createdAt | date }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Fecha de creación</h3>
-        <p mat-line>{{ user.createdAt | date }}</p>
-      </mat-list-item>
+    <h2>Ultima actualización</h2>
+    <p>{{ user.updatedAt | date }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Ultima actualización</h3>
-        <p mat-line>{{ user.updatedAt | date }}</p>
-      </mat-list-item>
-
-      <mat-list-item>
-        <h3 mat-line>Tags</h3>
-        <p mat-line>
-          <mat-chip-list aria-label="Etiquetas" disabled="true">
-            <div *ngFor="let tag of user.tags">
-              <mat-chip>{{ tag }}</mat-chip>
-            </div>
-          </mat-chip-list>
-        </p>
-      </mat-list-item>
-    </mat-list>
+    <h2>Tags</h2>
+    <p>
+      <mat-chip-list aria-label="Etiquetas" disabled="true">
+        <div *ngFor="let tag of user.tags">
+          <mat-chip>{{ tag }}</mat-chip>
+        </div>
+      </mat-chip-list>
+    </p>
   </mat-card-content>
 </mat-card>

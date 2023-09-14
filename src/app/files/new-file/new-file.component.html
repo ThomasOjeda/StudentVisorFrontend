@@ -14,14 +14,10 @@
       Se supero el limite de 256 caracteres
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Descripcion</mat-label>
-    <input
-      formControlName="description"
-      type="text"
-      matInput
-      placeholder="Descripcion del archivo (opcional)"
-    />
+    <textarea formControlName="description" type="text" matInput></textarea>
+
     <mat-error *ngIf="newFileForm.get('description')?.hasError('maxlength')">
       Se supero el limite de 512 caracteres
     </mat-error>

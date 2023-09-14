@@ -7,9 +7,9 @@
       Campo <strong>requerido</strong>
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Descripcion</mat-label>
-    <input formControlName="description" type="text" matInput />
+    <textarea formControlName="description" type="text" matInput></textarea>
     <mat-error *ngIf="newTagForm.get('description')?.hasError('required')">
       Campo <strong>requerido</strong>
     </mat-error>
