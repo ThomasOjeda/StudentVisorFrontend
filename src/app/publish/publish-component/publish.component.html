@@ -22,9 +22,9 @@
         Limite de 256 caracteres alcanzado
       </mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Descripcion</mat-label>
-      <input formControlName="description" type="text" matInput />
+      <textarea formControlName="description" type="text" matInput></textarea>
       <mat-error
         *ngIf="
           transformationForm

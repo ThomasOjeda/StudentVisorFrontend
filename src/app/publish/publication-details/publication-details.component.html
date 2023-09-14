@@ -1,48 +1,32 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Detalles del grafico</mat-card-title>
+    <mat-card-title>Detalles del grafico "{{ chart.name }}"</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <mat-list>
-      <mat-list-item>
-        <h3 mat-line>Nombre</h3>
-        <p mat-line>{{ chart.name }}</p>
-      </mat-list-item>
+    <h2>Descripcion</h2>
+    <p style="white-space: pre-wrap">
+      {{ chart.description }}
+    </p>
 
-      <mat-list-item>
-        <h3 mat-line>Descripcion</h3>
-        <p mat-line>{{ chart.description }}</p>
-      </mat-list-item>
-      <mat-list-item>
-        <h3 mat-line>Tipo</h3>
-        <p mat-line>{{ chart.type }}</p>
-      </mat-list-item>
+    <h2>Tipo</h2>
+    <p>{{ chart.type }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Fecha de creación</h3>
-        <p mat-line>{{ chart.createdAt | date }}</p>
-      </mat-list-item>
+    <h2>Fecha de creación</h2>
+    <p>{{ chart.createdAt | date }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Ultima actualización</h3>
-        <p mat-line>{{ chart.updatedAt | date }}</p>
-      </mat-list-item>
+    <h2>Ultima actualización</h2>
+    <p>{{ chart.updatedAt | date }}</p>
 
-      <mat-list-item>
-        <h3 mat-line>Tags</h3>
-        <p mat-line>
-          <mat-chip-list aria-label="Etiquetas" disabled="true">
-            <div *ngFor="let tag of chart.tags">
-              <mat-chip>{{ tag }}</mat-chip>
-            </div>
-          </mat-chip-list>
-        </p>
-      </mat-list-item>
+    <h2>Tags</h2>
+    <p>
+      <mat-chip-list aria-label="Etiquetas" disabled="true">
+        <div *ngFor="let tag of chart.tags">
+          <mat-chip>{{ tag }}</mat-chip>
+        </div>
+      </mat-chip-list>
+    </p>
 
-      <mat-list-item>
-        <h3 mat-line>Datos</h3>
-        <p mat-line>{{ chart.structure | json }}</p>
-      </mat-list-item>
-    </mat-list>
+    <h2>Informacion contenida</h2>
+    <p>{{ chart.structure | json }}</p>
   </mat-card-content>
 </mat-card>
