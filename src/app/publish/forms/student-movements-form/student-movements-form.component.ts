@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TransformationForm } from '../transformation-form';
 import { FilesService } from 'src/app/files/services/files.service';
-import { ChartType } from 'src/app/chart/model/chart-type';
+import { FileType } from 'src/app/files/model/file-type';
 
 @Component({
   selector: 'app-student-movements-form',
@@ -28,7 +28,7 @@ export class StudentMovementsFormComponent
     this.transformationBody.addControl('yearB', this.yearBInputControl);
 
     this.filesServ
-      .filesQuery(undefined, ChartType.STUDENT_MOVEMENTS)
+      .filesQuery(undefined, FileType.STUDENT_INSCRIPTIONS)
       .subscribe((data) => {
         this.availableStartYears = data.result.map((file) => file.year).sort();
       });

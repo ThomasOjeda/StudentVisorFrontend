@@ -17,10 +17,11 @@ export class FilesService {
   }
 
   filesQuery(year?: number, type?: string) {
-    let queryParams = new HttpParams();
+    let queryParams = new HttpParams(); //--> Immutable object
 
-    if (year !== undefined) queryParams.append('year', year);
-    if (type !== undefined) queryParams.append('type', type);
+    if (year !== undefined) queryParams = queryParams.append('year', year);
+    if (type !== undefined) queryParams = queryParams.append('type', type);
+
     return this.http.get<FilesRequestResponse>(
       `${environment.apiUrl}/api/v1/studentfiles`,
       { params: queryParams }
