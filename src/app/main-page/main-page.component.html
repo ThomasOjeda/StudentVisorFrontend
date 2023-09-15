@@ -9,27 +9,27 @@
       </mat-toolbar>
       <mat-nav-list>
         <div *ngIf="userIsAdmin">
-          <mat-list-item routerLink="home">
+          <mat-list-item routerLink="home" (click)="sidenav.toggle()">
             <mat-icon>home</mat-icon>
             <a matListItemTitle> Tablero </a>
           </mat-list-item>
 
-          <mat-list-item routerLink="publish">
+          <mat-list-item routerLink="publish" (click)="sidenav.toggle()">
             <mat-icon>pie_chart</mat-icon>
             <a matListItemTitle> Publicar </a>
           </mat-list-item>
 
-          <mat-list-item routerLink="files">
+          <mat-list-item routerLink="files" (click)="sidenav.toggle()">
             <mat-icon>insert_drive_file</mat-icon>
             <a matListItemTitle> Archivos </a>
           </mat-list-item>
 
-          <mat-list-item routerLink="users">
+          <mat-list-item routerLink="users" (click)="sidenav.toggle()">
             <mat-icon>people</mat-icon>
             <a matListItemTitle> Usuarios </a>
           </mat-list-item>
 
-          <mat-list-item routerLink="tags">
+          <mat-list-item routerLink="tags" (click)="sidenav.toggle()">
             <mat-icon>style</mat-icon>
             <a matListItemTitle> Etiquetas </a>
           </mat-list-item>
