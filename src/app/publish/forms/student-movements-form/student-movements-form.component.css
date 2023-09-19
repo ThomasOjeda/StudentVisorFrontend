@@ -1,5 +1,6 @@
-.year-inputs {
+.inputs {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
+  flex-wrap: wrap;
+  column-gap: 2rem;
 }
