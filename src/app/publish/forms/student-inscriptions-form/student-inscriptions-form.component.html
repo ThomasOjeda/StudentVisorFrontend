@@ -1,4 +1,4 @@
-<div class="year-input">
+<div class="inputs">
   <mat-form-field>
     <mat-label>Año</mat-label>
     <mat-select [formControl]="yearInputControl">
@@ -9,5 +9,25 @@
     <mat-error *ngIf="yearInputControl.hasError('required')">
       Campo <strong>requerido</strong>
     </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Unidad</mat-label>
+    <mat-select [formControl]="unitInputControl">
+      <mat-option *ngFor="let unit of availableUnits" [value]="unit._id">
+        {{ unit.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sexo</mat-label>
+    <mat-select [formControl]="genderInputControl">
+      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
+        {{ gender.label }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
