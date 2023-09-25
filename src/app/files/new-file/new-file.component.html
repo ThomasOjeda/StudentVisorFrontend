@@ -46,7 +46,13 @@
   >
     Elegir archivo *
   </button>
-  <input hidden (change)="onFileSelected($event)" #fileInput type="file" />
+  <input
+    hidden
+    (change)="onFileSelected($event)"
+    #fileInput
+    type="file"
+    accept=".xlsx"
+  />
   <mat-error *ngIf="fileTouched && selectedFile == null">
     Campo <strong>requerido</strong>
   </mat-error>
