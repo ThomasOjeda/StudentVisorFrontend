@@ -15,12 +15,15 @@ export class StudentInscriptionsFormComponent
 {
   yearInputControl = new FormControl(null, [Validators.required]);
   unitInputControl = new FormControl({ value: undefined, disabled: true });
+  offerInputControl = new FormControl({ value: undefined, disabled: true });
+
   genderInputControl = new FormControl();
 
   @Input() transformationBody!: FormGroup;
 
   availableYears: number[] = [];
   availableUnits: any[] = [];
+  availableOffers: any[] = [];
   availableGenders: any[] = [];
 
   constructor(
@@ -31,6 +34,7 @@ export class StudentInscriptionsFormComponent
   ngOnInit(): void {
     this.transformationBody.addControl('year', this.yearInputControl);
     this.transformationBody.addControl('unit', this.unitInputControl);
+    this.transformationBody.addControl('offer', this.offerInputControl);
     this.transformationBody.addControl('sex', this.genderInputControl);
 
     this.genderInputControl.setValue(undefined);
@@ -47,14 +51,30 @@ export class StudentInscriptionsFormComponent
     });
   }
 
-  yearChanged($event: number) {
+  reconfigureUnitInput(year: number) {
     this.unitInputControl.disable();
-
-    this.dataCatServ.getUnits($event).subscribe((data: any) => {
+    this.unitInputControl.setValue(undefined);
+    this.offerInputControl.disable();
+    this.offerInputControl.setValue(undefined);
+    this.dataCatServ.getUnits(year).subscribe((data: any) => {
       this.unitInputControl.setValue(undefined);
       this.availableUnits = data.result.sort();
       this.availableUnits.unshift(undefined);
       this.unitInputControl.enable();
     });
+  }
+
+  reconfigureOfferInput(unit: string) {
+    this.offerInputControl.disable();
+    this.offerInputControl.setValue(undefined);
+    if (this.yearInputControl.value && unit)
+      this.dataCatServ
+        .getOffers(this.yearInputControl.value, unit)
+        .subscribe((data: any) => {
+          this.offerInputControl.setValue(undefined);
+          this.availableOffers = data.result.sort();
+          this.availableOffers.unshift(undefined);
+          this.offerInputControl.enable();
+        });
   }
 }

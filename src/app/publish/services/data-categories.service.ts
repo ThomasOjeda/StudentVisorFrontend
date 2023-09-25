@@ -14,6 +14,16 @@ export class DataCategoriesService {
     });
   }
 
+  getOffers(year: number, unit: string) {
+    return this.httpServ.post(
+      `${environment.apiUrl}/api/v1/datacat/unitoffers`,
+      {
+        year: year,
+        unit: unit,
+      }
+    );
+  }
+
   getGenders() {
     return this.httpServ.get(`${environment.apiUrl}/api/v1/datacat/genders`);
   }
