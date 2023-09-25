@@ -8,8 +8,10 @@ import { environment } from 'src/environments/environment';
 export class DataCategoriesService {
   constructor(private httpServ: HttpClient) {}
 
-  getUnits() {
-    return this.httpServ.get(`${environment.apiUrl}/api/v1/datacat/units`);
+  getUnits(year: number) {
+    return this.httpServ.post(`${environment.apiUrl}/api/v1/datacat/units`, {
+      year: year,
+    });
   }
 
   getGenders() {

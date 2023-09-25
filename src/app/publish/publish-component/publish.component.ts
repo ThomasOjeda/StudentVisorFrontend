@@ -88,6 +88,7 @@ export class PublishComponent implements OnInit {
   ngOnInit(): void {}
 
   previsualize() {
+    console.log(this.transformationForm.value);
     this.loading = true;
     this.chartService
       .requestPrevisualization(

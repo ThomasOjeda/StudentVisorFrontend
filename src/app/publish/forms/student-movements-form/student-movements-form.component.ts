@@ -18,15 +18,17 @@ export class StudentMovementsFormComponent
     Validators.required,
   ]);
 
-  unitAInputControl = new FormControl();
-  unitBInputControl = new FormControl();
+  unitAInputControl = new FormControl({ value: undefined, disabled: true });
+  unitBInputControl = new FormControl({ value: undefined, disabled: true });
   genderInputControl = new FormControl();
 
   @Input() transformationBody!: FormGroup;
 
   availableStartYears: number[] = [];
   availableEndYears: number[] = [];
-  availableUnits: any[] = [];
+  availableAUnits: any[] = [];
+  availableBUnits: any[] = [];
+
   availableGenders: any[] = [];
   constructor(
     private filesServ: FilesService,
@@ -48,22 +50,51 @@ export class StudentMovementsFormComponent
       .subscribe((data) => {
         this.availableStartYears = data.result.map((file) => file.year).sort();
       });
-    this.dataCatServ.getUnits().subscribe((data: any) => {
-      this.availableUnits = data.result;
-      this.availableUnits.unshift({ _id: undefined, label: 'Sin filtro' });
-    });
+
     this.dataCatServ.getGenders().subscribe((data: any) => {
       this.availableGenders = data.result;
       this.availableGenders.unshift({ _id: undefined, label: 'Sin filtro' });
     });
   }
 
-  yearAValueChanged($event: number) {
+  yearAValueChanged(yearA: number) {
+    this.reconfigureUnitAInput(yearA);
+    this.reconfigureYearBInput(yearA);
+  }
+
+  yearBValueChanged($event: number) {
+    this.reconfigureUnitBInput($event);
+  }
+
+  reconfigureYearBInput(yearA: number) {
+    this.availableEndYears = this.availableStartYears.slice(
+      this.availableStartYears.lastIndexOf(yearA) + 1
+    );
     this.yearBInputControl.enable();
     this.yearBInputControl.reset();
     this.yearBInputControl.updateValueAndValidity();
-    this.availableEndYears = this.availableStartYears.slice(
-      this.availableStartYears.lastIndexOf($event) + 1
-    );
+
+    this.unitBInputControl.setValue(undefined);
+    this.unitBInputControl.disable();
+  }
+
+  reconfigureUnitAInput(year: number) {
+    this.unitAInputControl.setValue(undefined);
+    this.unitAInputControl.disable();
+    this.dataCatServ.getUnits(year).subscribe((data: any) => {
+      this.availableAUnits = data.result.sort();
+      this.availableAUnits.unshift(undefined);
+      this.unitAInputControl.enable();
+    });
+  }
+
+  reconfigureUnitBInput(year: number) {
+    this.unitBInputControl.setValue(undefined);
+    this.unitBInputControl.disable();
+    this.dataCatServ.getUnits(year).subscribe((data: any) => {
+      this.availableBUnits = data.result.sort();
+      this.availableBUnits.unshift(undefined);
+      this.unitBInputControl.enable();
+    });
   }
 }

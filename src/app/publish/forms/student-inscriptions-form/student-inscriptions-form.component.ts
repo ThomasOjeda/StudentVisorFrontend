@@ -14,7 +14,7 @@ export class StudentInscriptionsFormComponent
   implements OnInit, TransformationForm
 {
   yearInputControl = new FormControl(null, [Validators.required]);
-  unitInputControl = new FormControl();
+  unitInputControl = new FormControl({ value: undefined, disabled: true });
   genderInputControl = new FormControl();
 
   @Input() transformationBody!: FormGroup;
@@ -33,7 +33,6 @@ export class StudentInscriptionsFormComponent
     this.transformationBody.addControl('unit', this.unitInputControl);
     this.transformationBody.addControl('sex', this.genderInputControl);
 
-    this.unitInputControl.setValue(undefined);
     this.genderInputControl.setValue(undefined);
 
     this.filesServ
@@ -42,13 +41,20 @@ export class StudentInscriptionsFormComponent
         this.availableYears = data.result.map((file) => file.year).sort();
       });
 
-    this.dataCatServ.getUnits().subscribe((data: any) => {
-      this.availableUnits = data.result;
-      this.availableUnits.unshift({ _id: undefined, label: 'Sin filtro' });
-    });
     this.dataCatServ.getGenders().subscribe((data: any) => {
       this.availableGenders = data.result;
       this.availableGenders.unshift({ _id: undefined, label: 'Sin filtro' });
+    });
+  }
+
+  yearChanged($event: number) {
+    this.unitInputControl.disable();
+
+    this.dataCatServ.getUnits($event).subscribe((data: any) => {
+      this.unitInputControl.setValue(undefined);
+      this.availableUnits = data.result.sort();
+      this.availableUnits.unshift(undefined);
+      this.unitInputControl.enable();
     });
   }
 }

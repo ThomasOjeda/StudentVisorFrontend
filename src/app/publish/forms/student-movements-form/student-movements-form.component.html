@@ -16,7 +16,10 @@
 
   <mat-form-field>
     <mat-label>Año fin</mat-label>
-    <mat-select [formControl]="yearBInputControl">
+    <mat-select
+      [formControl]="yearBInputControl"
+      (valueChange)="yearBValueChanged($event)"
+    >
       <mat-option *ngFor="let year of availableEndYears" [value]="year">
         {{ year }}
       </mat-option>
@@ -31,8 +34,8 @@
   <mat-form-field>
     <mat-label>Unidad inicio</mat-label>
     <mat-select [formControl]="unitAInputControl">
-      <mat-option *ngFor="let unit of availableUnits" [value]="unit._id">
-        {{ unit.label }}
+      <mat-option *ngFor="let unit of availableAUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -40,8 +43,8 @@
   <mat-form-field>
     <mat-label>Unidad fin</mat-label>
     <mat-select [formControl]="unitBInputControl">
-      <mat-option *ngFor="let unit of availableUnits" [value]="unit._id">
-        {{ unit.label }}
+      <mat-option *ngFor="let unit of availableBUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" }}
       </mat-option>
     </mat-select>
   </mat-form-field>
