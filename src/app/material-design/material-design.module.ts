@@ -18,6 +18,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -39,6 +40,7 @@ const MaterialComponents = [
   MatSelectModule,
   MatDividerModule,
   MatDialogModule,
+  MatMenuModule,
 ];
 
 @NgModule({
