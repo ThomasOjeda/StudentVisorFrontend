@@ -1,4 +1,3 @@
-<p>student-migrations-form works!</p>
 <div class="inputs">
   <mat-form-field>
     <mat-label>Año inicio</mat-label>
@@ -26,6 +25,17 @@
       </mat-option>
     </mat-select>
     <mat-error *ngIf="yearBInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Granularidad de destino</mat-label>
+    <mat-select [formControl]="modeInputControl">
+      <mat-option [value]="'dest_unit'"> Unidad </mat-option>
+      <mat-option [value]="'dest_offer'"> Carrera </mat-option>
+    </mat-select>
+    <mat-error *ngIf="modeInputControl.hasError('required')">
       Campo <strong>requerido</strong>
     </mat-error>
   </mat-form-field>

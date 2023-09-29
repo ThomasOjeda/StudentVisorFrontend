@@ -17,6 +17,7 @@ export class StudentMigrationsFormComponent
   yearBInputControl = new FormControl({ value: null, disabled: true }, [
     Validators.required,
   ]);
+  modeInputControl = new FormControl(null, [Validators.required]);
 
   unitAInputControl = new FormControl({ value: undefined, disabled: true });
   unitBInputControl = new FormControl({ value: undefined, disabled: true });
@@ -42,6 +43,8 @@ export class StudentMigrationsFormComponent
   ngOnInit(): void {
     this.transformationBody.addControl('yearA', this.yearAInputControl);
     this.transformationBody.addControl('yearB', this.yearBInputControl);
+    this.transformationBody.addControl('destMode', this.modeInputControl);
+
     this.transformationBody.addControl('unitA', this.unitAInputControl);
     this.transformationBody.addControl('unitB', this.unitBInputControl);
     this.transformationBody.addControl('sex', this.genderInputControl);
