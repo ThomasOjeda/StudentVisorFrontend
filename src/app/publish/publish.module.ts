@@ -11,6 +11,8 @@ import { PublicationListComponent } from './publication-list/publication-list.co
 import { PublicationDetailsComponent } from './publication-details/publication-details.component';
 import { StudentMovementsFormComponent } from './forms/student-movements-form/student-movements-form.component';
 import { StudentInscriptionsFormComponent } from './forms/student-inscriptions-form/student-inscriptions-form.component';
+import { StudentMigrationsFormComponent } from './forms/student-migrations-form/student-migrations-form.component';
+import { UnitInscriptionsFormComponent } from './forms/unit-inscriptions-form/unit-inscriptions-form.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { StudentInscriptionsFormComponent } from './forms/student-inscriptions-f
     PublicationDetailsComponent,
     StudentMovementsFormComponent,
     StudentInscriptionsFormComponent,
+    StudentMigrationsFormComponent,
+    UnitInscriptionsFormComponent,
   ],
   imports: [
     CommonModule,

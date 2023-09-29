@@ -1,0 +1,87 @@
+<p>student-migrations-form works!</p>
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Año inicio</mat-label>
+    <mat-select
+      [formControl]="yearAInputControl"
+      (valueChange)="yearAValueChanged($event)"
+    >
+      <mat-option *ngFor="let year of availableStartYears" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="yearAInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Año fin</mat-label>
+    <mat-select
+      [formControl]="yearBInputControl"
+      (valueChange)="yearBValueChanged($event)"
+    >
+      <mat-option *ngFor="let year of availableEndYears" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="yearBInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Unidad inicio</mat-label>
+    <mat-select
+      [formControl]="unitAInputControl"
+      (valueChange)="unitAChanged($event)"
+    >
+      <mat-option *ngFor="let unit of availableAUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Unidad fin</mat-label>
+    <mat-select
+      [formControl]="unitBInputControl"
+      (valueChange)="unitBChanged($event)"
+    >
+      <mat-option *ngFor="let unit of availableBUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genero</mat-label>
+    <mat-select [formControl]="genderInputControl">
+      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
+        {{ gender.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Carrera inicio</mat-label>
+    <mat-select [formControl]="offerAInputControl">
+      <mat-option *ngFor="let offer of availableStartOffers" [value]="offer">
+        {{ offer ?? "Sin filtro" }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Carrera fin</mat-label>
+    <mat-select [formControl]="offerBInputControl">
+      <mat-option *ngFor="let offer of availableEndOffers" [value]="offer">
+        {{ offer ?? "Sin filtro" }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

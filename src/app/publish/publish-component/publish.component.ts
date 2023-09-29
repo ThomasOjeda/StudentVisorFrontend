@@ -19,6 +19,8 @@ import { TransformationRequest } from '../model/transformation-request';
 import { TagsService } from 'src/app/tags/services/tags.service';
 import { ChartsService } from 'src/app/chart/services/charts.service';
 import { ElementAnchorDirective } from 'src/app/shared/element-anchor/element-anchor.directive';
+import { StudentMigrationsFormComponent } from '../forms/student-migrations-form/student-migrations-form.component';
+import { UnitInscriptionsFormComponent } from '../forms/unit-inscriptions-form/unit-inscriptions-form.component';
 
 @Component({
   selector: 'app-publish',
@@ -46,11 +48,15 @@ export class PublishComponent implements OnInit {
   types = [
     { label: 'Movimientos de estudiantes', value: ChartType.STUDENT_MOVEMENTS },
     { label: 'Inscripciones', value: ChartType.STUDENT_INSCRIPTIONS },
+    { label: 'Migraciones', value: ChartType.STUDENT_MIGRATIONS },
+    { label: 'Inscripciones a unidades', value: ChartType.UNIT_INSCRIPTIONS },
   ];
 
   formChangeHandlers = {
     [ChartType.STUDENT_MOVEMENTS]: StudentMovementsFormComponent,
     [ChartType.STUDENT_INSCRIPTIONS]: StudentInscriptionsFormComponent,
+    [ChartType.STUDENT_MIGRATIONS]: StudentMigrationsFormComponent,
+    [ChartType.UNIT_INSCRIPTIONS]: UnitInscriptionsFormComponent,
   };
 
   toggle: boolean = false;

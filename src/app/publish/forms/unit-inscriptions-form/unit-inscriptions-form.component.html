@@ -1,0 +1,13 @@
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Año</mat-label>
+    <mat-select [formControl]="yearInputControl">
+      <mat-option *ngFor="let year of availableYears" [value]="year">
+        {{ year }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="yearInputControl.hasError('required')">
+      Campo <strong>requerido</strong>
+    </mat-error>
+  </mat-form-field>
+</div>
