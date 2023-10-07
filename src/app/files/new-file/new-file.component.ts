@@ -26,7 +26,7 @@ export class NewFileComponent implements OnInit {
 
   uploading = false;
 
-  @Input() newFileCommand!:Subject<string>;
+  @Input() newFileCommand!: Subject<string>;
   constructor(private filesServ: FilesService) {}
 
   ngOnInit(): void {}
@@ -60,6 +60,7 @@ export class NewFileComponent implements OnInit {
       },
       complete: () => {
         this.uploading = false;
+        window.alert('Archivo cargado');
         this.newFileCommand.next('new');
       },
     });
