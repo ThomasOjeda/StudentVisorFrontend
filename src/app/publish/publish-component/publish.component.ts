@@ -132,6 +132,7 @@ export class PublishComponent implements OnInit {
         },
         complete: () => {
           this.loading = false;
+          window.alert('Grafico publicado');
           this.newPublicationCommand.next('new');
         },
       });
