@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 import { FilesRequestResponse } from '../model/files-request-response';
 import { FilesService } from '../services/files.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-file-list',
@@ -24,13 +25,23 @@ export class FileListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  @Input() newFileEvent!: Observable<string>;
+
+
   constructor(
     private router: Router,
     private filesServ: FilesService,
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newFileEvent.subscribe(
+      (event) => {
+        if (event == 'new') {
+          this.refresh();
+        }}
+    )
+  }
 
   ngAfterViewInit(): void {
     this.dataSource = new MatTableDataSource();

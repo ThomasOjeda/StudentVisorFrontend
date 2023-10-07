@@ -5,7 +5,7 @@
       Lista de archivos
     </ng-template>
 
-    <app-file-list></app-file-list>
+    <app-file-list [newFileEvent]="newFileCommand.asObservable()"></app-file-list>
   </mat-tab>
 
   <mat-tab>
@@ -14,6 +14,6 @@
       Subir nuevo
     </ng-template>
 
-    <app-new-file></app-new-file>
+    <app-new-file [newFileCommand]="newFileCommand"></app-new-file>
   </mat-tab>
 </mat-tab-group>

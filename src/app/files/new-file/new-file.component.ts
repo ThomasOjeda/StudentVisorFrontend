@@ -1,7 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FilesService } from '../services/files.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-new-file',
@@ -25,6 +26,7 @@ export class NewFileComponent implements OnInit {
 
   uploading = false;
 
+  @Input() newFileCommand!:Subject<string>;
   constructor(private filesServ: FilesService) {}
 
   ngOnInit(): void {}
@@ -58,6 +60,7 @@ export class NewFileComponent implements OnInit {
       },
       complete: () => {
         this.uploading = false;
+        this.newFileCommand.next('new');
       },
     });
   }
