@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ChartsRequestResponse } from 'src/app/chart/model/charts-request-response';
 import { ChartsService } from 'src/app/chart/services/charts.service';
 import { ChartData } from 'src/app/model/chart-data';
@@ -24,13 +25,21 @@ export class PublicationListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  @Input() newPublicationEvent!: Observable<string>;
+
   constructor(
     private router: Router,
     private chartsServ: ChartsService,
     private dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.newPublicationEvent.subscribe((event) => {
+      if (event == 'new') {
+        this.refresh();
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.dataSource = new MatTableDataSource();

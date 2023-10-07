@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  Input,
   OnInit,
   Type,
   ViewChild,
@@ -21,6 +22,7 @@ import { ChartsService } from 'src/app/chart/services/charts.service';
 import { ElementAnchorDirective } from 'src/app/shared/element-anchor/element-anchor.directive';
 import { StudentMigrationsFormComponent } from '../forms/student-migrations-form/student-migrations-form.component';
 import { UnitInscriptionsFormComponent } from '../forms/unit-inscriptions-form/unit-inscriptions-form.component';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-publish',
@@ -67,6 +69,8 @@ export class PublishComponent implements OnInit {
   @ViewChild('tagInput') tagInput!: ElementRef<HTMLInputElement>;
   @ViewChild(ElementAnchorDirective, { static: true })
   formAnchor!: ElementAnchorDirective;
+
+  @Input() newPublicationCommand!: Subject<string>;
 
   constructor(
     private chartService: ChartsService,
@@ -128,6 +132,7 @@ export class PublishComponent implements OnInit {
         },
         complete: () => {
           this.loading = false;
+          this.newPublicationCommand.next('new');
         },
       });
   }
