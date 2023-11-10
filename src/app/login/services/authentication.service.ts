@@ -30,6 +30,8 @@ export class AuthenticationService {
           this.setToken(loginResponse.token);
         },
         error: (error: HttpErrorResponse) => {
+          console.log(error);
+
           this.snackBar.open('Email o contraseña invalidos', 'cerrar', {
             duration: 3000,
           });

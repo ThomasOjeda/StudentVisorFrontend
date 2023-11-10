@@ -22,6 +22,7 @@ export class NewFileComponent implements OnInit {
 
   types = [
     { label: 'Inscripciones de alumnos', value: 'student-inscriptions' },
+    { label: 'Beneficiarios de becas', value: 'student-scholarships' },
   ];
 
   uploading = false;
