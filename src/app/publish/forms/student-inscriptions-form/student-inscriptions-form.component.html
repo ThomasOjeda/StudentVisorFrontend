@@ -23,7 +23,7 @@
       (valueChange)="reconfigureOfferInput($event)"
     >
       <mat-option *ngFor="let unit of availableUnits" [value]="unit">
-        {{ unit ?? "Sin filtro" }}
+        {{ unit ?? "Sin filtro" | titlecase }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -31,7 +31,7 @@
     <mat-label>Carrera</mat-label>
     <mat-select [formControl]="offerInputControl">
       <mat-option *ngFor="let offer of availableOffers" [value]="offer">
-        {{ offer ?? "Sin filtro" }}
+        {{ offer ?? "Sin filtro" | titlecase }}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -39,7 +39,7 @@
     <mat-label>Sexo</mat-label>
     <mat-select [formControl]="genderInputControl">
       <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
-        {{ gender.label }}
+        {{ gender.label | titlecase }}
       </mat-option>
     </mat-select>
   </mat-form-field>

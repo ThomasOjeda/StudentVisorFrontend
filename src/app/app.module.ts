@@ -29,7 +29,6 @@ registerLocaleData(localeEs, 'es');
     HttpClientModule,
     LoginModule,
     ChartModule,
-    DashboardModule,
     SharedModule,
   ],
   providers: [
