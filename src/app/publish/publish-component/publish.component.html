@@ -38,6 +38,7 @@
     <mat-form-field>
       <mat-label>Tipo de grafico</mat-label>
       <mat-select
+        panelClass="custom-select-panel"
         formControlName="type"
         #type
         (valueChange)="typeChanged($event)"
@@ -50,7 +51,11 @@
 
     <mat-form-field>
       <mat-label>Etiquetas</mat-label>
-      <mat-select formControlName="tags" multiple>
+      <mat-select
+        panelClass="custom-select-panel"
+        formControlName="tags"
+        multiple
+      >
         <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
           tag._id
         }}</mat-option>

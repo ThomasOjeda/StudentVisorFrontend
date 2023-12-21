@@ -31,7 +31,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Tipo de archivo</mat-label>
-    <mat-select formControlName="fileType">
+    <mat-select formControlName="fileType" panelClass="custom-select-panel">
       <mat-option *ngFor="let type of types" [value]="type.value">
         {{ type.label }}
       </mat-option>

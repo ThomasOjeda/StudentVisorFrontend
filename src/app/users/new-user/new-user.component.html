@@ -46,8 +46,14 @@
 
   <mat-form-field>
     <mat-label>Etiquetas</mat-label>
-    <mat-select formControlName="tags" multiple>
-      <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{tag._id}}</mat-option>
+    <mat-select
+      panelClass="custom-select-panel"
+      formControlName="tags"
+      multiple
+    >
+      <mat-option *ngFor="let tag of allTags" [value]="tag._id">{{
+        tag._id
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
 
