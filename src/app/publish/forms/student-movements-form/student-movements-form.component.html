@@ -1,10 +1,7 @@
 <div class="inputs">
   <mat-form-field>
     <mat-label>Año inicio</mat-label>
-    <mat-select
-      [formControl]="yearAInputControl"
-      (valueChange)="yearAValueChanged($event)"
-    >
+    <mat-select [formControl]="yearAInputControl">
       <mat-option *ngFor="let year of availableStartYears" [value]="year">
         {{ year }}
       </mat-option>
@@ -16,10 +13,7 @@
 
   <mat-form-field>
     <mat-label>Año fin</mat-label>
-    <mat-select
-      [formControl]="yearBInputControl"
-      (valueChange)="yearBValueChanged($event)"
-    >
+    <mat-select [formControl]="yearBInputControl">
       <mat-option *ngFor="let year of availableEndYears" [value]="year">
         {{ year }}
       </mat-option>
@@ -36,7 +30,6 @@
     <mat-select
       panelClass="custom-select-panel"
       [formControl]="unitAInputControl"
-      (valueChange)="unitAChanged($event)"
     >
       <mat-option *ngFor="let unit of availableAUnits" [value]="unit">
         {{ unit ?? "Sin filtro" | titlecase }}
@@ -49,7 +42,6 @@
     <mat-select
       panelClass="custom-select-panel"
       [formControl]="unitBInputControl"
-      (valueChange)="unitBChanged($event)"
     >
       <mat-option *ngFor="let unit of availableBUnits" [value]="unit">
         {{ unit ?? "Sin filtro" | titlecase }}

@@ -13,6 +13,7 @@ import { StudentMovementsFormComponent } from './forms/student-movements-form/st
 import { StudentInscriptionsFormComponent } from './forms/student-inscriptions-form/student-inscriptions-form.component';
 import { StudentMigrationsFormComponent } from './forms/student-migrations-form/student-migrations-form.component';
 import { UnitInscriptionsFormComponent } from './forms/unit-inscriptions-form/unit-inscriptions-form.component';
+import { StudentScholarshipMovementsFormComponent } from './forms/student-scholarship-movements-form/student-scholarship-movements-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { UnitInscriptionsFormComponent } from './forms/unit-inscriptions-form/un
     StudentInscriptionsFormComponent,
     StudentMigrationsFormComponent,
     UnitInscriptionsFormComponent,
+    StudentScholarshipMovementsFormComponent,
   ],
   imports: [
     CommonModule,

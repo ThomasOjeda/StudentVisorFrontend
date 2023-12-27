@@ -23,6 +23,7 @@ import { ElementAnchorDirective } from 'src/app/shared/element-anchor/element-an
 import { StudentMigrationsFormComponent } from '../forms/student-migrations-form/student-migrations-form.component';
 import { UnitInscriptionsFormComponent } from '../forms/unit-inscriptions-form/unit-inscriptions-form.component';
 import { Subject } from 'rxjs';
+import { StudentScholarshipMovementsFormComponent } from '../forms/student-scholarship-movements-form/student-scholarship-movements-form.component';
 
 @Component({
   selector: 'app-publish',
@@ -52,6 +53,10 @@ export class PublishComponent implements OnInit {
     { label: 'Inscripciones', value: ChartType.STUDENT_INSCRIPTIONS },
     { label: 'Migraciones', value: ChartType.STUDENT_MIGRATIONS },
     { label: 'Inscripciones a unidades', value: ChartType.UNIT_INSCRIPTIONS },
+    {
+      label: 'Movimientos cruzados con becas',
+      value: ChartType.STUDENT_SCH_MOVEMENTS,
+    },
   ];
 
   formChangeHandlers = {
@@ -59,6 +64,7 @@ export class PublishComponent implements OnInit {
     [ChartType.STUDENT_INSCRIPTIONS]: StudentInscriptionsFormComponent,
     [ChartType.STUDENT_MIGRATIONS]: StudentMigrationsFormComponent,
     [ChartType.UNIT_INSCRIPTIONS]: UnitInscriptionsFormComponent,
+    [ChartType.STUDENT_SCH_MOVEMENTS]: StudentScholarshipMovementsFormComponent,
   };
 
   toggle: boolean = false;
@@ -98,23 +104,21 @@ export class PublishComponent implements OnInit {
   ngOnInit(): void {}
 
   previsualize() {
-    console.log(this.transformationForm.value);
+    let newUpload: TransformationRequest = this.transformationForm
+      .value as TransformationRequest;
+    console.log(newUpload);
     this.loading = true;
-    this.chartService
-      .requestPrevisualization(
-        this.transformationForm.value as TransformationRequest
-      )
-      .subscribe({
-        next: (response: ChartData) => {
-          this.previsualizedChart = response;
-        },
-        error: (err: HttpErrorResponse) => {
-          this.loading = false;
-        },
-        complete: () => {
-          this.loading = false;
-        },
-      });
+    this.chartService.requestPrevisualization(newUpload).subscribe({
+      next: (response: ChartData) => {
+        this.previsualizedChart = response;
+      },
+      error: (err: HttpErrorResponse) => {
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 
   publish() {

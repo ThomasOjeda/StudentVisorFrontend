@@ -32,6 +32,7 @@ export class ChartComponent implements OnChanges, AfterViewInit {
     [ChartType.STUDENT_MOVEMENTS]: StudentMovementsChartComponent,
     [ChartType.STUDENT_MIGRATIONS]: StudentMigrationsChartComponent,
     [ChartType.UNIT_INSCRIPTIONS]: UnitInscriptionsChartComponent,
+    [ChartType.STUDENT_SCH_MOVEMENTS]: UnitInscriptionsChartComponent,
   };
 
   constructor() {}

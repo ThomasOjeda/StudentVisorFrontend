@@ -1,19 +1,21 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon>query_stats</mat-icon>
-      Lista de graficos
-    </ng-template>
-
-    <app-publication-list [newPublicationEvent]="newPublicationCommand.asObservable()"></app-publication-list>
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
       <mat-icon>add_chart</mat-icon>
       Generar nuevo
     </ng-template>
 
     <app-publish [newPublicationCommand]="newPublicationCommand"></app-publish>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>query_stats</mat-icon>
+      Lista de graficos
+    </ng-template>
+
+    <app-publication-list
+      [newPublicationEvent]="newPublicationCommand.asObservable()"
+    ></app-publication-list>
   </mat-tab>
 </mat-tab-group>
