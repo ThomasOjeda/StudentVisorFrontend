@@ -1,6 +1,14 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab>
     <ng-template mat-tab-label>
+      <mat-icon>person_add</mat-icon>
+      Crear nuevo
+    </ng-template>
+
+    <app-new-user [newUserCommand]="this.newUserCommand"></app-new-user>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
       <mat-icon>group</mat-icon>
       Lista de usuarios
     </ng-template>
@@ -8,14 +16,5 @@
     <app-user-list
       [newUserEvent]="this.newUserCommand.asObservable()"
     ></app-user-list>
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon>person_add</mat-icon>
-      Crear nuevo
-    </ng-template>
-
-    <app-new-user [newUserCommand]="this.newUserCommand"></app-new-user>
   </mat-tab>
 </mat-tab-group>

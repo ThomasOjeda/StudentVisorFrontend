@@ -1,6 +1,14 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab>
     <ng-template mat-tab-label>
+      <mat-icon>new_label</mat-icon>
+      Crear nueva
+    </ng-template>
+
+    <app-new-tag [newTagCommand]="this.newTagCommand"></app-new-tag>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
       <mat-icon>label</mat-icon>
       Lista de etiquetas
     </ng-template>
@@ -8,14 +16,5 @@
     <app-tag-list
       [newTagEvent]="this.newTagCommand.asObservable()"
     ></app-tag-list>
-  </mat-tab>
-
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon>new_label</mat-icon>
-      Crear nueva
-    </ng-template>
-
-    <app-new-tag [newTagCommand]="this.newTagCommand"></app-new-tag>
   </mat-tab>
 </mat-tab-group>
