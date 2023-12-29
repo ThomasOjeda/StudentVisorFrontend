@@ -1,0 +1,13 @@
+.canvas {
+  margin: 0 auto;
+  width: 30rem;
+  height: 30rem;
+}
+
+.horizontal {
+  width: 40rem;
+}
+
+.vertical {
+  height: 40rem;
+}

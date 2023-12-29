@@ -1,0 +1,18 @@
+<div
+  class="canvas"
+  [ngClass]="{
+    horizontal: this.type === 'horizontal',
+    vertical: this.type === 'vertical'
+  }"
+>
+  <canvas #canvas></canvas>
+</div>
+<button mat-button [matMenuTriggerFor]="menu">
+  <mat-icon>arrow_drop_down</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="chartTypeChanged('horizontal')">
+    Horizontal
+  </button>
+  <button mat-menu-item (click)="chartTypeChanged('vertical')">Vertical</button>
+</mat-menu>

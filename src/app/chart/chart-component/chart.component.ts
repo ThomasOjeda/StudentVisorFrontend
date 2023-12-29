@@ -13,6 +13,7 @@ import { StudentMovementsChartComponent } from '../custom-charts/student-movemen
 import { StudentInscriptionsChartComponent } from '../custom-charts/student-inscriptions-chart/student-inscriptions-chart.component';
 import { StudentMigrationsChartComponent } from '../custom-charts/student-migrations-chart/student-migrations-chart.component';
 import { UnitInscriptionsChartComponent } from '../custom-charts/unit-inscriptions-chart/unit-inscriptions-chart.component';
+import { StudentScholarshipMovementsChartComponent } from '../custom-charts/student-scholarship-movements-chart/student-scholarship-movements-chart.component';
 
 @Component({
   selector: 'app-chart',
@@ -32,7 +33,8 @@ export class ChartComponent implements OnChanges, AfterViewInit {
     [ChartType.STUDENT_MOVEMENTS]: StudentMovementsChartComponent,
     [ChartType.STUDENT_MIGRATIONS]: StudentMigrationsChartComponent,
     [ChartType.UNIT_INSCRIPTIONS]: UnitInscriptionsChartComponent,
-    [ChartType.STUDENT_SCH_MOVEMENTS]: UnitInscriptionsChartComponent,
+    [ChartType.STUDENT_SCH_MOVEMENTS]:
+      StudentScholarshipMovementsChartComponent,
   };
 
   constructor() {}
