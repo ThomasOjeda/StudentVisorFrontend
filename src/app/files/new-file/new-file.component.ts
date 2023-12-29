@@ -22,7 +22,14 @@ export class NewFileComponent implements OnInit {
 
   types = [
     { label: 'Inscripciones de alumnos', value: 'student-inscriptions' },
-    { label: 'Beneficiarios de becas', value: 'student-scholarships' },
+    {
+      label: 'Beneficiarios de becas Manuel Belgrano',
+      value: 'student-scholarships-belgrano',
+    },
+    {
+      label: 'Beneficiarios de becas Progresar',
+      value: 'student-scholarships-progresar',
+    },
   ];
 
   uploading = false;
