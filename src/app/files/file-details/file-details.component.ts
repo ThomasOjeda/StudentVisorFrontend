@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FileData } from 'src/app/model/file-data';
 import { FileRequestResponse } from '../model/file-request-response';
 import { FilesService } from '../services/files.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-file-details',
@@ -12,6 +13,7 @@ import { FilesService } from '../services/files.service';
 export class FileDetailsComponent implements OnInit {
   file!: FileData;
   editMode = false;
+  selectedFile: Blob | null = null;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -54,5 +56,29 @@ export class FileDetailsComponent implements OnInit {
       .subscribe((res) => {
         this.file = res.result;
       });
+  }
+
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] ?? null;
+  }
+
+  updateFile() {
+    if (this.selectedFile != null) {
+      let form = new FormData();
+      form.append('name', this.file.name);
+      form.append('type', this.file.type);
+      form.append('year', this.file.year as unknown as string);
+      form.append('uploaded_file', this.selectedFile as Blob);
+      this.filesServ.uploadFile(form).subscribe({
+        next: () => {},
+        error: (err: HttpErrorResponse) => {
+          window.alert('Hubo un error al actualizar el archivo');
+        },
+        complete: () => {
+          window.alert('Archivo actualizado');
+          this.selectedFile = null;
+        },
+      });
+    }
   }
 }

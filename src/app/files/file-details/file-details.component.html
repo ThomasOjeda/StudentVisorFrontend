@@ -18,6 +18,39 @@
       ></app-editable-text-field>
     </p>
 
+    <div
+      *ngIf="
+        file.type === 'student-scholarships-progresar' ||
+        file.type === 'student-scholarships-belgrano'
+      "
+    >
+      <button
+        class="chooseFileButton"
+        type="button"
+        mat-raised-button
+        (click)="fileInput.click()"
+      >
+        Actualizar archivo
+      </button>
+      <span class="file-name">{{ selectedFile?.name }}</span>
+      <input
+        hidden
+        (change)="onFileSelected($event)"
+        #fileInput
+        type="file"
+        accept=".xlsx"
+      />
+      <button
+        type="button"
+        (click)="updateFile()"
+        mat-button
+        color="accent"
+        [disabled]="selectedFile == null"
+      >
+        Cargar actualizacion
+      </button>
+    </div>
+
     <h2>Tipo</h2>
     <p>{{ file.type }}</p>
 
