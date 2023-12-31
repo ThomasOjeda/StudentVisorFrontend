@@ -41,4 +41,11 @@ export class FilesService {
   deleteFile(fileId: string) {
     return this.http.delete(`${environment.apiUrl}/api/v1/uploads/${fileId}`);
   }
+
+  patchFile(fileId: string, newData: object) {
+    return this.http.patch<FileRequestResponse>(
+      `${environment.apiUrl}/api/v1/studentfiles/${fileId}`,
+      newData
+    );
+  }
 }

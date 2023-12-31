@@ -6,6 +6,8 @@ import { ListCommandsComponent } from './list-commands/list-commands.component';
 import { ConfirmationCardComponent } from './confirmation-card/confirmation-card.component';
 import { ElementAnchorDirective } from './element-anchor/element-anchor.directive';
 import { UserButtonComponent } from './user-button/user-button.component';
+import { EditableTextFieldComponent } from './editable-text-field/editable-text-field.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,16 @@ import { UserButtonComponent } from './user-button/user-button.component';
     ConfirmationCardComponent,
     ElementAnchorDirective,
     UserButtonComponent,
+    EditableTextFieldComponent,
   ],
-  imports: [CommonModule, MaterialDesignModule],
+  imports: [CommonModule, MaterialDesignModule, FormsModule],
   exports: [
     ShadeLoadingSpinnerComponent,
     ListCommandsComponent,
     ConfirmationCardComponent,
     ElementAnchorDirective,
     UserButtonComponent,
+    EditableTextFieldComponent,
   ],
 })
 export class SharedModule {}

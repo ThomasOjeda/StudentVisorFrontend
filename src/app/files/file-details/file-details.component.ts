@@ -11,6 +11,7 @@ import { FilesService } from '../services/files.service';
 })
 export class FileDetailsComponent implements OnInit {
   file!: FileData;
+  editMode = false;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -35,5 +36,23 @@ export class FileDetailsComponent implements OnInit {
       error: () => {},
       complete: () => {},
     });
+  }
+
+  descriptionModified(newValue: string) {
+    this.file.description = newValue;
+    this.filesServ
+      .patchFile(this.file._id, { description: newValue })
+      .subscribe((res) => {
+        this.file = res.result;
+      });
+  }
+
+  nameModified(newValue: string) {
+    this.file.name = newValue;
+    this.filesServ
+      .patchFile(this.file._id, { name: newValue })
+      .subscribe((res) => {
+        this.file = res.result;
+      });
   }
 }

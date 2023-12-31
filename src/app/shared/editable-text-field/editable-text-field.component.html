@@ -1,0 +1,30 @@
+<div>
+  <mat-form-field>
+    <textarea
+      *ngIf="isTextArea"
+      type="text"
+      matInput
+      rows="4"
+      [(ngModel)]="value"
+      [disabled]="!editMode"
+    ></textarea>
+    <input
+      *ngIf="!isTextArea"
+      type="text"
+      matInput
+      [(ngModel)]="value"
+      [disabled]="!editMode"
+    />
+  </mat-form-field>
+  <button
+    *ngIf="!editMode"
+    mat-icon-button
+    color="accent"
+    (click)="toggleEdit()"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button *ngIf="editMode" mat-icon-button color="accent" (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

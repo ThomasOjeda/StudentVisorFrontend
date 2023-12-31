@@ -1,11 +1,21 @@
 <mat-card *ngIf="file">
-  <mat-card-header>
-    <mat-card-title>Detalles del archivo "{{ file.name }}"</mat-card-title>
-  </mat-card-header>
+  <mat-card-title
+    >Detalles del archivo
+    <app-editable-text-field
+      [isTextArea]="false"
+      [value]="file.name"
+      (wasModified)="nameModified($event)"
+    ></app-editable-text-field
+  ></mat-card-title>
   <mat-card-content>
     <h2>Descripcion</h2>
     <p style="white-space: pre-wrap">
-      {{ file.description ?? "Sin descripcion" }}
+      <app-editable-text-field
+        [isTextArea]="true"
+        [value]="file.description"
+        [alternativeValue]="'Sin descripcion'"
+        (wasModified)="descriptionModified($event)"
+      ></app-editable-text-field>
     </p>
 
     <h2>Tipo</h2>
