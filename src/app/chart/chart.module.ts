@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { StudentMigrationsChartComponent } from './custom-charts/student-migrations-chart/student-migrations-chart.component';
 import { UnitInscriptionsChartComponent } from './custom-charts/unit-inscriptions-chart/unit-inscriptions-chart.component';
 import { StudentScholarshipMovementsChartComponent } from './custom-charts/student-scholarship-movements-chart/student-scholarship-movements-chart.component';
+import { MigrationDetailsDialogComponent } from './custom-charts/student-migrations-chart/migration-details-dialog/migration-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StudentScholarshipMovementsChartComponent } from './custom-charts/stude
     StudentMigrationsChartComponent,
     UnitInscriptionsChartComponent,
     StudentScholarshipMovementsChartComponent,
+    MigrationDetailsDialogComponent,
   ],
   imports: [
     CommonModule,

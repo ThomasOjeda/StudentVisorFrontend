@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{ inputData.label | titlecase }}</h1>
+<div mat-dialog-content>
+  <div class="canvas">
+    <canvas #canvas></canvas>
+  </div>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="chartTypeChanged('pie')">Pie</button>
+    <button mat-menu-item (click)="chartTypeChanged('doughnut')">Dona</button>
+  </mat-menu>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCloseClick()">Cerrar</button>
+</div>

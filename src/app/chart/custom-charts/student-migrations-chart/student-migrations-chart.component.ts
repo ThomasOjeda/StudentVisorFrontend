@@ -9,6 +9,8 @@ import {
 import { CustomChart } from '../custom-chart';
 import { ChartData } from 'src/app/model/chart-data';
 import Chart from 'chart.js/auto';
+import { MatDialog } from '@angular/material/dialog';
+import { MigrationDetailsDialogComponent } from './migration-details-dialog/migration-details-dialog.component';
 
 @Component({
   selector: 'app-student-migrations-chart',
@@ -25,12 +27,25 @@ export class StudentMigrationsChartComponent
   chartVisualization!: any;
 
   type = '';
-  constructor() {}
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.chartTypeChanged('pie');
+  }
+
+  private parseLabels(structure: any) {
+    return Object.keys(structure);
+  }
+
+  private parseValues(structure: any) {
+    return Object.values(structure).map((valueObject: any) =>
+      Object.values(valueObject)
+        .map((value) => Number(value))
+        .reduce((previous = 0, current) => previous + current)
+    );
   }
 
   chartTypeChanged(type: string) {
@@ -41,16 +56,21 @@ export class StudentMigrationsChartComponent
       this.chartVisualization = new Chart(this.canvas.nativeElement, {
         type: 'pie',
         data: {
-          labels: Object.keys(this.chart.structure),
+          labels: this.parseLabels(this.chart.structure),
           datasets: [
             {
-              data: Object.values(this.chart.structure),
+              data: this.parseValues(this.chart.structure),
               hoverOffset: 4,
             },
           ],
         },
         options: {
-          onClick(event, elements, chart) {},
+          onClick: (event, elements, chart) => {
+            this.openDialog(
+              Object.keys(this.chart.structure)[elements[0].index],
+              Object.values(this.chart.structure)[elements[0].index]
+            );
+          },
           maintainAspectRatio: false,
         },
       });
@@ -59,19 +79,32 @@ export class StudentMigrationsChartComponent
       this.chartVisualization = new Chart(this.canvas.nativeElement, {
         type: 'doughnut',
         data: {
-          labels: Object.keys(this.chart.structure),
+          labels: this.parseLabels(this.chart.structure),
           datasets: [
             {
-              data: Object.values(this.chart.structure),
+              data: this.parseValues(this.chart.structure),
               hoverOffset: 4,
             },
           ],
         },
         options: {
-          onClick(event, elements, chart) {},
+          onClick: (event, elements, chart) => {
+            this.openDialog(
+              Object.keys(this.chart.structure)[elements[0].index],
+              Object.values(this.chart.structure)[elements[0].index]
+            );
+          },
           maintainAspectRatio: false,
         },
       });
     }
+  }
+
+  openDialog(label: string, values: any): void {
+    const dialogRef = this.dialog.open(MigrationDetailsDialogComponent, {
+      data: { label, values },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
