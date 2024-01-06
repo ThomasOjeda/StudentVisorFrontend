@@ -6,8 +6,25 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import Chart from 'chart.js/auto';
 import { ChartData } from 'src/app/model/chart-data';
+import {
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  Colors,
+  LinearScale,
+  Tooltip,
+} from 'chart.js';
+
+Chart.register(
+  BarController,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Colors,
+  Tooltip
+);
 
 @Component({
   selector: 'app-student-scholarship-movements-chart',

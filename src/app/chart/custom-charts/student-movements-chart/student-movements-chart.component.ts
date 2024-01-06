@@ -7,9 +7,25 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ChartData } from 'src/app/model/chart-data';
-import { Chart } from 'chart.js/auto';
 import { CustomChart } from '../custom-chart';
+import {
+  ArcElement,
+  Chart,
+  Colors,
+  DoughnutController,
+  Legend,
+  PieController,
+  Tooltip,
+} from 'chart.js';
 
+Chart.register(
+  PieController,
+  DoughnutController,
+  ArcElement,
+  Colors,
+  Tooltip,
+  Legend
+);
 @Component({
   selector: 'app-student-movements-chart',
   templateUrl: './student-movements-chart.component.html',

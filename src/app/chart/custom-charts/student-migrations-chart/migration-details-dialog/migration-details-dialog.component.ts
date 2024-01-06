@@ -1,7 +1,22 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import Chart from 'chart.js/auto';
-
+import {
+  Chart,
+  ArcElement,
+  Colors,
+  DoughnutController,
+  Legend,
+  PieController,
+  Tooltip,
+} from 'chart.js';
+Chart.register(
+  PieController,
+  DoughnutController,
+  ArcElement,
+  Colors,
+  Tooltip,
+  Legend
+);
 @Component({
   selector: 'app-migration-details-dialog',
   templateUrl: './migration-details-dialog.component.html',

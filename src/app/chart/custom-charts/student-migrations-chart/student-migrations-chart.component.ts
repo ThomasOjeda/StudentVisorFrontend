@@ -8,10 +8,27 @@ import {
 } from '@angular/core';
 import { CustomChart } from '../custom-chart';
 import { ChartData } from 'src/app/model/chart-data';
-import Chart from 'chart.js/auto';
 import { MatDialog } from '@angular/material/dialog';
 import { MigrationDetailsDialogComponent } from './migration-details-dialog/migration-details-dialog.component';
 
+import {
+  ArcElement,
+  Chart,
+  Colors,
+  DoughnutController,
+  Legend,
+  PieController,
+  Tooltip,
+} from 'chart.js';
+
+Chart.register(
+  PieController,
+  DoughnutController,
+  ArcElement,
+  Colors,
+  Tooltip,
+  Legend
+);
 @Component({
   selector: 'app-student-migrations-chart',
   templateUrl: './student-migrations-chart.component.html',
