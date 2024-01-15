@@ -151,16 +151,14 @@ export class StudentMovementsFormComponent
   reconfigureOfferAInput(unit: string | null | undefined) {
     this.offerAInputControl.setValue(undefined);
     this.offerAInputControl.disable({ emitEvent: false });
-    if (unit) {
-      if (this.yearAInputControl.value && unit)
-        this.dataCatServ
-          .getOffers(this.yearAInputControl.value, unit)
-          .subscribe((data: any) => {
-            this.availableStartOffers = data.result.sort();
-            this.availableStartOffers.unshift(undefined);
-            this.offerAInputControl.enable({ emitEvent: false });
-          });
-    }
+    if (this.yearAInputControl.value && unit)
+      this.dataCatServ
+        .getOffers(this.yearAInputControl.value, unit)
+        .subscribe((data: any) => {
+          this.availableStartOffers = data.result.sort();
+          this.availableStartOffers.unshift(undefined);
+          this.offerAInputControl.enable({ emitEvent: false });
+        });
   }
 
   reconfigureOfferBInput(unit: string | null | undefined) {
