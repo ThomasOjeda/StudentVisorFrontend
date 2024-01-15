@@ -37,3 +37,66 @@
     </mat-select>
   </mat-form-field>
 </div>
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Unidad inicio</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="unitAInputControl"
+    >
+      <mat-option *ngFor="let unit of availableAUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Unidad fin</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="unitBInputControl"
+    >
+      <mat-option *ngFor="let unit of availableBUnits" [value]="unit">
+        {{ unit ?? "Sin filtro" | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Sexo</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="genderInputControl"
+    >
+      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
+        {{ gender.label | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="inputs">
+  <mat-form-field>
+    <mat-label>Carrera inicio</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="offerAInputControl"
+    >
+      <mat-option *ngFor="let offer of availableStartOffers" [value]="offer">
+        {{ offer ?? "Sin filtro" | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Carrera fin</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="offerBInputControl"
+    >
+      <mat-option *ngFor="let offer of availableEndOffers" [value]="offer">
+        {{ offer ?? "Sin filtro" | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
