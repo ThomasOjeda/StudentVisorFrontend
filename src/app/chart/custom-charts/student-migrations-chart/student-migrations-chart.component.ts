@@ -20,6 +20,7 @@ import {
   PieController,
   Tooltip,
 } from 'chart.js';
+import { ColorsService } from 'src/app/shared/services/colors.service';
 
 Chart.register(
   PieController,
@@ -45,7 +46,7 @@ export class StudentMigrationsChartComponent
 
   type = '';
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private colorService: ColorsService) {}
 
   ngOnInit(): void {}
 
@@ -78,6 +79,7 @@ export class StudentMigrationsChartComponent
             {
               data: this.parseValues(this.chart.structure),
               hoverOffset: 4,
+              backgroundColor: this.colorService.getColors(),
             },
           ],
         },
@@ -101,6 +103,7 @@ export class StudentMigrationsChartComponent
             {
               data: this.parseValues(this.chart.structure),
               hoverOffset: 4,
+              backgroundColor: this.colorService.getColors(),
             },
           ],
         },

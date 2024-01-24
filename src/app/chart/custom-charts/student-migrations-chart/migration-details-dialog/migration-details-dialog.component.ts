@@ -9,6 +9,7 @@ import {
   PieController,
   Tooltip,
 } from 'chart.js';
+import { ColorsService } from 'src/app/shared/services/colors.service';
 Chart.register(
   PieController,
   DoughnutController,
@@ -25,7 +26,8 @@ Chart.register(
 export class MigrationDetailsDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<MigrationDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public inputData: any
+    @Inject(MAT_DIALOG_DATA) public inputData: any,
+    private colorService: ColorsService
   ) {}
 
   @ViewChild('canvas') canvas!: ElementRef;
@@ -61,6 +63,7 @@ export class MigrationDetailsDialogComponent {
             {
               data: this.parseValues(this.inputData.values),
               hoverOffset: 4,
+              backgroundColor: this.colorService.getColors(),
             },
           ],
         },
@@ -78,6 +81,7 @@ export class MigrationDetailsDialogComponent {
             {
               data: this.parseValues(this.inputData.values),
               hoverOffset: 4,
+              backgroundColor: this.colorService.getColors(),
             },
           ],
         },
