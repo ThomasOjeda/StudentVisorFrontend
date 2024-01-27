@@ -60,7 +60,7 @@ export class NewFileComponent implements OnInit {
 
         if (err.status == 409)
           window.alert(
-            'Existe un conflicto con un archivo ya presente (¿ya esta registrado el año?)'
+            'Existe un conflicto con un archivo ya existente de mismo tipo o año'
           );
         else {
           window.alert('Hubo un error al subir el archivo');

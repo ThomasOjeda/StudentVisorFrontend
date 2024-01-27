@@ -38,6 +38,13 @@ export class FilesService {
     return this.http.post(`${environment.apiUrl}/api/v1/uploads`, form);
   }
 
+  updateScholarshipsFile(form: FormData) {
+    return this.http.post(
+      `${environment.apiUrl}/api/v1/uploads/scholarships/update`,
+      form
+    );
+  }
+
   deleteFile(fileId: string) {
     return this.http.delete(`${environment.apiUrl}/api/v1/uploads/${fileId}`);
   }

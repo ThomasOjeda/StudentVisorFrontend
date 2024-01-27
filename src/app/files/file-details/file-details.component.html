@@ -55,9 +55,9 @@
     <p>{{ file.type }}</p>
 
     <h2>Fecha de creación</h2>
-    <p>{{ file.createdAt | date }}</p>
+    <p>{{ file.createdAt | date : "medium" }}</p>
 
     <h2>Ultima actualización</h2>
-    <p>{{ file.updatedAt | date }}</p>
+    <p>{{ file.updatedAt | date : "medium" }}</p>
   </mat-card-content>
 </mat-card>

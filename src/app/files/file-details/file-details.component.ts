@@ -65,11 +65,11 @@ export class FileDetailsComponent implements OnInit {
   updateFile() {
     if (this.selectedFile != null) {
       let form = new FormData();
-      form.append('name', this.file.name);
+      form.append('name', this.file.name); //Not actually used by the backend in this case but it is required.
       form.append('type', this.file.type);
       form.append('year', this.file.year as unknown as string);
       form.append('uploaded_file', this.selectedFile as Blob);
-      this.filesServ.uploadFile(form).subscribe({
+      this.filesServ.updateScholarshipsFile(form).subscribe({
         next: () => {},
         error: (err: HttpErrorResponse) => {
           window.alert('Hubo un error al actualizar el archivo');
