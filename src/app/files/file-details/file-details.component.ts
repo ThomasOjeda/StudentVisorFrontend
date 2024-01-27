@@ -70,7 +70,9 @@ export class FileDetailsComponent implements OnInit {
       form.append('year', this.file.year as unknown as string);
       form.append('uploaded_file', this.selectedFile as Blob);
       this.filesServ.updateScholarshipsFile(form).subscribe({
-        next: () => {},
+        next: (res) => {
+          this.file = res.result;
+        },
         error: (err: HttpErrorResponse) => {
           window.alert('Hubo un error al actualizar el archivo');
         },

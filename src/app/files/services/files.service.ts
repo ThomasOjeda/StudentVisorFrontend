@@ -39,7 +39,7 @@ export class FilesService {
   }
 
   updateScholarshipsFile(form: FormData) {
-    return this.http.post(
+    return this.http.post<FileRequestResponse>(
       `${environment.apiUrl}/api/v1/uploads/scholarships/update`,
       form
     );
