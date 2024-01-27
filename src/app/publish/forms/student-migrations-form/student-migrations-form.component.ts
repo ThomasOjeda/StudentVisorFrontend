@@ -13,17 +13,37 @@ import { FileType } from 'src/app/files/model/file-type';
 export class StudentMigrationsFormComponent
   implements OnInit, TransformationForm
 {
-  yearAInputControl = new FormControl(null, [Validators.required]);
-  yearBInputControl = new FormControl({ value: null, disabled: true }, [
+  yearAInputControl = new FormControl<number | null | undefined>(undefined, [
     Validators.required,
   ]);
-  modeInputControl = new FormControl(null, [Validators.required]);
-
-  unitAInputControl = new FormControl({ value: undefined, disabled: true });
-  unitBInputControl = new FormControl({ value: undefined, disabled: true });
-  genderInputControl = new FormControl();
-  offerAInputControl = new FormControl({ value: undefined, disabled: true });
-  offerBInputControl = new FormControl({ value: undefined, disabled: true });
+  yearBInputControl = new FormControl<number | null | undefined>(
+    { value: undefined, disabled: true },
+    [Validators.required]
+  );
+  unitAInputControl = new FormControl<string | null | undefined>({
+    value: undefined,
+    disabled: true,
+  });
+  unitBInputControl = new FormControl<string | null | undefined>({
+    value: undefined,
+    disabled: true,
+  });
+  genderInputControl = new FormControl<number | null | undefined>({
+    value: undefined,
+    disabled: false,
+  });
+  offerAInputControl = new FormControl<string | null | undefined>({
+    value: undefined,
+    disabled: true,
+  });
+  offerBInputControl = new FormControl<string | null | undefined>({
+    value: undefined,
+    disabled: true,
+  });
+  modeInputControl = new FormControl<string | null | undefined>(
+    { value: undefined, disabled: false },
+    [Validators.required]
+  );
 
   @Input() transformationBody!: FormGroup;
 
@@ -41,21 +61,30 @@ export class StudentMigrationsFormComponent
   ) {}
 
   ngOnInit(): void {
+    this.yearAInputControl.valueChanges.subscribe((data) => {
+      this.yearAValueChanged(data);
+    });
+
+    this.unitAInputControl.valueChanges.subscribe((data) => {
+      this.unitAChanged(data);
+    });
+
+    this.yearBInputControl.valueChanges.subscribe((data) => {
+      this.yearBValueChanged(data);
+    });
+
+    this.unitBInputControl.valueChanges.subscribe((data) => {
+      this.unitBChanged(data);
+    });
+
     this.transformationBody.addControl('yearA', this.yearAInputControl);
     this.transformationBody.addControl('yearB', this.yearBInputControl);
-    this.transformationBody.addControl('destMode', this.modeInputControl);
-
     this.transformationBody.addControl('unitA', this.unitAInputControl);
     this.transformationBody.addControl('unitB', this.unitBInputControl);
     this.transformationBody.addControl('sex', this.genderInputControl);
     this.transformationBody.addControl('offerA', this.offerAInputControl);
     this.transformationBody.addControl('offerB', this.offerBInputControl);
-
-    this.unitAInputControl.setValue(undefined);
-    this.unitBInputControl.setValue(undefined);
-    this.genderInputControl.setValue(undefined);
-    this.offerAInputControl.setValue(undefined);
-    this.offerBInputControl.setValue(undefined);
+    this.transformationBody.addControl('destMode', this.modeInputControl);
 
     this.filesServ
       .filesQuery(undefined, FileType.STUDENT_INSCRIPTIONS)
@@ -69,87 +98,76 @@ export class StudentMigrationsFormComponent
     });
   }
 
-  yearAValueChanged(yearA: number) {
+  yearAValueChanged(yearA: number | null | undefined) {
     this.reconfigureUnitAInput(yearA);
     this.reconfigureYearBInput(yearA);
   }
 
-  yearBValueChanged($event: number) {
+  yearBValueChanged($event: number | null | undefined) {
     this.reconfigureUnitBInput($event);
   }
 
-  unitAChanged(unit: string) {
+  unitAChanged(unit: string | null | undefined) {
     this.reconfigureOfferAInput(unit);
   }
 
-  unitBChanged(unit: string) {
+  unitBChanged(unit: string | null | undefined) {
     this.reconfigureOfferBInput(unit);
   }
 
-  reconfigureYearBInput(yearA: number) {
-    this.availableEndYears = this.availableStartYears.slice(
-      this.availableStartYears.lastIndexOf(yearA) + 1
-    );
+  reconfigureYearBInput(yearA: number | null | undefined) {
+    this.yearBInputControl.setValue(undefined);
+    this.yearBInputControl.disable({ emitEvent: false });
+    if (yearA) {
+      this.availableEndYears = this.availableStartYears.slice(
+        this.availableStartYears.lastIndexOf(yearA) + 1
+      );
 
-    this.yearBInputControl.enable();
-    this.yearBInputControl.reset();
-    this.yearBInputControl.updateValueAndValidity();
-
-    this.unitBInputControl.setValue(undefined);
-    this.unitBInputControl.disable();
-
-    this.offerBInputControl.setValue(undefined);
-    this.offerBInputControl.disable();
+      this.yearBInputControl.enable({ emitEvent: false });
+    }
   }
 
-  reconfigureUnitAInput(year: number) {
+  reconfigureUnitAInput(year: number | null | undefined) {
     this.unitAInputControl.setValue(undefined);
-    this.unitAInputControl.disable();
+    this.unitAInputControl.disable({ emitEvent: false });
 
-    this.offerAInputControl.setValue(undefined);
-    this.offerAInputControl.disable();
-
-    this.offerBInputControl.setValue(undefined);
-    this.offerBInputControl.disable();
-
-    this.dataCatServ.getUnits(year).subscribe((data: any) => {
-      this.availableAUnits = data.result.sort();
-      this.availableAUnits.unshift(undefined);
-      this.unitAInputControl.enable();
-    });
+    if (year) {
+      this.dataCatServ.getUnits(year).subscribe((data: any) => {
+        this.availableAUnits = data.result.sort();
+        this.availableAUnits.unshift(undefined);
+        this.unitAInputControl.enable({ emitEvent: false });
+      });
+    }
   }
 
-  reconfigureUnitBInput(year: number) {
+  reconfigureUnitBInput(year: number | null | undefined) {
     this.unitBInputControl.setValue(undefined);
-    this.unitBInputControl.disable();
+    this.unitBInputControl.disable({ emitEvent: false });
 
-    this.offerBInputControl.setValue(undefined);
-    this.offerBInputControl.disable();
-
-    this.dataCatServ.getUnits(year).subscribe((data: any) => {
-      this.availableBUnits = data.result.sort();
-      this.availableBUnits.unshift(undefined);
-      this.unitBInputControl.enable();
-    });
+    if (year)
+      this.dataCatServ.getUnits(year).subscribe((data: any) => {
+        this.availableBUnits = data.result.sort();
+        this.availableBUnits.unshift(undefined);
+        this.unitBInputControl.enable({ emitEvent: false });
+      });
   }
 
-  reconfigureOfferAInput(unit: string) {
+  reconfigureOfferAInput(unit: string | null | undefined) {
     this.offerAInputControl.setValue(undefined);
-    this.offerAInputControl.disable();
-
+    this.offerAInputControl.disable({ emitEvent: false });
     if (this.yearAInputControl.value && unit)
       this.dataCatServ
         .getOffers(this.yearAInputControl.value, unit)
         .subscribe((data: any) => {
           this.availableStartOffers = data.result.sort();
           this.availableStartOffers.unshift(undefined);
-          this.offerAInputControl.enable();
+          this.offerAInputControl.enable({ emitEvent: false });
         });
   }
 
-  reconfigureOfferBInput(unit: string) {
+  reconfigureOfferBInput(unit: string | null | undefined) {
     this.offerBInputControl.setValue(undefined);
-    this.offerBInputControl.disable();
+    this.offerBInputControl.disable({ emitEvent: false });
 
     if (this.yearBInputControl.value && unit)
       this.dataCatServ
@@ -157,7 +175,7 @@ export class StudentMigrationsFormComponent
         .subscribe((data: any) => {
           this.availableEndOffers = data.result.sort();
           this.availableEndOffers.unshift(undefined);
-          this.offerBInputControl.enable();
+          this.offerBInputControl.enable({ emitEvent: false });
         });
   }
 }
