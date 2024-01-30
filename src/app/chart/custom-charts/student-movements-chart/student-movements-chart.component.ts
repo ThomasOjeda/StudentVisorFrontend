@@ -57,7 +57,7 @@ export class StudentMovementsChartComponent
       this.chartVisualization = new Chart(this.canvas.nativeElement, {
         type: 'pie',
         data: {
-          labels: ['Reinscriptos', 'Movimientos', 'Sin Datos'],
+          labels: ['Rematriculados', 'Cambios', 'No Rematriculados'],
           datasets: [
             {
               data: [
