@@ -21,7 +21,7 @@ export class StudentScholarshipMovementsFormComponent
     [Validators.required]
   );
   scholarshipTypeInputControl = new FormControl<string | null | undefined>(
-    { value: undefined, disabled: false },
+    { value: undefined, disabled: true },
     [Validators.required]
   );
   unitAInputControl = new FormControl<string | null | undefined>({
@@ -56,10 +56,7 @@ export class StudentScholarshipMovementsFormComponent
 
   availableGenders: any[] = [];
 
-  schTypes = [
-    { label: 'progresar', value: 'student-scholarships-progresar' },
-    { label: 'belgrano', value: 'student-scholarships-belgrano' },
-  ];
+  schTypes: any[] = [];
 
   constructor(
     private filesServ: FilesService,
@@ -114,6 +111,7 @@ export class StudentScholarshipMovementsFormComponent
 
   yearBValueChanged($event: number | null | undefined) {
     this.reconfigureUnitBInput($event);
+    this.reconfigureScholarshipTypeInput($event);
   }
 
   unitAChanged(unit: string | null | undefined) {
@@ -187,5 +185,24 @@ export class StudentScholarshipMovementsFormComponent
           this.availableEndOffers.unshift(undefined);
           this.offerBInputControl.enable({ emitEvent: false });
         });
+  }
+
+  reconfigureScholarshipTypeInput(year: number | null | undefined) {
+    this.scholarshipTypeInputControl.setValue(undefined);
+    this.scholarshipTypeInputControl.disable({ emitEvent: false });
+    this.schTypes = [];
+    if (year) {
+      this.dataCatServ.getFileTypes(year).subscribe((data: any) => {
+        data.result.forEach((element: string) => {
+          if (element == FileType.STUDENT_SCHOLARSHIPS_PROGRESAR) {
+            this.schTypes.push({ label: 'progresar', value: element });
+          }
+          if (element == FileType.STUDENT_SCHOLARSHIPS_BELGRANO) {
+            this.schTypes.push({ label: 'belgrano', value: element });
+          }
+        });
+        this.scholarshipTypeInputControl.enable({ emitEvent: false });
+      });
+    }
   }
 }

@@ -27,4 +27,13 @@ export class DataCategoriesService {
   getGenders() {
     return this.httpServ.get(`${environment.apiUrl}/api/v1/datacat/genders`);
   }
+
+  getFileTypes(year: number) {
+    return this.httpServ.post(
+      `${environment.apiUrl}/api/v1/datacat/filetypes`,
+      {
+        year: year,
+      }
+    );
+  }
 }
