@@ -1,9 +1,12 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   Input,
   OnChanges,
+  TemplateRef,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { ChartData } from '../../model/chart-data';
 
@@ -23,8 +26,8 @@ import { StudentScholarshipMovementsChartComponent } from '../custom-charts/stud
 export class ChartComponent implements OnChanges, AfterViewInit {
   @Input() chart!: ChartData;
 
-  @ViewChild(ElementAnchorDirective, { static: true })
-  canvasAnchor!: ElementAnchorDirective;
+  @ViewChild('chartViewContainer', { static: true, read: ViewContainerRef })
+  canvasContainer!: ViewContainerRef;
 
   tags!: string[];
 
@@ -43,10 +46,9 @@ export class ChartComponent implements OnChanges, AfterViewInit {
     this.refreshContent();
   }
   refreshContent() {
-    const viewContainerRef = this.canvasAnchor.viewContainerRef;
-    viewContainerRef.clear();
+    this.canvasContainer.clear();
 
-    const componentRef = viewContainerRef.createComponent(
+    const componentRef = this.canvasContainer.createComponent(
       this.chartComponents[this.chart.type as ChartType]
     );
     componentRef.setInput('chart', this.chart);
