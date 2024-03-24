@@ -10,6 +10,7 @@ import { StudentMigrationsChartComponent } from './custom-charts/student-migrati
 import { UnitInscriptionsChartComponent } from './custom-charts/unit-inscriptions-chart/unit-inscriptions-chart.component';
 import { StudentScholarshipMovementsChartComponent } from './custom-charts/student-scholarship-movements-chart/student-scholarship-movements-chart.component';
 import { MigrationDetailsDialogComponent } from './custom-charts/student-migrations-chart/migration-details-dialog/migration-details-dialog.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MigrationDetailsDialogComponent } from './custom-charts/student-migrati
     ReactiveFormsModule,
     MaterialDesignModule,
     SharedModule,
+    RouterModule,
   ],
   exports: [ChartComponent],
 })

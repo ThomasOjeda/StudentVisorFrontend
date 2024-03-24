@@ -8,5 +8,7 @@
   <mat-chip-list>
     <mat-chip *ngFor="let tag of tags" disabled>{{ tag }}</mat-chip>
   </mat-chip-list>
-  <button mat-button>Detalles</button>
+  <button mat-button [routerLink]="'/home/publish/' + chart._id">
+    Detalles
+  </button>
 </mat-card>
