@@ -8,12 +8,11 @@
         <h1>Menu</h1>
       </mat-toolbar>
       <mat-nav-list>
+        <mat-list-item routerLink="home">
+          <mat-icon>home</mat-icon>
+          <a matListItemTitle> Tablero </a>
+        </mat-list-item>
         <div *ngIf="userIsAdmin">
-          <mat-list-item routerLink="home">
-            <mat-icon>home</mat-icon>
-            <a matListItemTitle> Tablero </a>
-          </mat-list-item>
-
           <mat-list-item routerLink="publish">
             <mat-icon>pie_chart</mat-icon>
             <a matListItemTitle> Publicar </a>
