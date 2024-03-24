@@ -40,8 +40,14 @@ export class NewFileComponent implements OnInit {
   ngOnInit(): void {}
 
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0] ?? null;
-    this.fileTouched = true;
+    if (event.target.files[0].size > 25 * 1024 * 1024) {
+      //25 Mebibytes is the limit (currently managed files are usually not bigger than 3MB)
+      this.selectedFile = null;
+      alert('El archivo seleccionado supera los 25 MiB');
+    } else {
+      this.selectedFile = event.target.files[0] ?? null;
+      this.fileTouched = true;
+    }
   }
 
   onSubmit() {

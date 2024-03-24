@@ -51,7 +51,7 @@
     (change)="onFileSelected($event)"
     #fileInput
     type="file"
-    accept=".xlsx"
+    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx"
   />
   <mat-error *ngIf="fileTouched && selectedFile == null">
     Campo <strong>requerido</strong>
