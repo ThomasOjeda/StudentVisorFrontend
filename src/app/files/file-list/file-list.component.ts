@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 export class FileListComponent implements OnInit {
   dataSource!: MatTableDataSource<FileData>;
 
-  columnsToDisplay = ['name', 'type', 'year', 'actions'];
+  columnsToDisplay = ['name', 'type', 'year'];
 
   isLoadingResults = true;
 
@@ -27,20 +27,14 @@ export class FileListComponent implements OnInit {
 
   @Input() newFileEvent!: Observable<string>;
 
-
-  constructor(
-    private router: Router,
-    private filesServ: FilesService,
-    private dialog: MatDialog
-  ) {}
+  constructor(private router: Router, private filesServ: FilesService) {}
 
   ngOnInit(): void {
-    this.newFileEvent.subscribe(
-      (event) => {
-        if (event == 'new') {
-          this.refresh();
-        }}
-    )
+    this.newFileEvent.subscribe((event) => {
+      if (event == 'new') {
+        this.refresh();
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -75,27 +69,5 @@ export class FileListComponent implements OnInit {
 
   openDetails(file: FileData) {
     this.router.navigate(['home', 'files', file._id]);
-  }
-
-  openDeleteDialog(file: FileData) {
-    let dialogRef = this.dialog.open(ConfirmationCardComponent);
-    dialogRef.componentInstance.title = `¿Borrar el archivo ${file.name}?`;
-
-    dialogRef.componentInstance.op1 = 'Borrar';
-    dialogRef.componentInstance.op2 = 'Cancelar';
-    dialogRef.componentInstance.result.subscribe((result) => {
-      if (result == 'Borrar') {
-        this.filesServ.deleteFile(file._id).subscribe({
-          next: () => {},
-          error: () => {},
-          complete: () => {
-            dialogRef.close();
-            this.refresh();
-          },
-        });
-      } else {
-        dialogRef.close();
-      }
-    });
   }
 }

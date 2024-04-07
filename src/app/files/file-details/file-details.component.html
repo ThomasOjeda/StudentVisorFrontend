@@ -59,5 +59,10 @@
 
     <h2>Ultima actualización</h2>
     <p>{{ file.updatedAt | date : "medium" }}</p>
+
+    <button mat-raised-button (click)="openDeleteDialog()" style="color: red">
+      <mat-icon color="warn">delete</mat-icon>
+      Borrar
+    </button>
   </mat-card-content>
 </mat-card>

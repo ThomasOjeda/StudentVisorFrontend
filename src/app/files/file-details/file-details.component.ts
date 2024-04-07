@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FileData } from 'src/app/model/file-data';
 import { FileRequestResponse } from '../model/file-request-response';
 import { FilesService } from '../services/files.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
 
 @Component({
   selector: 'app-file-details',
@@ -17,7 +19,9 @@ export class FileDetailsComponent implements OnInit {
 
   constructor(
     private actRoute: ActivatedRoute,
-    private filesServ: FilesService
+    private filesServ: FilesService,
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -82,5 +86,27 @@ export class FileDetailsComponent implements OnInit {
         },
       });
     }
+  }
+
+  openDeleteDialog() {
+    let dialogRef = this.dialog.open(ConfirmationCardComponent);
+    dialogRef.componentInstance.title = `¿Borrar el archivo ${this.file.name}?`;
+
+    dialogRef.componentInstance.op1 = 'Borrar';
+    dialogRef.componentInstance.op2 = 'Cancelar';
+    dialogRef.componentInstance.result.subscribe((result) => {
+      if (result == 'Borrar') {
+        this.filesServ.deleteFile(this.file._id).subscribe({
+          next: () => {},
+          error: () => {},
+          complete: () => {
+            dialogRef.close();
+            this.router.navigate(['home', 'files']);
+          },
+        });
+      } else {
+        dialogRef.close();
+      }
+    });
   }
 }

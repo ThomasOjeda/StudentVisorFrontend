@@ -8,6 +8,7 @@ import { ElementAnchorDirective } from './element-anchor/element-anchor.directiv
 import { UserButtonComponent } from './user-button/user-button.component';
 import { EditableTextFieldComponent } from './editable-text-field/editable-text-field.component';
 import { FormsModule } from '@angular/forms';
+import { ExcelFileInputComponent } from './excel-file-input/excel-file-input.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     ElementAnchorDirective,
     UserButtonComponent,
     EditableTextFieldComponent,
+    ExcelFileInputComponent,
   ],
   imports: [CommonModule, MaterialDesignModule, FormsModule],
   exports: [
