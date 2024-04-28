@@ -109,4 +109,26 @@ export class FileDetailsComponent implements OnInit {
       }
     });
   }
+
+  downloadFile() {
+    this.filesServ.downloadFile(this.file._id).subscribe({
+      next: (fileData: any) => {
+        const newBlob = new Blob([fileData], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        const data = window.URL.createObjectURL(newBlob);
+        const link = document.createElement('a');
+        link.href = data;
+        link.download = this.file.name + '.xlsx'; // Set a name for the file
+        link.click();
+        window.alert('Se descargo el archivo "' + this.file.name + '.xlsx"');
+      },
+      error: () => {
+        window.alert(
+          'Hubo un error al descargar "' + this.file.name + '.xlsx"'
+        );
+      },
+      complete: () => {},
+    });
+  }
 }

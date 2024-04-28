@@ -55,4 +55,14 @@ export class FilesService {
       newData
     );
   }
+
+  downloadFile(fileId: string) {
+    const httpOptions = {
+      responseType: 'blob' as 'json',
+    };
+    return this.http.get<Blob>(
+      `${environment.apiUrl}/api/v1/uploads/${fileId}`,
+      httpOptions
+    );
+  }
 }
