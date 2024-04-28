@@ -28,5 +28,10 @@
 
     <h2>Informacion contenida</h2>
     <p>{{ chart.structure | json }}</p>
+
+    <button mat-raised-button (click)="openDeleteDialog()" style="color: red">
+      <mat-icon color="warn">delete</mat-icon>
+      Borrar
+    </button>
   </mat-card-content>
 </mat-card>

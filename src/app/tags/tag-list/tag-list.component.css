@@ -16,3 +16,8 @@ mat-paginator {
   display: block;
   width: 200px;
 }
+
+.row:hover {
+  cursor: pointer;
+  background-color: rgb(235, 235, 235);
+}

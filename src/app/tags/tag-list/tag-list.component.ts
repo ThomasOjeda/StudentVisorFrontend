@@ -20,7 +20,7 @@ export class TagListComponent implements OnInit {
 
   dataSource!: MatTableDataSource<TagData>;
 
-  columnsToDisplay = ['_id', 'description', 'actions'];
+  columnsToDisplay = ['_id', 'description'];
 
   isLoadingResults = true;
 
@@ -77,28 +77,6 @@ export class TagListComponent implements OnInit {
 
   openDetails(tag: TagData) {
     this.router.navigate(['home', 'tags', tag._id]);
-  }
-
-  openDeleteDialog(tag: TagData) {
-    let dialogRef = this.dialog.open(ConfirmationCardComponent);
-    dialogRef.componentInstance.title = `¿Borrar la etiqueta ${tag._id}?`;
-
-    dialogRef.componentInstance.op1 = 'Borrar';
-    dialogRef.componentInstance.op2 = 'Cancelar';
-    dialogRef.componentInstance.result.subscribe((result) => {
-      if (result == 'Borrar') {
-        this.tagsServ.deleteTag(tag).subscribe({
-          next: () => {},
-          error: () => {},
-          complete: () => {
-            dialogRef.close();
-            this.refresh();
-          },
-        });
-      } else {
-        dialogRef.close();
-      }
-    });
   }
 
   ngOnDestroy(): void {

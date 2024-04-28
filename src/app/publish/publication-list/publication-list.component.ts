@@ -18,7 +18,7 @@ import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/conf
 export class PublicationListComponent implements OnInit {
   dataSource!: MatTableDataSource<ChartData>;
 
-  columnsToDisplay = ['name', 'type', 'actions'];
+  columnsToDisplay = ['name', 'type'];
 
   isLoadingResults = true;
 
@@ -73,27 +73,5 @@ export class PublicationListComponent implements OnInit {
 
   openDetails(chart: ChartData) {
     this.router.navigate(['home', 'publish', chart._id]);
-  }
-
-  openDeleteDialog(chart: ChartData) {
-    let dialogRef = this.dialog.open(ConfirmationCardComponent);
-    dialogRef.componentInstance.title = `¿Borrar el grafico ${chart.name}?`;
-
-    dialogRef.componentInstance.op1 = 'Borrar';
-    dialogRef.componentInstance.op2 = 'Cancelar';
-    dialogRef.componentInstance.result.subscribe((result) => {
-      if (result == 'Borrar') {
-        this.chartsServ.deleteChart(chart._id).subscribe({
-          next: () => {},
-          error: () => {},
-          complete: () => {
-            dialogRef.close();
-            this.refresh();
-          },
-        });
-      } else {
-        dialogRef.close();
-      }
-    });
   }
 }

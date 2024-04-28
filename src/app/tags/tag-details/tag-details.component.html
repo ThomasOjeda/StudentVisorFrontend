@@ -11,5 +11,10 @@
 
     <h2>Ultima actualización</h2>
     <p>{{ tag.updatedAt | date }}</p>
+
+    <button mat-raised-button (click)="openDeleteDialog()" style="color: red">
+      <mat-icon color="warn">delete</mat-icon>
+      Borrar
+    </button>
   </mat-card-content>
 </mat-card>

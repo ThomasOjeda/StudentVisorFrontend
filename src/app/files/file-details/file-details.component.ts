@@ -105,7 +105,10 @@ export class FileDetailsComponent implements OnInit {
       if (result == 'Borrar') {
         this.filesServ.deleteFile(this.file._id).subscribe({
           next: () => {},
-          error: () => {},
+          error: () => {
+            window.alert('No se pudo eliminar el archivo');
+            dialogRef.close();
+          },
           complete: () => {
             dialogRef.close();
             this.router.navigate(['home', 'files']);

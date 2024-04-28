@@ -27,7 +27,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   dataSource!: MatTableDataSource<UserData>;
 
-  columnsToDisplay = ['username', 'role', 'tags', 'actions'];
+  columnsToDisplay = ['username', 'role', 'tags'];
 
   isLoadingResults = true;
 
@@ -84,28 +84,6 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openDetails(user: UserData) {
     this.router.navigate(['home', 'users', user._id]);
-  }
-
-  handleDeleteSignal(user: UserData) {
-    let dialogRef = this.dialog.open(ConfirmationCardComponent);
-    dialogRef.componentInstance.title = `¿Borrar el usuario ${user.username}?`;
-
-    dialogRef.componentInstance.op1 = 'Borrar';
-    dialogRef.componentInstance.op2 = 'Cancelar';
-    dialogRef.componentInstance.result.subscribe((result) => {
-      if (result == 'Borrar') {
-        this.usersServ.deleteUser(user._id).subscribe({
-          next: () => {},
-          error: () => {},
-          complete: () => {
-            dialogRef.close();
-            this.refresh();
-          },
-        });
-      } else {
-        dialogRef.close();
-      }
-    });
   }
 
   ngOnDestroy(): void {
