@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FilesService } from '../services/files.service';
 import { Subject } from 'rxjs';
+import { MAX_FILE_SIZE } from '../model/file-type';
 
 @Component({
   selector: 'app-new-file',
@@ -40,7 +41,7 @@ export class NewFileComponent implements OnInit {
   ngOnInit(): void {}
 
   onFileSelected(event: any): void {
-    if (event.target.files[0].size > 25 * 1024 * 1024) {
+    if (event.target.files[0].size > MAX_FILE_SIZE) {
       //25 Mebibytes is the limit (currently managed files are usually not bigger than 3MB)
       this.selectedFile = null;
       alert('El archivo seleccionado supera los 25 MiB');

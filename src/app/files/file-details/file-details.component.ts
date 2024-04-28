@@ -6,6 +6,7 @@ import { FilesService } from '../services/files.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationCardComponent } from 'src/app/shared/confirmation-card/confirmation-card.component';
+import { MAX_FILE_SIZE } from '../model/file-type';
 
 @Component({
   selector: 'app-file-details',
@@ -63,7 +64,13 @@ export class FileDetailsComponent implements OnInit {
   }
 
   onFileSelected(event: any): void {
-    this.selectedFile = event.target.files[0] ?? null;
+    if (event.target.files[0].size > MAX_FILE_SIZE) {
+      //25 Mebibytes is the limit (currently managed files are usually not bigger than 3MB)
+      this.selectedFile = null;
+      alert('El archivo seleccionado supera los 25 MiB');
+    } else {
+      this.selectedFile = event.target.files[0] ?? null;
+    }
   }
 
   updateFile() {
