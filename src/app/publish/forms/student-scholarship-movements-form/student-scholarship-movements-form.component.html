@@ -23,17 +23,6 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="sch-type">
-    <mat-label>Tipo de beca</mat-label>
-    <mat-select
-      panelClass="custom-select-panel"
-      [formControl]="scholarshipTypeInputControl"
-    >
-      <mat-option *ngFor="let schType of schTypes" [value]="schType.value">
-        {{ schType.label | titlecase }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
   <mat-form-field>
     <mat-label>Unidad inicio</mat-label>
     <mat-select
@@ -58,18 +47,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field class="sex">
-    <mat-label>Sexo</mat-label>
-    <mat-select
-      panelClass="custom-select-panel"
-      [formControl]="genderInputControl"
-    >
-      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
-        {{ gender.label | titlecase }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <mat-form-field>
     <mat-label>Carrera inicio</mat-label>
     <mat-select
@@ -90,6 +67,30 @@
     >
       <mat-option *ngFor="let offer of availableEndOffers" [value]="offer">
         {{ offer ?? "Sin filtro" | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="sch-type">
+    <mat-label>Tipo de beca</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="scholarshipTypeInputControl"
+    >
+      <mat-option *ngFor="let schType of schTypes" [value]="schType.value">
+        {{ schType.label | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="sex">
+    <mat-label>Sexo</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="genderInputControl"
+    >
+      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
+        {{ gender.label | titlecase }}
       </mat-option>
     </mat-select>
   </mat-form-field>

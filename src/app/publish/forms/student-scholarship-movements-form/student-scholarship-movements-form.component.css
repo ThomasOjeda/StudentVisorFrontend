@@ -1,23 +1,8 @@
 section {
   display: grid;
-  grid-template-columns: 3fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
-  column-gap: 3rem;
-}
-
-.sch-type {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 3;
-  grid-column-end: -1;
-  align-self: center;
-}
-
-.sex {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: -2;
-  grid-column-end: -1;
+  column-gap: 2rem;
 }
 
 mat-form-field {

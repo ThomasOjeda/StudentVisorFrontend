@@ -1,6 +1,10 @@
-.inputs {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
   column-gap: 2rem;
+}
+
+.mat-form-field {
+  min-width: 0;
 }

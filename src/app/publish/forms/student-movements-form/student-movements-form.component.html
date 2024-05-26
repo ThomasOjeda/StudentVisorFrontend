@@ -1,4 +1,4 @@
-<div class="inputs">
+<section>
   <mat-form-field>
     <mat-label>Año inicio</mat-label>
     <mat-select [formControl]="yearAInputControl">
@@ -22,9 +22,7 @@
       Campo <strong>requerido</strong>
     </mat-error>
   </mat-form-field>
-</div>
 
-<div class="inputs">
   <mat-form-field>
     <mat-label>Unidad inicio</mat-label>
     <mat-select
@@ -50,20 +48,6 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Sexo</mat-label>
-    <mat-select
-      panelClass="custom-select-panel"
-      [formControl]="genderInputControl"
-    >
-      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
-        {{ gender.label | titlecase }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div class="inputs">
-  <mat-form-field>
     <mat-label>Carrera inicio</mat-label>
     <mat-select
       panelClass="custom-select-panel"
@@ -86,4 +70,16 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-</div>
+
+  <mat-form-field>
+    <mat-label>Sexo</mat-label>
+    <mat-select
+      panelClass="custom-select-panel"
+      [formControl]="genderInputControl"
+    >
+      <mat-option *ngFor="let gender of availableGenders" [value]="gender._id">
+        {{ gender.label | titlecase }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
