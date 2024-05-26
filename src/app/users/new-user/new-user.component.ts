@@ -24,7 +24,6 @@ export class NewUserComponent implements OnInit {
     tags: new FormControl<string[] | null>([]),
     role: new FormControl<string | null>('reader', [Validators.required]),
   });
-
   allTags: TagData[] = [];
 
   allRoles: string[] = ['reader', 'admin'];
@@ -70,6 +69,7 @@ export class NewUserComponent implements OnInit {
       complete: () => {
         window.alert('Registrado');
         this.newUserCommand.next('new');
+        this.newUserForm.reset();
       },
     });
   }
