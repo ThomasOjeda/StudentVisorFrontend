@@ -1,4 +1,4 @@
-<mat-card *ngIf="chart">
+<mat-card appearance="outlined" *ngIf="chart">
   <mat-card-header>
     <mat-card-title>Detalles del grafico "{{ chart.name }}"</mat-card-title>
   </mat-card-header>
@@ -19,11 +19,11 @@
 
     <h2>Tags</h2>
     <p>
-      <mat-chip-list aria-label="Etiquetas" disabled="true">
+      <mat-chip-listbox aria-label="Etiquetas" disabled="true">
         <div *ngFor="let tag of chart.tags">
-          <mat-chip>{{ tag }}</mat-chip>
+          <mat-chip-option>{{ tag }}</mat-chip-option>
         </div>
-      </mat-chip-list>
+      </mat-chip-listbox>
     </p>
 
     <h2>Informacion contenida</h2>

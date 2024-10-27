@@ -1,4 +1,4 @@
-<mat-card *ngIf="user">
+<mat-card appearance="outlined" *ngIf="user">
   <mat-card-header>
     <mat-card-title>Perfil de usuario</mat-card-title>
   </mat-card-header>
@@ -23,11 +23,11 @@
     <h2>Etiquetas</h2>
     <p *ngIf="user.tags.length <= 0">Sin etiquetas asociadas</p>
     <p *ngIf="user.tags.length > 0">
-      <mat-chip-list aria-label="Etiquetas" disabled="true">
+      <mat-chip-listbox aria-label="Etiquetas" disabled="true">
         <div *ngFor="let tag of user.tags">
-          <mat-chip>{{ tag }}</mat-chip>
+          <mat-chip-option>{{ tag }}</mat-chip-option>
         </div>
-      </mat-chip-list>
+      </mat-chip-listbox>
     </p>
   </mat-card-content>
 </mat-card>
