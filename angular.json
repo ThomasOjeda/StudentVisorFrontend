@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "StudentVisorFrontend:build:production"
+              "buildTarget": "StudentVisorFrontend:build:production"
             },
             "development": {
-              "browserTarget": "StudentVisorFrontend:build:development"
+              "buildTarget": "StudentVisorFrontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "StudentVisorFrontend:build"
+            "buildTarget": "StudentVisorFrontend:build"
           }
         },
         "test": {
