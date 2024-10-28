@@ -16,7 +16,7 @@ import { MAX_FILE_SIZE } from '../model/file-type';
 export class FileDetailsComponent implements OnInit {
   file!: FileData;
   editMode = false;
-  selectedFile: Blob | null = null;
+  selectedFile: any = null;
 
   constructor(
     private actRoute: ActivatedRoute,

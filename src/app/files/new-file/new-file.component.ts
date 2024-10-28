@@ -18,7 +18,7 @@ export class NewFileComponent implements OnInit {
     fileType: new FormControl('', [Validators.required]),
   });
 
-  selectedFile: Blob | null = null;
+  selectedFile: any = null;
   fileTouched: boolean = false;
 
   types = [
