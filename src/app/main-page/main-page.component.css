@@ -38,3 +38,10 @@ mat-nav-list {
   display: flex;
   flex-direction: column;
 }
+
+#logout{
+  --mdc-list-list-item-leading-icon-color: red;
+  --mdc-list-list-item-hover-leading-icon-color: red;
+}
+
+

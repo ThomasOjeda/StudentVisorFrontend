@@ -1,5 +1,20 @@
 <div class="charts-container">
-  <div *ngFor="let chart of charts?.result">
+  <div *ngFor="let chart of charts.result">
     <app-chart [chart]="chart"></app-chart>
   </div>
+  @if(loading) {
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+  }
+  @if(error) {
+    <div class="error">
+      <p>{{ errorMsg }}</p>
+    </div>
+  }
+  @if(!error && !loading && charts.result.length === 0) {
+    <div class="no-data">
+      <p>No hay graficos disponibles</p>
+    </div>
+  }
 </div>

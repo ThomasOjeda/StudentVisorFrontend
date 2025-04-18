@@ -2,41 +2,41 @@
   <mat-sidenav mode="side" #sidenav [opened]="true">
     <div class="sidenav-content-container">
       <mat-toolbar>
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button mat-icon-button matIconSuffix (click)="sidenav.toggle()">
           <mat-icon>close</mat-icon>
         </button>
         <h1>Menu</h1>
       </mat-toolbar>
       <mat-nav-list>
         <mat-list-item routerLink="home">
-          <mat-icon>home</mat-icon>
+          <mat-icon matListItemIcon>home</mat-icon>
           <a matListItemTitle> Tablero </a>
         </mat-list-item>
         <div *ngIf="userIsAdmin">
           <mat-list-item routerLink="publish">
-            <mat-icon>pie_chart</mat-icon>
+            <mat-icon matListItemIcon>pie_chart</mat-icon>
             <a matListItemTitle> Publicar </a>
           </mat-list-item>
 
           <mat-list-item routerLink="files">
-            <mat-icon>insert_drive_file</mat-icon>
+            <mat-icon matListItemIcon>insert_drive_file</mat-icon>
             <a matListItemTitle> Archivos </a>
           </mat-list-item>
 
           <mat-list-item routerLink="users">
-            <mat-icon>people</mat-icon>
+            <mat-icon matListItemIcon>people</mat-icon>
             <a matListItemTitle> Usuarios </a>
           </mat-list-item>
 
           <mat-list-item routerLink="tags">
-            <mat-icon>style</mat-icon>
+            <mat-icon matListItemIcon>style</mat-icon>
             <a matListItemTitle> Etiquetas </a>
           </mat-list-item>
         </div>
         <div class="spacer"></div>
 
         <mat-list-item (click)="logout()">
-          <mat-icon color="warn">logout</mat-icon>
+          <mat-icon matListItemIcon id="logout">logout</mat-icon>
           <a matListItemTitle style="color: red"> Salir </a>
         </mat-list-item>
       </mat-nav-list>

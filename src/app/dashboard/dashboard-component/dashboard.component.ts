@@ -8,17 +8,36 @@ import { ChartsService } from 'src/app/chart/services/charts.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  charts!: ChartsRequestResponse;
 
+  defaultResponse: ChartsRequestResponse = {
+    success: false,
+    result: [],
+    nHits: 0,
+  };
+  charts: ChartsRequestResponse = this.defaultResponse;
+  loading: boolean = true;
+  error: boolean = false;
+  errorMsg: string = 'Error cargando los gráficos';
   constructor(private chartsServ: ChartsService) {}
 
   ngOnInit(): void {
     this.chartsServ.getCharts().subscribe({
       next: (response: ChartsRequestResponse) => {
         this.charts = response;
+        this.loading = false;
+        this.error = false;
       },
-      error: () => {},
+      error: (err) => {
+        this.charts = this.defaultResponse;
+        this.loading = false;
+        this.error = true;
+        console.log(err);
+      },
       complete: () => {},
     });
+  }
+
+  refresh() {
+    //TODO: implement refresh
   }
 }
