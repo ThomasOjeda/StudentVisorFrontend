@@ -8,7 +8,18 @@
   <mat-chip-listbox>
     <mat-chip-option *ngFor="let tag of tags" disabled>{{ tag }}</mat-chip-option>
   </mat-chip-listbox>
-  <button mat-button [routerLink]="'/home/publish/' + chart._id">
-    Detalles
-  </button>
+  @if (isPrevisualization) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Detalles</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <pre>{{ chart.structure| json }}</pre>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <button mat-button [routerLink]="'/home/publish/' + chart._id">
+      Detalles
+    </button>
+  }
 </mat-card>

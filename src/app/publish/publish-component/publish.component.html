@@ -91,7 +91,7 @@
 </form>
 
 <section *ngIf="previsualizedChart">
-  <app-chart [chart]="previsualizedChart"></app-chart>
+  <app-chart [chart]="previsualizedChart" [isPrevisualization]="true"></app-chart>
   <button mat-button (click)="publish()">Publicar</button>
 </section>
 

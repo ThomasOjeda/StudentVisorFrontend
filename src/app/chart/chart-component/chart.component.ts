@@ -25,6 +25,7 @@ import { StudentScholarshipMovementsChartComponent } from '../custom-charts/stud
 })
 export class ChartComponent implements OnChanges, AfterViewInit {
   @Input() chart!: ChartData;
+  @Input() isPrevisualization = false;
 
   @ViewChild('chartViewContainer', { static: true, read: ViewContainerRef })
   canvasContainer!: ViewContainerRef;
@@ -59,4 +60,6 @@ export class ChartComponent implements OnChanges, AfterViewInit {
   ngAfterViewInit(): void {
     this.refreshContent();
   }
+
+  showPreviewDetails = false;
 }
