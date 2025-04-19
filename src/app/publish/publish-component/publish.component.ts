@@ -69,6 +69,7 @@ export class PublishComponent implements OnInit {
 
   toggle: boolean = false;
   loading: boolean = false;
+  clearFormEnabled: boolean = false;
 
   allTags: TagData[] = [];
 
@@ -117,6 +118,7 @@ export class PublishComponent implements OnInit {
       },
       complete: () => {
         this.loading = false;
+        this.clearFormEnabled = true;
       },
     });
   }
@@ -161,5 +163,11 @@ export class PublishComponent implements OnInit {
     const componentRef =
       viewContainerRef.createComponent<TransformationForm>(newComponent);
     componentRef.setInput('transformationBody', this.transformationBodyGroup);
+  }
+
+  clearForm() {
+    this.clearFormEnabled = false;
+    this.transformationForm.reset();
+    this.previsualizedChart = null;
   }
 }

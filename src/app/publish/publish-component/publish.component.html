@@ -66,6 +66,19 @@
   <form formGroupName="transformationBody">
     <ng-template appElementAnchor></ng-template>
   </form>
+
+  <div class="clear-control">
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="clearForm()"
+      [disabled]="!clearFormEnabled"
+    >
+      Limpiar campos
+    </button>
+  </div>
+
   <mat-divider></mat-divider>
 
   <button

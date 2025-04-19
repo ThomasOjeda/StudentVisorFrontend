@@ -38,26 +38,39 @@
     </mat-select>
   </mat-form-field>
 
-  <button
-    class="chooseFileButton"
-    type="button"
-    mat-raised-button
-    (click)="fileInput.click()"
-  >
-    Elegir archivo *
-  </button>
-  <input
-    hidden
-    (change)="onFileSelected($event)"
-    #fileInput
-    type="file"
-    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx"
-  />
-  <mat-error *ngIf="fileTouched && selectedFile == null">
-    Campo <strong>requerido</strong>
-  </mat-error>
+  <div class="bottom-controls">
+    <div>
+      <button
+        class="chooseFileButton"
+        type="button"
+        mat-raised-button
+        (click)="fileInput.click()"
+      >
+        Elegir archivo *
+      </button>
+      <input
+        hidden
+        (change)="onFileSelected($event)"
+        #fileInput
+        type="file"
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,.xlsx"
+      />
+      <mat-error *ngIf="fileTouched && selectedFile == null">
+        Campo <strong>requerido</strong>
+      </mat-error>
+      <span class="file-name">{{ selectedFile?.name }}</span>
+    </div>
 
-  <span class="file-name">{{ selectedFile?.name }}</span>
+    <button
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="clearForm()"
+      [disabled]="!clearFormEnabled"
+    >
+      Limpiar campos
+    </button>
+  </div>
 
   <mat-divider></mat-divider>
 

@@ -10,3 +10,16 @@ form {
 mat-form-field {
   width: 100%;
 }
+
+.file-name {
+  margin-left: 10px;
+}
+
+.bottom-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-divider {
+  margin: 20px 0 20px 0;
+}

@@ -18,6 +18,8 @@ export class NewTagComponent implements OnInit {
     description: new FormControl<string | null>('', [Validators.required]),
   });
 
+  clearFormEnabled: boolean = false;
+
   constructor(private tagsServ: TagsService) {}
 
   ngOnInit(): void {}
@@ -30,8 +32,14 @@ export class NewTagComponent implements OnInit {
       },
       complete: () => {
         window.alert('Etiqueta agregada');
+        this.clearFormEnabled = true;
         this.newTagCommand.next('new');
       },
     });
+  }
+
+  clearForm() {
+    this.clearFormEnabled = false;
+    this.newTagForm.reset();
   }
 }

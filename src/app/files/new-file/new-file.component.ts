@@ -20,6 +20,7 @@ export class NewFileComponent implements OnInit {
 
   selectedFile: any = null;
   fileTouched: boolean = false;
+  clearFormEnabled: boolean = false;
 
   types = [
     { label: 'Inscripciones de alumnos', value: 'student-inscriptions' },
@@ -77,6 +78,7 @@ export class NewFileComponent implements OnInit {
         this.uploading = false;
         window.alert('Archivo cargado');
         this.newFileCommand.next('new');
+        this.clearFormEnabled = true;
       },
     });
   }
@@ -84,4 +86,11 @@ export class NewFileComponent implements OnInit {
   aFileWasSelected() {
     return this.selectedFile != null;
   }
+
+  clearForm() {
+    this.clearFormEnabled = false;
+    this.selectedFile = null;
+    this.newFileForm.reset();
+  }
+    
 }

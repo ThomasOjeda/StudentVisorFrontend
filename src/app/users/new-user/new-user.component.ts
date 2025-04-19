@@ -32,6 +32,8 @@ export class NewUserComponent implements OnInit {
 
   @Input() newUserCommand!: Subject<string>;
 
+  clearFormEnabled: boolean = false;
+
   constructor(
     private authServ: AuthenticationService,
     private tagsServ: TagsService
@@ -69,8 +71,13 @@ export class NewUserComponent implements OnInit {
       complete: () => {
         window.alert('Registrado');
         this.newUserCommand.next('new');
-        this.newUserForm.reset();
+        this.clearFormEnabled = true;
       },
     });
+  }
+
+  clearForm() {
+    this.clearFormEnabled = false;
+    this.newUserForm.reset();
   }
 }

@@ -17,3 +17,13 @@ mat-form-field {
 .radio-button {
   margin: 5px;
 }
+
+
+mat-divider {
+  margin: 20px 0 20px 0;
+}
+
+.clear-control {
+  display: flex;
+  justify-content: flex-end
+}
