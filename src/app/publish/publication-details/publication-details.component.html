@@ -1,7 +1,12 @@
 <mat-card appearance="outlined" *ngIf="chart">
-  <mat-card-header>
-    <mat-card-title>Detalles del grafico "{{ chart.name }}"</mat-card-title>
-  </mat-card-header>
+  <mat-card-title
+    >Detalles del grafico
+    <app-editable-text-field
+      [isTextArea]="false"
+      [value]="chart.name"
+      (wasModified)="updateChartName($event)"
+    ></app-editable-text-field>
+  </mat-card-title>
   <mat-card-content>
     <h2>Descripcion</h2>
     <p style="white-space: pre-wrap">

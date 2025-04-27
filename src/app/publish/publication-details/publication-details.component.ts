@@ -76,4 +76,11 @@ export class PublicationDetailsComponent implements OnInit {
       this.chart = res.result
     })
   }
+
+  updateChartName(newValue: string) {
+    this.chart.name = newValue;
+    this.chartService.updateChart(this.chart._id, this.chart).subscribe((res) => {
+      this.chart = res.result
+    })
+  }
 }
