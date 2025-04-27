@@ -31,4 +31,11 @@ export class UsersService {
       `${environment.apiUrl}/api/v1/users/mine`
     );
   }
+
+  updateUser(userId: string, newData: object) {
+    return this.http.patch<UserRequestResponse>(
+      `${environment.apiUrl}/api/v1/users/${userId}`,
+      newData
+    );
+  }
 }

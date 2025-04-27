@@ -1,0 +1,26 @@
+<div>
+  <mat-chip-listbox aria-label="Etiquetas" disabled="true" *ngIf="!editMode">
+    <div *ngFor="let tag of tags">
+      <mat-chip-option>{{ tag }}</mat-chip-option>
+    </div>
+  </mat-chip-listbox>
+  <mat-form-field *ngIf="editMode">
+    <mat-label>Etiquetas</mat-label>
+    <mat-select panelClass="custom-select-panel" multiple [(ngModel)]="tags">
+      <mat-option *ngFor="let tag of allTags" [value]="tag">{{
+        tag
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button
+    *ngIf="!editMode"
+    mat-icon-button
+    color="accent"
+    (click)="toggleEdit()"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button *ngIf="editMode" mat-icon-button color="accent" (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
+</div>

@@ -9,6 +9,7 @@ import { UserButtonComponent } from './user-button/user-button.component';
 import { EditableTextFieldComponent } from './editable-text-field/editable-text-field.component';
 import { FormsModule } from '@angular/forms';
 import { ExcelFileInputComponent } from './excel-file-input/excel-file-input.component';
+import { ModifiableTagsComponent } from './modifiable-tags/modifiable-tags.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ExcelFileInputComponent } from './excel-file-input/excel-file-input.com
     UserButtonComponent,
     EditableTextFieldComponent,
     ExcelFileInputComponent,
+    ModifiableTagsComponent,
   ],
   imports: [CommonModule, MaterialDesignModule, FormsModule],
   exports: [
@@ -28,6 +30,7 @@ import { ExcelFileInputComponent } from './excel-file-input/excel-file-input.com
     ElementAnchorDirective,
     UserButtonComponent,
     EditableTextFieldComponent,
+    ModifiableTagsComponent
   ],
 })
 export class SharedModule {}

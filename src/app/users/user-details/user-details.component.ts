@@ -69,4 +69,11 @@ export class UserDetailsComponent implements OnInit {
       }
     });
   }
+
+  tagsModified(newValue: string[]) {
+    this.user.tags = newValue;
+    this.usersServ.updateUser(this.user._id, this.user).subscribe((res) => {
+      this.user = res.result
+    })
+  }
 }

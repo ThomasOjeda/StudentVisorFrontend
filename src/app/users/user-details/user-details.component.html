@@ -14,11 +14,10 @@
 
     <h2>Tags</h2>
     <p>
-      <mat-chip-listbox aria-label="Etiquetas" disabled="true">
-        <div *ngFor="let tag of user.tags">
-          <mat-chip-option>{{ tag }}</mat-chip-option>
-        </div>
-      </mat-chip-listbox>
+      <app-modifiable-tags
+        [tags]="user.tags"
+        (wasModified)="tagsModified($event)"
+      ></app-modifiable-tags>
     </p>
 
     <button mat-raised-button (click)="openDeleteDialog()" style="color: red">
