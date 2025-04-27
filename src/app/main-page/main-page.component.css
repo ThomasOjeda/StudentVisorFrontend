@@ -44,4 +44,9 @@ mat-nav-list {
   --mdc-list-list-item-hover-leading-icon-color: red;
 }
 
-
+.version-div {
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+  z-index: 500;
+}
