@@ -30,4 +30,8 @@ export class TagsService {
   deleteTag(tag: TagData) {
     return this.http.delete(`${environment.apiUrl}/api/v1/tags/${tag._id}`);
   }
+
+  updateTag(tag: TagData) {
+    return this.http.patch<TagRequestResponse>(`${environment.apiUrl}/api/v1/tags/${tag._id}`, tag);
+  }
 }

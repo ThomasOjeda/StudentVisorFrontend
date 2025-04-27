@@ -67,4 +67,11 @@ export class TagDetailsComponent implements OnInit {
       }
     });
   }
+
+  descriptionModified(newValue: string) {
+    this.tag.description = newValue
+    this.tagsServ.updateTag(this.tag).subscribe((res) => {
+      this.tag = res.result;
+    });
+  }
 }
