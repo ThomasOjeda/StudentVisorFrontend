@@ -19,11 +19,10 @@
 
     <h2>Tags</h2>
     <p>
-      <mat-chip-listbox aria-label="Etiquetas" disabled="true">
-        <div *ngFor="let tag of chart.tags">
-          <mat-chip-option>{{ tag }}</mat-chip-option>
-        </div>
-      </mat-chip-listbox>
+      <app-modifiable-tags
+        [tags]="chart.tags"
+        (wasModified)="tagsModified($event)"
+      ></app-modifiable-tags>
     </p>
 
     <h2>Informacion contenida</h2>

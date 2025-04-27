@@ -56,4 +56,11 @@ export class ChartsService {
       `${environment.apiUrl}/api/v1/charts/admin/${chartId}`
     );
   }
+
+  updateChart(chartId: string, newData: object) {
+    return this.http.patch<ChartRequestResponse>(
+      `${environment.apiUrl}/api/v1/charts/admin/${chartId}`,
+      newData
+    );
+  }
 }

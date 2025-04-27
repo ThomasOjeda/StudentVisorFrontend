@@ -69,4 +69,11 @@ export class PublicationDetailsComponent implements OnInit {
       }
     });
   }
+
+  tagsModified(newValue: string[]) {
+    this.chart.tags = newValue;
+    this.chartService.updateChart(this.chart._id, this.chart).subscribe((res) => {
+      this.chart = res.result
+    })
+  }
 }
